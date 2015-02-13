@@ -1,0 +1,4 @@
+include LICENSE.MD
+include README.MD
+recursive-include toolbox/static *
+recursive-include toolbox/templates *

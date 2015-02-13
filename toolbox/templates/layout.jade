@@ -1,0 +1,42 @@
+//- This file contains the main layout for all pages.
+    It is not meant to be used as a template directly.
+    Instead, load a content template which "extends" this layout.
+
+//- set html & content type
+!!! 5
+html(lang="en")
+    head
+
+        //- The head is the same for every page and included for simplicity and reusability
+        include includes/head
+
+    body
+
+        //- Navbar is another include for simplicity and reusability
+        include includes/navbar
+
+        //- This div contains the logo's and the drape with the green blocks.
+        include includes/header
+        
+        //- This is the main content div
+        #main.container-fluid
+        
+            //- If set this displays a debug text at the top of the page..
+            if page.data.debug
+                {{ page.data.debug }}
+            
+            //- If set this displays the filters that are selected, used to deselect them.
+            if page.index and page.data.filters
+                .row
+                    .col-md-10.col-md-offset-1
+                        .filters.tb-filter
+                            if page.data.filters
+                                for filter in page.data.filters
+                                    .filter
+                                       a(href="{{filter.href}}",class="{{filter.class}}")=filter.text
+
+            //- This is the actual content, this is the actual entry point, this layout is loaded around it.
+            block content
+
+        include includes/footer
+        

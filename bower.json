@@ -1,0 +1,24 @@
+{
+  "name": "toolbox",
+  "version": "0.9.0",
+  "authors": [
+    "Chris Snijder <chrissnijder@me.com>"
+  ],
+  "description": "BOF Toolbox",
+  "main": "./toolbox/static/css/index.css",
+  "license": "CCBy-sa 4.0",
+  "homepage": "https://toolbox.bof.nl",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendors"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "typeahead.js": "~0.10.2"
+  }
+}

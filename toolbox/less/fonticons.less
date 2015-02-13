@@ -1,0 +1,510 @@
+// Toolbox font-icon (from icomoon.io) selection is saved in the static/fonts dir
+// Please do not simply copy paste the CSS files from icomoon.io, this file is significantly modified.
+@font-face {
+	font-family: 'Toolbox';
+	src:url('@{fonts_dir}Toolbox.eot?v09');
+	src:url('@{fonts_dir}Toolbox.eot?#iefixv09') format('embedded-opentype'),
+		url('@{fonts_dir}Toolbox.woff?v09') format('woff'),
+		url('@{fonts_dir}Toolbox.ttf?v09') format('truetype'),
+		url('@{fonts_dir}Toolbox.svg?v09#Toolbox') format('svg'); // For older iOS devices..
+	font-weight: normal;
+	font-style: normal;
+}
+// Font icon classes start with "tb-"
+[class^="tb-"], [class*=" tb-"]
+{
+    &:before, &:after
+    {
+        font-family     : 'Toolbox';
+        speak           : none;
+    	font-style      : normal;
+    	font-weight     : normal;
+    	font-variant    : normal;
+    	text-transform  : none;
+    	margin-right    : 6px; 
+    }
+    &:hover
+    {
+        &:before
+        {
+            text-decoration : none;
+        }
+    }
+}
+
+[class^="tb-"]:before, [class*=" tb-"]:before, .font-icon, blockquote:before
+{
+    /* Better Font Rendering =========== */
+	-webkit-font-smoothing  : antialiased;
+	-moz-osx-font-smoothing : grayscale;
+}
+
+.font-icon.bigger, blockquote.bigger:before, .tb-bigger:before
+{
+    font-size   : 125%;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.font-icon, blockquote:before, [class^="tb-"]:before, [class*=" tb-"]:before
+{
+    font-family     : 'Toolbox';
+    speak           : none;
+	font-style      : normal;
+	font-weight     : normal;
+	font-variant    : normal;
+	text-transform  : none;
+}
+
+.content blockquote
+{    
+    quotes              : "";
+    &:before 
+    {
+        content         : "\e613";
+        color           : @bof-color;
+        font-size       : 40px;
+        float           : left;
+        margin          : 15px 20px 5px 0;
+        line-height     : 0.3;
+    }
+}
+    
+// Some specific cases for icons.. 
+.navbar-brand:before
+{
+    padding-left    : 10px;
+}
+.navbar
+{
+    ul li a:before, .dropdown-header i:before, .tt-suggestion i:before
+    {
+        font-size         : 120%;
+    }
+}
+.tb-home:before {
+	content: "\e600";
+}
+.platform-indicator
+{
+    font-size   : 24px;
+    text-shadow : -1px -1px 1px #fff;
+    &.lighter
+    {
+        color   : #999;
+    }
+}
+.tb-bof_logo:before {
+	content: "\e601";
+}
+// BOF logo in it's own colours (2)
+.tb-bof-logo-color
+{
+
+    margin            : 0 0 0 28px;
+    &:hover, &:active
+    {
+        &:before
+        {
+            color    : #34a100 !important;
+        }
+        &:after
+        {
+            color    : #000000;
+        }
+    }
+    
+    &:before
+    {
+        content  : "\e602"; 
+        font-size: 32px !important;
+        position : absolute;
+        left     : -20px;
+        line-height:0.65;
+    }
+    &:after
+    {
+        content  : "\e603";
+        position : absolute;
+        font-size: 32px !important;
+        left     : -20px;
+        line-height:0.65;
+    }
+}
+.tb-prica-logo:before 
+{
+	content     : "\e604";
+    font-size: 24px !important;
+}
+
+// All the other icons..
+
+.tb-bb:before {
+	content: "\e65b";
+}
+.tb-anonimity:before {
+	content: "\e605";
+}
+.tb-bof_logo:before {
+	content: "\e601";
+}
+.tb-bof_barb:before {
+	content: "\e602";
+}
+.tb-bof_mouse:before {
+	content: "\e603";
+}
+.tb-prica-logo:before {
+	content: "\e604";
+}
+.tb-shield:before {
+	content: "\e654";
+}
+.tb-beer:before {
+	content: "\e65a";
+}
+.tb-battery:before {
+	content: "\e64b";
+}
+.tb-osx, .tb-mac-osx 
+{   
+    &:before {
+	    content: "\e609";
+	}
+}
+.tb-cloud, .tb-diensten
+{
+    &:before
+    {
+	    content: "\e61b";
+    }
+}
+.tb-envelope:before {
+	content: "\e657";
+}
+.tb-forward:before {
+	content: "\e658";
+}
+.tb-home:before {
+	content: "\e600";
+}
+.tb-dice:before {
+	content: "\e606";
+}
+.tb-pacman:before {
+	content: "\e607";
+}
+.tb-bullhorn:before {
+	content: "\e608";
+}
+.tb-location:before {
+	content: "\e60a";
+}
+.tb-compass:before {
+	content: "\e60b";
+}
+.tb-clock:before {
+	content: "\e60c";
+}
+.tb-bell:before {
+	content: "\e60d";
+}
+.tb-screen:before {
+	content: "\e60e";
+}
+.tb-mobile:before {
+	content: "\e60f";
+}
+.tb-tablet:before {
+	content: "\e610";
+}
+.tb-tv:before {
+	content: "\e611";
+}
+.tb-bubbles:before {
+	content: "\e612";
+}
+.tb-quotes-left:before {
+	content: "\e613";
+}
+.tb-search:before {
+	content: "\e614";
+}
+.tb-key:before {
+	content: "\e615";
+}
+.tb-key2:before {
+	content: "\e616";
+}
+.tb-lock:before {
+	content: "\e617";
+}
+.tb-unlocked:before {
+	content: "\e618";
+}
+.tb-globe2:before {
+	content: "\e61c";
+}
+.tb-earth:before {
+	content: "\e61d";
+}
+.tb-link:before {
+	content: "\e61e";
+}
+.tb-eye:before {
+	content: "\e61f";
+}
+.tb-eye-blocked:before {
+	content: "\e620";
+}
+.tb-warning:before {
+	content: "\e621";
+}
+.tb-notification:before {
+	content: "\e622";
+}
+.tb-question:before {
+	content: "\e623";
+}
+.tb-info:before {
+	content: "\e624";
+}
+.tb-info-circle:before {
+	content: "\e625";
+}
+.tb-cancel-circle:before {
+	content: "\e626";
+}
+.tb-check-circle:before {
+	content: "\e627";
+}
+.tb-spam:before {
+	content: "\e628";
+}
+.tb-checkmark:before {
+	content: "\e629";
+}
+.tb-checkmark2:before {
+	content: "\e62a";
+}
+.tb-backward:before {
+	content: "\e62b";
+}
+.tb-forward2:before {
+	content: "\e62c";
+}
+.tb-previous:before {
+	content: "\e62d";
+}
+.tb-next:before {
+	content: "\e62e";
+}
+.tb-checkbox-checked:before {
+	content: "\e62f";
+}
+.tb-checkbox-unchecked:before {
+	content: "\e630";
+}
+.tb-checkbox-partial:before {
+	content: "\e631";
+}
+.tb-radio-checked:before {
+	content: "\e632";
+}
+.tb-radio-unchecked:before {
+	content: "\e633";
+}
+.tb-filter:before {
+	content: "\e634";
+}
+.tb-console:before {
+	content: "\e635";
+}
+.tb-twitter2:before {
+	content: "\e636";
+}
+.tb-apple, .tb-ios
+{
+    &:before 
+    {
+	    content: "\e637";
+	}
+}
+.tb-android:before {
+	content: "\e638";
+}
+.tb-windows,.tb-windows-phone 
+{
+    &:before {
+	    content: "\e639";
+	}
+}
+.tb-css3:before {
+	content: "\e63a";
+}
+.tb-chrome:before {
+	content: "\e63b";
+}
+.tb-firefox:before {
+	content: "\e63c";
+}
+.tb-IE:before {
+	content: "\e63d";
+}
+.tb-opera:before {
+	content: "\e63e";
+}
+.tb-safari:before {
+	content: "\e63f";
+}
+.tb-platforms:before {
+	content: "\e643";
+}
+.tb-busy:before {
+	content: "\e644";
+}
+.tb-lightning:before {
+	content: "\e646";
+}
+.tb-heart:before {
+	content: "\e647";
+}
+.tb-books:before {
+	content: "\e64c";
+}
+.tb-library:before {
+	content: "\e64d";
+}
+.tb-coin:before {
+	content: "\e64e";
+}
+.tb-credit:before {
+	content: "\e64f";
+}
+.tb-green:before {
+	content: "\e650";
+}
+.tb-airplane:before {
+	content: "\e651";
+}
+.tb-fast:before {
+	content: "\e652";
+}
+.tb-accessibility:before {
+	content: "\e653";
+}
+.tb-facebook:before {
+    font-size   : 125%;
+	content: "\e656";
+}
+.tb-twitter:before {
+    font-size   : 125%;
+	content     : "\e65c";
+}
+.tb-money:before {
+	content: "\e619";
+}
+.tb-money2:before {
+	content: "\e61a";
+}
+.tb-like:before {
+	content: "\e642";
+}
+.tb-tags:before {
+	content: "\f02c";
+}
+.tb-target:before {
+	content: "\f05b";
+}
+.tb-desktop:before {
+	content: "\f108";
+}
+.tb-laptop:before {
+	content: "\f109";
+}
+.tb-globe, .tb-web 
+{
+    &:before 
+    {
+    	content: "\f0ac";
+    }
+}
+.tb-linux:before {
+	content: "\f17c";
+}
+.tb-pin:before {
+	content: "\f08d";
+}
+.tb-trophy:before {
+	content: "\f091";
+}
+.tb-money3:before {
+	content: "\f0d6";
+}
+.tb-plugin:before {
+	content: "\f12e";
+}
+.tb-rocket:before {
+	content: "\f135";
+}
+.tb-bitcoin:before {
+	content: "\f15a";
+}
+.tb-wheelchair:before {
+	content: "\f193";
+}
+.tb-cc:before {
+	content: "\e640";
+}
+.tb-cc-by:before {
+	content: "\e641";
+}
+.tb-cc-sa:before {
+	content: "\e645";
+}
+.tb-location2:before {
+	content: "\e648";
+}
+.tb-star:before {
+	content: "\e649";
+}
+.tb-star2:before {
+	content: "\e64a";
+}
+.tb-id:before {
+	content: "\e655";
+}
+.tb-airplane2:before {
+	content: "\e65d";
+}
+.tb-linkedin:before {
+    font-size   : 125%;
+	content: "\e659";
+}
+.tb-wrench, .tb-tools
+{
+    &:before
+    {
+    	content: "\e65e";
+    }
+}
+.tb-category, .tb-categorie
+{
+    &:before
+    {
+	    content: "\f02c";
+    }
+}
+.tb-info3, .tb-adviezen
+{
+    &:before 
+    {
+    	content: "\e625";
+    }
+}
+.tb-facebook:before {
+	content: "\e656";
+}
+.tb-linkedin:before {
+	content: "\e659";
+}

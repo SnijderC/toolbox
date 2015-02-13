@@ -1,0 +1,57 @@
+- load dictionaryitems
+nav.navbar.navbar-default(role="navigation").navbar-fixed-top
+    .container-fluid
+        .navbar-header
+            button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-navbar-collapse")
+                span.sr-only Open navigatie
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href="/", title="Home").font-icon.bigger
+                &#xe624;                
+            ul.nav.navbar-nav.no-collapse
+        .collapse.navbar-collapse#bs-navbar-collapse
+            ul.nav.navbar-nav.navbar-right.hidden-xs
+                li.divider-vertical
+                li
+                    a.tb-bof-logo-color(href="https://www.bof.nl/", target="_blank") Bits of Freedom
+            form.navbar-right.search-form.col-sm-3.col-lg-2(role="search")
+               label.sr-only(for="search")=Zoeken
+               input#search.form-control(placeholder="Zoeken..",maxlength="40",autocomplete="off")
+            ul.nav.navbar-nav.navbar-right.visible-xs
+                li
+                    a.tb-bof-logo-color(href="https://www.bof.nl/") Bits of Freedom
+            ul.nav.navbar-nav
+                li.divider-vertical
+                //- commented block, maybe useful later..
+                    li.dropdown
+                        a.dropdown-toggle.tb-directions(href="#",data-toggle="dropdown") 
+                            |Start
+                            b.caret
+                        ul.dropdown-menu
+                            li.dropdown-header.tb-question Ik wil graag..
+                            li
+                                {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
+                                a.tb-info3(href="{{href}}") Advies
+                            li
+                                {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
+                                a.tb-hammer(href="{{href}}") Tools
+                            li
+                                {% dictitem page.data.nav.itemtypelinks 'diensten' as href%}
+                                a.tb-cloud(href="{{href}}") Diensten 
+                //- end of commented block
+                li
+                    a.tb-home(href="/overzicht/") Start 
+                for dropdown in page.data.nav.navbar
+                    li.dropdown
+                        a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{dropdown.icon}}")
+                            {{ dropdown.name }}
+                            b.caret
+                        ul.dropdown-menu
+                            for group in dropdown.children
+                                li.dropdown-header(class="{{group.icon}}")
+                                    {{group.name}}
+                                for menuitem in group.children
+                                    li
+                                        a(href="{{menuitem.href}}",class="{{menuitem.icon}}")
+                                            {{menuitem.name}}

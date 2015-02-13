@@ -1,0 +1,30 @@
+//- This file contains the main layout for error pages.
+
+//- set html & content type
+!!! 5
+html(lang="en")
+    head
+
+        //- The head is the same for every page and included for simplicity and reusability
+        include includes/head
+        link(rel="stylesheet", href="/static/css/error.css")
+        script(src="/static/js/error.js")
+        // Remove 50px padding meant for navbar..
+        style(type='text/css')
+            body    { padding-top : 0px; }
+                
+
+    body
+
+        //- This div contains the logo's and the drape with the green blocks.
+        include includes/header
+        
+        //- This is the main content div
+        #main.container-fluid
+        
+            //- If set this displays a debug text at the top of the page..
+            if page.data.debug
+                {{ page.data.debug }}
+
+            //- This is the actual content, this is the actual entry point, this layout is loaded around it.
+            block content

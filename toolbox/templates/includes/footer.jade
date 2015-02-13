@@ -1,0 +1,46 @@
+#footer
+    .container
+        .sitemap.row
+            .col-sm-offset-1.col-sm-10.col-xs-12
+                .row
+                for parent in page.data.nav.sitemap
+                    .col-xs-6.col-sm-3
+                        h4.footer-header(class="{{parent.icon}}")
+                            {{ parent.name }}
+                        ul
+                            for category in parent.children
+                                li
+                                    a(href="{{category.href}}",class="{{category.icon}}")
+                                        {{ category.name }}
+                    if forloop.counter0 == 2
+                        .col-xs-6.col-sm-3
+                            h4.footer-header.tb-link Links
+                            ul                            
+                                li
+                                    a(href="http://www.privacycafe.nl", target="_blank").tb-prica-logo Privacy Café
+                                li
+                                    a(href="https://www.bof.nl", target="_blank").tb-bof-logo-color Bits of Freedom
+                                li
+                                    a(href="https://twitter.com/bitsoffreedom", target="_blank").tb-twitter @bitsoffreedom
+                                li
+                                    a(href="https://nl-nl.facebook.com/BitsofFreedom", target="_blank").tb-facebook BitsofFreedom
+                                li
+                                    a(href="http://www.linkedin.com/company/bits-of-freedom", target="_blank").tb-linkedin bits-of-freedom
+                                li
+                                    a(href="irc://irc.freenode.net/bof-toolbox").tb-bubbles #bof-toolbox (IRC)
+                        .clearfix
+                
+        .legal.row
+            .col-xs-10.col-xs-offset-1
+                .row
+                    .col-xs-12.col-sm-4.text-center
+                        a(href="https://creativecommons.org/licenses/by-sa/4.0/", target="_blank")
+                            span.tb-cc
+                            span.tb-cc-by
+                            span.tb-cc-sa cc-by-sa 4.0
+                    .col-xs-12.col-sm-4.text-center
+                        a(href="/doc/credits") 
+                            span.tb-like credits
+                    .col-xs-12.col-sm-4.text-center
+                        a(href="/doc/privacy-policy") 
+                            span.tb-eye Privacy policy

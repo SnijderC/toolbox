@@ -1,0 +1,59 @@
+.include-font(@familyname, @family: arial, @weight: normal, @style: normal)
+{
+    @font-face{
+        font-family: @familyname;
+        src:url('@{fonts_dir}@{family}.eot?v01');
+        src:url('@{fonts_dir}@{family}.eot?v01#iefix') format('embedded-opentype'),
+/*            url('@{fonts_dir}@{family}.svg?v01#icon') format('svg'), */
+            url('@{fonts_dir}@{family}.woff?v01') format('woff');
+/*            url('@{fonts_dir}@{family}.ttf?v01') format('truetype'); */
+        font-weight: @weight;
+        font-style: @style;
+    }
+}
+
+.include-font('DINWeb';'DINWeb';300;'DINWeb');
+.include-font('DINWeb-Bold';'DINWeb-Bold';700;'DINWeb-Bold');
+.include-font('DINWebPro-Black';'DINWebPro-Black';900;'DINWebPro-Black');
+.include-font('DINWeb-Ita';'DINWeb-Ita';300;'DINWeb-Ita');
+.include-font('DINWeb-BoldIta';'DINWeb-BoldIta';300;'DINWeb-BoldIta');
+
+
+body, html
+{
+    font-family             : @font-family-sans-serif;
+    font-style              : normal;
+    font-weight             : 300;
+    font-size               : 14px;
+    text-transform          : none;
+    text-decoration         : none;
+    letter-spacing          : 0.022em;
+    word-spacing            : 0.044em;
+    line-height             : 1.65;
+}
+
+strong, b 
+{
+    font-family             : @font-family-sans-serif-bold;
+}                           
+em, i                       
+{                           
+    font-family             : @font-family-sans-serif-italic;    
+}
+h1, h2, h3, h4, h5, h6, b, strong
+{
+    em, i
+    {
+        font-family         : @font-family-sans-serif-bold-italic
+    }
+
+}
+em, i
+{
+    h1, h2, h3, h4, h5, h6, b, strong
+    {
+        font-family         : @font-family-sans-serif-bold-italic
+    }
+
+}
+

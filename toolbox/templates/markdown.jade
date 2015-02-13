@@ -1,0 +1,6 @@
+extends "layout.jade"
+block content 
+    .content
+        .row
+            .col-md-10.col-md-offset-1
+                {{ page.data.markdown|safe }}

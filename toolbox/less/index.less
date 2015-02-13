@@ -1,0 +1,452 @@
+/*
+// This is the main LESS file, it imports all dependencies.
+// Here you can put some layout styles that are not in Bootstrap.
+// If you need to make specific additions make a separate file and include it.
+// An example of this is the bootstrap_doc_callout.less which is a rip-off of 
+// Boostrap's documentation styles: bootstrap_doc_callout.less. 
+// According to the license that is allowed.
+*/
+
+// Vars
+@media_dir: "/static/media/";
+@fonts_dir: "/static/fonts/"; 
+@bof-color: rgb(90,165,0);
+
+// Imports
+@import "./fonticons.less"; 
+@import "./typography.less";
+@import "./bootstrap_imports.less";
+@import "./bootstrap_doc_callout.less";
+@import "./ribbon.less";
+@import "./typeahead.less";
+@import "./custom_button.less";
+@import "./navbar_custom.less";
+@import "./footer_custom.less";
+
+body  
+{ 
+    h1, h2, h3
+    {
+        font-family : @font-family-sans-serif-black; 
+    }
+    h4, h5, h6
+    {
+        
+        font-family : @font-family-sans-serif-bold; 
+    }
+    .btn
+    {
+        font        : 11pt/13pt @font-family-sans-serif-bold;
+        margin      : 4px 4px 4px 4px;
+    }
+}
+
+// This is the header that contains the green blocks accross the 
+// top of the screen and the logo's.
+#header
+{ 
+    background  : url("@{media_dir}drape.png") repeat-x;
+    #bof_logo
+    {
+        margin      :94px 0 50px 0;
+    }
+    #toolbox_logo
+    {
+        margin      :70px 0 50px 0;
+    }
+}
+
+// Styles for the main content.. In more or less order of appearance.
+#main
+{
+    background              : #fff;
+    display                 : block;
+    position                : relative;
+    padding-bottom          : 80px; 
+
+    @import "./filters.less";
+    
+    .panel-primary
+    {
+        .panel-heading
+        {
+            // Invert the color of the heading of the panels white on black..
+            a 
+            {
+                color           : #fff;
+            }
+            
+        }
+    }
+    .panel-heading
+    {
+        h3
+        {
+            margin      : 8px 0 8px 4px;
+        }
+    }
+
+    .time
+    {
+        margin-top      : 13px;
+    }
+    
+    .intro, .lead
+    {
+        padding-top     : 24px;
+    }
+
+    // This is the price tag currently at the bottom of tools and services items
+    .price
+    {
+        font            : 11pt/11pt @font-family-sans-serif-bold; 
+        padding         : 6px 8px 6px 8px;
+        margin          : 11px;
+    }
+        
+    .intro 
+    {
+        // A Django plugin makes the thumbnails, this is not the
+        // place where the actual size is determined (but ofc overruled).
+        img
+        {
+            margin          : 7px 10px 5px 7px;
+            max-width       : 64px;
+        }
+        p
+        {
+            padding-left    : -20px;
+        }
+    }
+    
+    .lead
+    {
+        // A Django plugin makes the thumbnails, this is not the
+        // place where the actual size is determined (but ofc overruled).
+        img
+        {
+            max-width       : 128px;
+            margin          : 10px 20px 30px 10px;
+        }
+        figure
+        {
+            position        : relative;
+            display         : block;
+            max-width       : 128px;
+
+            img
+            {
+                margin          : 10px 20px 0 10px;
+            }
+            figcaption
+            {
+                position        : relative;
+                display         : block;
+                margin          : 6px 20px 6px 10px;
+                width           : 128px;
+                font-size       : 10pt;
+            }
+        }
+    }
+    
+    .content
+    {
+        // Make inline images appear inline just a little better.
+        // Other styles can be applied using Markdown plugins.
+        // At least on mobile devices big images don't screw up the layout.
+        img
+        {
+            &.pull-right, &.pull-left
+            {
+                margin          : 10px auto 10px auto;
+                display         : block;
+                max-width       : 100%; //responsive img 
+                height          : auto;
+                clear           : both;
+                float           : none !important;
+                display         : block;
+                margin          : 20px auto 20px auto;
+            }    
+            @media screen and (min-width: @screen-sm-min)
+            {
+                &.pull-right, &.pull-left
+                {
+                    margin          : 10px 20px 10px 20px;
+                }
+                &.pull-right
+                {
+                    float       : right !important;
+                    clear       : right;
+                }
+                &.pull-left
+                {
+                    float       : left !important;
+                    clear       : left;
+                }
+            }  
+        }
+    }
+        
+    // Slightly different style for different screensizes..
+    // The Bootstrap default is too dramatic..
+    @media screen and (min-width: @screen-sm-min) 
+    {
+        .content
+        {
+            padding     : 0 20px 0 20px;
+            font-size   : 12pt;
+            line-heigth : 17pt;
+            font-weight : 200;
+        }
+        .lead
+        {
+            font-size   : 14pt;
+            line-heigth : 19pt;
+        }
+    }
+    // This is additional styling to Bootstrap's list-groups.
+    // For the list of alternatives at the bottom of the item pages.
+    .alternatives
+    {
+        // align the item's icon
+        img
+        {
+            max-width       : 64px;
+            margin          : 7px 10px 5px 7px;
+        }
+
+        // Put the trust level icons right
+        .trust
+        {
+            float           : right;
+        }
+
+        // Little vertical spacing but not for the trust icons.
+        .media-heading 
+        {
+            margin          : 16px 0 16px 0;
+            .trust
+            {
+                margin      : -10px 0 0 0;
+            }
+        }
+    }
+    // All trust icons should be displayed as blocks.
+    // In the more specific styles it is set to float..
+    .trust
+    {    
+        display            : block;
+        position           : relative;
+    }
+    
+    // more precisely place the download links..
+    @media (min-width: @screen-sm-min)
+    {
+        .btn-group, .btn-visit
+        {
+            margin         : 20px 10px 0 0;
+            float          : right;
+            text-align     : left;        
+        }
+        .btn-visit:active
+        {
+            margin         : 20px 10px 10px 0 !important;
+        }
+        
+        .trust
+        {
+            text-align      : right;        
+        }
+    }
+    @media (max-width: @screen-sm-min)
+    {
+        .btn-group button, .btn-group ul, .btn-visit
+        {
+            width             : 90%;
+            margin            : -5px 5% 0 5%;
+        }
+        .btn-group button, .btn-visit
+        {
+            display           : block;
+            padding           : 10px;
+            margin            : 15px 5% 10px 5%;
+        }
+        .trust
+        {
+            text-align      : left;
+            margin-left     : -15px;
+        }
+    }
+    // Add some vertical spacing between full width buttons (mobile layout)
+    .btn-block
+    {
+        margin         : 10px 0 10px 0;
+    }
+    
+    // Styling for open and closed source icons..
+    .tb-open-source:before, .tb-closed-source
+    {
+        font-size       : 36px;
+        text-shadow     : 1px 1px 0px rgba(255,255,255,1);
+        display         : inline-block;
+    }
+    .tb-open-source:before
+    {
+        content         : "\e647";
+        font-size       : 34px;
+        color           : @btn-success-bg;
+    }
+    .tb-closed-source:before
+    {
+        content         : "\e619";
+        color           : @btn-danger-bg;
+    }
+    // Styling for the risk icons. 
+    .risk
+    {
+        display         : inline-block;
+        
+        &:before
+        {
+            font-size       : 36px;
+            text-shadow     : 1px 1px 0px rgba(255,255,255,1);
+        }
+        &.high:before
+        {
+            color           : @btn-danger-bg;
+        }   
+        &.medium:before
+        {
+            color           : @btn-warning-bg
+        }   
+        &.low:before
+        {
+            color           : @btn-success-bg;
+        }
+    }
+    // Default styling for tables, according to boostrap style mixins.
+    // This makes it possible to make fancy tables even from plain Markdown.
+    table
+    {
+        .table;
+        .table-striped;
+        .table-hover;
+                
+        width          : auto;
+    }
+    
+    @import "./comparison.less";
+        
+    /*
+    //  Indent lists a little bit, the bullets were too far into the left margin 
+    */
+    
+    .content, .lead, .intro
+    {   
+        ul, ol
+        {
+            list-style-position : inside;
+            padding-left        : 20px;
+            
+            li 
+            {
+                &[class^="tb-"], &[class*=" tb-"]
+                {
+                    list-style : none;
+                    &:before
+                    {
+                        margin-left: -17pt;                        
+                    }                    
+                }
+            }
+        }
+        code
+        {
+            display         : inline;
+            word-wrap       : normal;
+            white-space     : normal; 
+        }
+    }
+    
+    /* 
+    // Anchors and footnotes linking back and forward cause a problem if you
+    // use a margin at the top of the screen since it would show exactly there
+    // on the screen. In this case the Navbar would hide the anchors..
+    // Nothing a little margin on the anchors can't help but then you do see
+    // the large outline of the anchor, so hide that too..
+    */ 
+    .anchor, .footnote-backref
+    {
+        padding-top     : 80px; 
+        margin-top      : -80px;
+        outline         : 0;
+        text-decoration : none;
+    }
+    .anchor
+    {
+        &:before
+        {
+            margin          : 0 0 0 2px;
+        }
+    }
+    .footnote
+    {
+        &:before
+        {
+            margin          : 0 5px 0 0;
+        }
+    }
+    // Make stars for anchors and footnotes..     
+    .footnote, .anchor
+    {
+        &.star-1:before
+        {
+            content         : "\2736"; 
+        }
+        &.star-2:before
+        {
+            content         : "\2736\2736"; 
+        }
+        &.star-3:before
+        {
+            content         : "\2736\2736\2736"; 
+        }
+        &.star-4:before
+        {
+            content         : "\2736\2736\2736\2736"; 
+        }
+        &.star-5:before
+        {
+            content         : "\2736\2736\2736\2736\2736"; 
+        }
+    }
+    .footnote-backref
+    {
+        margin          : 0 0 0 5px;
+    }
+    
+    blockquote
+    {
+        p
+        {
+            color           : #555;
+        }
+        cite
+        {
+            display     : inline-block;
+            width       : 100%;
+            text-align  : right;
+            font-style  : italic;
+            color       : #aaa;
+            &:before
+            {
+                content :'\2014\20\20';
+            }
+        }
+    }
+    
+    // As I said in order of appearance, this is the shadow on the main content div.
+    box-shadow  : 0px 26px 26px rgba(0,0,0,.6);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}

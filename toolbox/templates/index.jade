@@ -1,0 +1,75 @@
+extends "layout.jade"
+- load thumbnail
+- load dictionaryitems
+//- MIXIN FOR ITEMS ---------->
+mixin index_item(obj_items, slugtype, obj_title, icon)
+    div.panel-heading
+        //- Take the preloaded itemtype link from the dict
+        {% dictitem page.data.nav.itemtypelinks slugtype as href%}
+        //- Header per category: tools, advice, services..
+        h3
+            i(class="{{icon}}")
+            a(href="{{href}}") {{obj_title}}
+
+    div.panel-body
+        //- If there are items for this category, loop through them..
+        if obj_items
+            for item in obj_items
+                .row
+                    if item.time 
+                        //- If a duration is givenm show it..
+                        .col-xs-8
+                            h4
+                                a(href="/{{slugtype}}/{{item.slug}}/")=item.title
+                        .col-xs-4
+                            span.time.badge.pull-right
+                                span.tb-clock=item.time_formatted 
+                    else 
+                        //- Otherwise only show the title..
+                            Unfortunate code repetition, did not find a way to get around it.
+                        .col-xs-12
+                            h4
+                                a(href="/{{slugtype}}/{{item.slug}}/")=item.title
+                .row
+                    .col-xs-12.intro
+                        //- Show the icon if it is set
+                        if item.is_featured
+                            .ribbon(title="Featured item")
+                                span 
+                                    i.tb-star
+                        if item.has_image
+                            a(href="/{{slugtype}}/{{item.slug}}/")
+                                img.pull-left(src="{{item.image|thumbnail_url:'icon_thumb'}}") 
+                        {{item.intro}}
+                        a(href="/{{slugtype}}/{{item.slug}}/") Lees meer..
+                        //- If this is not the last item in the list, output a "hr" to separate the items 
+
+                        if not forloop.last
+                            hr
+                //- Specific type (tools, services, advice) index page not required yet.
+                    if forloop.last and not obj_items.last == item
+                        .row
+                            .col-xs-10.col-xs-offset-1
+                                br
+                                br
+                                //- Take the preloaded itemtype link from the dict
+                                {% dictitem page.data.nav.itemtypelinks slugtype as href%}
+                                a.btn.btn-lg.btn-block.btn-success(href='{{href}}') Meer..
+                                br
+                //- end of commented block                    
+        else
+            p Geen {{slugtype}} gevonden
+//- <------ END MIXIN FOR ITEMS 
+            
+block content         
+    .row
+        //- Load all 3 panels, tools, advise and services by calling a mixin, less code repetition, yay :)
+        .col-md-5.col-md-offset-1
+            .panel.panel-primary
+                +index_item(page.data.advices, 'adviezen', 'Adviezen', 'tb-info3')
+            .panel.panel-primary
+                +index_item(page.data.services, 'diensten', 'Diensten', 'tb-cloud')
+        .col-md-5
+            .panel.panel-primary
+                +index_item(page.data.tools, 'tools', 'Tools', 'tb-wrench')
+            

@@ -1,0 +1,123 @@
+#footer 
+{
+    /* 
+    // Border radius will show the white background so we need a little footer background to show
+    // under the content div. This will pull up the footer, and add some padding into it so it
+    // remains nice and spaceous.
+    */ 
+    margin      : -20px 0 0 0;
+    padding     : 25px 0 40px 0;
+
+    /*
+    // If the browser is pretty old.. background colour is #333.
+    // If the browser is modern enough this is a bunch of gradients that will look like a
+    // bunch of 3d blocks..
+    */    
+    background  : #333;
+    background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.7)),
+    linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+    linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+    linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+    linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+    linear-gradient(60deg, #222 25%, transparent 25.5%, transparent 75%, #222 75%, #222), 
+    linear-gradient(60deg, #222 25%, transparent 25.5%, transparent 75%, #222 75%, #222);
+    background-size:100% 100%, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px;
+    background-position: 0 0, 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+    
+    color       : #eee;
+    
+    div
+    {
+        &.sitemap
+        {
+
+            ul,li
+            {
+               list-style   : none;
+               white-space  : nowrap;
+            }
+            
+            .footer-header
+            {
+                text-transform  : uppercase;
+            }
+            
+            h4
+            {
+                margin      : 40px 0 10px 0;
+            }
+            
+            ul
+            {
+                margin      : 0;
+                padding     : 0 0 0 8px;
+                li
+                {
+                    margin  : 6px 0 0 0;
+                    ul
+                    {
+                        padding  : 5px 0 5px 15px;
+                    }
+                }
+            }
+            @media (max-width: @screen-sm-min)
+            {
+                h4
+                {
+                    font-size : 90%;
+                }
+                li
+                {
+                    font-size : 75%;
+                }
+            }
+        }
+        a
+        {
+            text-decoration : none;
+            color           : #ccc;
+            &:hover
+            {
+                color           : #eee;
+                &:after
+                {
+                    color           : #eee;
+                }
+            }
+            // bof logo adjustment.. This sucks but it works..
+            &.tb-bof-logo-color 
+            {
+                padding-left    : 10px;
+                margin-left     : 20px;
+                &:before, &:after
+                {
+                    padding-left    : 39px;
+                }
+            }
+        }
+
+    }
+    // License icons
+    .legal
+    {
+        margin-top      : 40px;
+        a
+        {
+            .tb-cc, .tb-cc-by, .tb-cc-sa
+            {
+                    line-height     : 16pt;
+                    vertical-align  : top;
+                    display         : inline-block;
+                &:before
+                {
+                    font-size       : 16pt;
+                    line-height     : 16pt;
+                }
+            }
+        }
+        .col-xs-12
+        {
+            margin             : 10px 0 0 0;
+        }
+    }   
+}

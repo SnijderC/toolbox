@@ -1,0 +1,496 @@
+extends "layout.jade"
+block content
+    .row
+        .col-md-10.col-md-offset-1
+            .comparison
+                table
+                    tr
+                        th Client
+                        th.rotate 
+                            div Open-Source
+                        th.rotate 
+                            div End-to-End encryptie
+                        th.rotate 
+                            div
+                                abbr(title="Man-in-the-Middle") MITM 
+                        th Encryptie sterkte
+                        th.rotate 
+                            div SSL/TLS
+                        th.rotate 
+                            div Gedragsgegevens
+                        th.rotate 
+                            div Uploadt adresboek
+                        th.rotate 
+                            div Anoniem te bebruiken
+                        th.rotate 
+                            div Veilige opslag
+                        th.rotate 
+                            div Respecteert je privacy
+                        th  
+                            abbr(title="Operating System") OS
+                    tr
+                        td 
+                            a(href="/tools/textsecure/") TextSecure
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-on
+                        td.ok
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v 
+                            sup 1
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                    tr
+                        td 
+                            a(href="/tools/surespot/") Surespot
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.partial
+                            i.v
+                            sup 2
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-on
+                        td.ok
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                    tr
+                        td 
+                            a(href="/tools/threema/") Threema
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v
+                            sup 1
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                    tr
+                        td 
+                            a(href="/tools/wickr/") Wickr
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-on
+                        td.ok
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v
+                            sup 1
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                    tr
+                        td 
+                            a(href="/tools/imessage/") iMessage
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.x
+                        td.partial
+                            i.v
+                            sup 3
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-ios
+                    tr
+                        td 
+                            a(href="/tools/telegram/") Telegram
+                        td.ok
+                            i.v 
+                            sup 4
+                        td.partial
+                            i.v
+                            sup 5
+                        td.partial
+                            i.v 
+                            sup 2
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.partial
+                            i.v
+                            sup 5
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            sup 6
+                    tr
+                        td 
+                            a(href="/tools/gliph/") Gliph
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.bad
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                    tr
+                        td Ebuddy XMS
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on 
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td Line
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.bad
+                            i.x
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td WeChat
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.bad
+                            i.v
+                        td.ok
+                            i.v
+                            sup 1
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td KIK
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.bad
+                            i.v
+                        td.ok
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td 
+                            a(href="/tools/whatsapp/") Whatsapp
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.ok
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v 
+                            sup 7
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td Snapchat 
+                            sup 8!!
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.bad
+                            i.v
+                            sup 10
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v
+                        td.bad
+                            i.v 
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+                            i.tb-windows
+                            i.tb-bb
+                    tr
+                        td 
+                            abbr(title="Blackberry Messenger") BBM 
+                            sup 9!!
+                        td.bad
+                            i.x
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-on
+                            i.tb-star-off
+                            i.tb-star-off
+                        td.bad
+                            i.v
+                            sup 10
+                        td.bad
+                            i.v
+                        td.ok
+                            i.x
+                        td.ok
+                            i.v
+                        td.ok
+                            i.v
+                        td.bad
+                            i.x
+                        td.text-center
+                            i.tb-android
+                            i.tb-ios
+    .row
+        .col-md-10.col-md-offset-1
+            ol
+                li Opt-out / opt-in mogelijk
+                li Gedeeltelijke 
+                    abbr(title="Man-in-the-Middle") MITM 
+                    | bescherming, moet steeds opnieuw geverifieerd worden met de ontvangende partij.                
+                li E-mailadres kan als alternatief voor telefoonnummer gebruikt worden.
+                li Client open-source, server niet!
+                li Eigen implementatie, veiligheid niet bewezen.
+                
+                li Voor iOS en Android zijn er officiële Apps, voor overige platformen onofficiële apps.
+                li Wordt versleuteld maar altijd met hetzelfde wachtwoord, dat wachtwoord is bekend (
+                    a(href="http://bas.bosschert.nl/steal-whatsapp-database/", target="_blank") link
+                    |).
+                li Snapchat biedt wel End-to-end encryptie in een compleet nutteloze vorm, er wordt altijd gebruik gemaakt van hetzelfde wachtwoord, de versleuteling is daarnaast extreem zwak. Er zitten fouten in de SSL implementatie en de claims die ze maken m.b.t. privacy en veiligheid kunnen ze niet waarmaken.
+                li Onderzoekers hebben de App onderzocht en vonden diverse zwakheden en een verwijzing naar het woord "Backdoor" (
+                    a(href="https://os3.nl/_media/2013-2014/courses/ssn/projects/bbm_report.pdf", target="_blank") link
+                    |).
+                li Iemand in een een 
+                    abbr(title="Man-in-the-Middle") MITM
+                    positie kan de beveiligde verbinding ongedaan maken (
+                    a(href="https://os3.nl/_media/2013-2014/courses/ssn/projects/bbm_report.pdf", target="_blank") link
+                    |)

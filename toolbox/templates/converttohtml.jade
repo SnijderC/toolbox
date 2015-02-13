@@ -1,0 +1,55 @@
+extends "layout.jade"
+block content
+
+    div.bs-callout.bs-callout-info 
+        h4.tb-windows Windows
+        ul
+            li
+                strong Bestandsdeling uitzetten
+                br
+                br
+                ul
+                    li
+                        |Ga naar:
+                        pre Configuratiescherm > Netwerk en Internet > Netwerkcentrum
+                    li
+                        |Klik op:
+                        pre Groep > Delen > Opties > Geavanceerde instellingen voor delen wijzigen
+                    li
+                        |Schakel 
+                        code Bestands- en printerdeling
+                        |uit, en je kunt ervoor kiezen om ook netwerkdetectie en 
+                        code Openbare mappen delen
+                        |uit te schakelen.
+                br
+            li
+                strong Firewall aanzetten
+                br
+                br
+                ul
+                    li 
+                        |Ga naar de beveiligingsinstellingen onder:
+                        pre Configuratiescherm > Systeem en beveiliging > Windows Firewall
+                        |en zorg ervoor dat je firewall is ingeschakeld.
+        h4.tb-osx Mac OSX
+        ul
+            li
+                strong Bestandsdeling uitzetten
+                br
+                br
+                ul
+                    li
+                        |Ga naar:
+                        pre Systeemvoorkeuren -> Delen
+                        |en zorg ervoor dat er geen vakjes zijn aangevinkt.
+                br
+            li
+                strong Firewall aanzetten
+                br
+                br
+                ul
+                    li 
+                        |Ga naar:
+                        pre Systeemvoorkeuren > Beveiliging > Firewall
+                        |en zorg ervoor dat je firewall is ingeschakeld.
+

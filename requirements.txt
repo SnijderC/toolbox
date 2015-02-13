@@ -1,0 +1,18 @@
+--index-url https://pypi.python.org/simple/
+
+Django==1.6.5
+south==0.8.4
+Jinja2==2.7.2
+MarkupSafe==0.21
+Werkzeug==0.9.4
+itsdangerous==0.24
+pyjade==3.0.0
+six==1.6.1
+virtualenv==1.11.4
+wsgiref==0.1.2
+markdown==2.4.1
+django-pagedown==0.1.0
+Pillow==2.4.0
+easy_thumbnails==2.0.1
+django_filer==0.9.5
+MySQL-python==1.2.5

@@ -1,0 +1,73 @@
+/* 
+// This is a copy of the callout functionality that can be found in Bootstraps Documentation.
+*/
+.bs-callout-colors(@strcolor)
+{
+    background-color    : fade(@strcolor,15%);
+    border-left         : 5px solid @strcolor;
+    h4 
+    {
+        color           : @strcolor;
+    }
+    // Custom links
+    a:not(.btn)
+    {
+        font-weight     : bold;
+    }
+    &.tb-callout-link
+    {
+        padding-left: 60px;
+        a
+        {
+            line-height     : 150%;
+            vertical-align  : middle;
+            color           : darken(@strcolor,15%);
+            font-weight     : bold;
+            &:before
+            {
+                font-family     : 'Toolbox';
+                speak           : none;
+            	font-style      : normal;
+            	font-weight     : normal;
+            	font-variant    : normal;
+            	text-transform  : none;
+                font-size       : 160%;
+                content         : "\e61e";       
+                display         : inline-block;
+                position        : relative; 
+                top             : 4px; 
+                margin          : 0 14px 0 -40px;
+            }
+        }
+    }
+}
+ 
+// Base styles (regardless of theme)
+.bs-callout {
+    margin          : 20px 0;
+    padding         : 15px 30px 15px 30px;
+
+    h4 
+    {
+        margin-top  : 0;
+    }
+     
+    .bs-callout p:last-child {
+     margin-bottom  : 0;
+    }
+    
+    &[class^="tb-"], &[class*=" tb-"]
+    {
+        padding-left: 80px;
+        
+    }
+    
+    // Themes for different contexts
+    
+    &.bs-callout-danger  { .bs-callout-colors(@brand-danger);  }
+    &.bs-callout-success { .bs-callout-colors(@brand-success); }
+    &.bs-callout-warning { .bs-callout-colors(@brand-warning); }
+    &.bs-callout-info    { .bs-callout-colors(@brand-info);    }
+    &.bs-callout-primary { .bs-callout-colors(@brand-primary); }
+}
+

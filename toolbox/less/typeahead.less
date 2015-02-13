@@ -1,0 +1,86 @@
+.twitter-typeahead
+{
+    width                   : 100%;
+    // Switch of the browser's outline.
+    *:focus                 
+    {                       
+        outline             : none;
+        border-color        : @gray-light;
+        -webkit-box-shadow  : none;
+        box-shadow          : none;
+    }
+    // Rounding the input and making space for search icon.               
+    input                   
+    {                       
+        border-radius       : 20px;
+        padding             : 4px 28px 0 14px;
+    }     
+    // Search icon.           
+    &:after                 
+    {                       
+        position            : absolute;
+        display             : inline;
+        float               : right;
+        font-family         : 'Toolbox';
+        speak               : none;
+        content             : "\e614";
+        right               : 10px;
+        top                 : 7px;
+    }                       
+}                           
+                            
+.tt-dropdown-menu           
+{                 
+    // In responsive mode, don't allow the dropdown to grow too much          
+    @media (max-width: @screen-sm-min)
+    {
+        max-width           : 100%;
+    }
+    // Make the dropdown pretty
+    min-width               : 100%;
+    padding                 : 0 0 8px 0;
+    background-color        : #fff;
+    border                  : 1px solid rgba(0, 0, 0, 0.2);
+    border-radius           : 0 0 8px 8px;
+    box-shadow              : 0 5px 10px rgba(0,0,0,.2);
+    
+    // Search result styles             
+    .tt-suggestion       
+    {                       
+        padding             : 0;
+        margin              : 0;
+        line-height         : @line-height-base;
+        a, a:hover, a:active
+        {
+            text-decoration : none;
+            color           : @dropdown-link-color;
+        }
+        // mouseover
+        &.tt-cursor 
+        { 
+            background-color: @gray-lighter;
+        }
+        // Text matching the query
+        strong
+        {
+            background-color: @bof-color;
+            color           : #fff;   
+        }
+        // Style inside the suggesstion
+        p
+        {
+            display         : inline-block;
+            max-width       : 100%;
+            min-width       : 100%;
+            margin          : 0;
+            padding         : 3px 20px;
+            // If the text grows too wide, shorten it
+            text-overflow   : ellipsis;
+            white-space     : nowrap;
+            overflow        : hidden;
+         
+        }
+           
+    }
+}
+

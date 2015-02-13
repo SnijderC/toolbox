@@ -1,0 +1,112 @@
+// This part is unfortunately not possible in markdown..
+// This is implements a comparison table with stars and various colors etc.
+    .comparison
+    {
+        max-width               : 100%;
+        overflow-x              : auto;
+        table
+        {
+            tr th 
+            {
+                vertical-align  : bottom;
+                text-align      : center;
+            }
+            // Make column headers vertical.
+            th.rotate 
+            {
+                
+                height          : 200px;
+                white-space     : nowrap;
+                text-align      : left;
+                border          : 1px solid #ccc;
+                
+                > div 
+                {
+                    float               : right;
+                    margin              : -5px 0 -4px -6px;
+                    -webkit-transform   : rotate(-90deg);
+                    -ms-transform       : rotate(-90deg);
+                    -moz-transform      : rotate(-90deg);
+                    -o-transform        : rotate(-90deg);
+                    width               : 30px;
+                    padding             : 0 5px;
+                }
+            }
+            tr td, tr th
+            {
+                .v, .x
+                {
+                    font-family     : 'Toolbox';
+                    speak           : none;
+                	font-style      : normal;
+                	font-weight     : normal;
+                	font-variant    : normal;
+                	text-transform  : none;
+                	margin-right    : 6px;
+                }
+                // The good the bad and the ugly
+                &.ok, &.bad, &.partial
+                {
+                    text-align      : center;
+                }
+                // Checkmarks
+                .v
+                {
+                    &:before
+                    {
+                        content     : '\e627';
+                    }    
+                }
+                // Cross
+                .x
+                {
+                    &:before
+                    {
+                        content     : '\e626';
+                    }    
+                }
+                // good
+                &.ok
+                {
+                    color           : @brand-success;
+                    background      : fade(@brand-success,15%);
+                }   
+                // bad
+                &.bad
+                {
+                    color           : @brand-danger;
+                    background      : fade(@brand-danger,15%);
+                }
+                // ugly
+                &.partial
+                {  
+                    color           : @brand-warning;
+                    background      : fade(@brand-warning,15%);
+                }
+                // Any related notes..
+                &.remark:after
+                {
+                    content         : " \2736";
+                }
+                // Start styles
+                &[class*='tb-star-on-'],&[class*='tb-star-off-']
+                {
+                    text-align      : center;
+                    content         : "";
+                    width           : 0px;
+                }
+                .tb-star-on:before
+                {
+                    content         : "\e649";
+                    color           : #ffdb26;
+                    text-shadow     : 1px 1px 0px rgba(0,0,0,0.5);
+                }
+                .tb-star-off:before
+                {
+                    content         : "\e649";
+                    color           : #444;
+                    text-shadow     : -1px -1px 0px rgba(0,0,0,0.8);
+                }                
+            }
+        }
+    }

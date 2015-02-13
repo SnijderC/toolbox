@@ -1,0 +1,607 @@
+[
+{
+    "pk": 1, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": false, 
+        "license_md": "De broncode van deze tool/dienst is niet publiek beschikbaar.", 
+        "license_html": "<p></p>", 
+        "name": "Closed Source", 
+        "slug": "cc", 
+        "icon": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "Apache License 2.0", 
+        "slug": "apache2", 
+        "icon": ""
+    }
+},
+{
+    "pk": 3, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "BSD 3 (Revised) license", 
+        "slug": "bsd3", 
+        "icon": ""
+    }
+},
+{
+    "pk": 4, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "BSD 2 (FreeBSD) license", 
+        "slug": "freebsd2", 
+        "icon": ""
+    }
+},
+{
+    "pk": 5, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "GNU General Public License (GPL)", 
+        "slug": "gpl", 
+        "icon": ""
+    }
+},
+{
+    "pk": 6, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "GNU Library or \"Lesser\" General Public License (LGPL)", 
+        "slug": "lgpl", 
+        "icon": ""
+    }
+},
+{
+    "pk": 7, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "MIT license", 
+        "slug": "mit", 
+        "icon": ""
+    }
+},
+{
+    "pk": 8, 
+    "model": "toolbox.license", 
+    "fields": {
+        "open_source": true, 
+        "license_md": ".", 
+        "license_html": "<p></p>", 
+        "name": "Open Source (eigen licentie)", 
+        "slug": "opensource-unspecified", 
+        "icon": ""
+    }
+},
+{
+    "pk": 1, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "End-to-End encryptie", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Een techniek waarbij een bericht op jouw apparaat (de client) al versleuteld wordt, alleen de ontvanger weet hoe het bericht ontsleuteld kan worden. Onderweg is het daardoor niet mogelijk de inhoud van een bericht te lezen. Je moet er wel voor zorgen dat jouw apparaat geen virus krijgt en dat er een sterk wachtwoord op zit. Verder beschermt deze techniek je niet tegen de opslag van gedragsgegevens (metadata) waar uit opgemaakt kan worden met wie je contact hebt, hoe vaak, op welk tijdstip en misschien zelfs je locatie.", 
+        "slug": "end-to-end-encryptie", 
+        "icon": "tb-lock"
+    }
+},
+{
+    "pk": 2, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Controle over encryptie sleutels", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Deze sleutels zijn het geheim waarmee jij en de ontvanger van een bericht elkaars berichten kunnen lezen. Sommige diensten laten je zelf kiezen welke sleutel je gebruikt, andere kiezen voor jou een sleutel, je weet dan nooit zeker of jouw sleutel ergens anders bekend is of niet.", 
+        "slug": "controle-over-sleutels", 
+        "icon": "tb-key"
+    }
+},
+{
+    "pk": 3, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Geen controle over encryptie sleutels", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Deze sleutels zijn het geheim waarmee jij en de ontvanger van een bericht elkaars berichten kunnen lezen. Sommige diensten laten je zelf kiezen welke sleutel je gebruikt, andere kiezen voor jou een sleutel, je weet dan nooit zeker of jouw sleutel ergens anders bekend is of niet.", 
+        "slug": "geen-controle-over-sleutels", 
+        "icon": "tb-key"
+    }
+},
+{
+    "pk": 4, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Beperkt aantal platformen", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Deze tool of dienst is niet beschikbaar voor alle platformen.", 
+        "slug": "beperkt-aantal-platformen", 
+        "icon": "tb-platforms"
+    }
+},
+{
+    "pk": 5, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Verhoogt anonimiteit", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Deze tool stelt je in staat om anoniemer te surfen.", 
+        "slug": "anonimiteit", 
+        "icon": "tb-anonimity"
+    }
+},
+{
+    "pk": 6, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Langzaam", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "De dienst of tool staat erom bekend dat hij langzaam werkt.", 
+        "slug": "traag", 
+        "icon": "tb-busy"
+    }
+},
+{
+    "pk": 7, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Niet zo gebruiksvriendelijk", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Deze tool heeft een minder optimale slechte gebruikerservaring of is alleen te gebruiken door mensen die zich er aanzienlijk in verdiepen. Vraag om hulp als je er niet uitkomt!", 
+        "slug": "moeilijk", 
+        "icon": "tb-console"
+    }
+},
+{
+    "pk": 8, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Cross platform", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Deze tool of dienst werkt op meerdere platformen.", 
+        "slug": "veel-platformen", 
+        "icon": "tb-platforms"
+    }
+},
+{
+    "pk": 9, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Gebruiksvriendelijk", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "easy", 
+        "icon": "tb-check-circle"
+    }
+},
+{
+    "pk": 10, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Snel", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "fast", 
+        "icon": "tb-fast"
+    }
+},
+{
+    "pk": 11, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Milieubewust", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "sustainable", 
+        "icon": "tb-green"
+    }
+},
+{
+    "pk": 12, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Betalen met Bitcoin mogelijk", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "bitcoin", 
+        "icon": "tb-bitcoin"
+    }
+},
+{
+    "pk": 13, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Creditcard noodzakelijk voor betaling", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "", 
+        "slug": "creditcard", 
+        "icon": "tb-credit"
+    }
+},
+{
+    "pk": 14, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Free as in \"Free beer!\"", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "free-beer", 
+        "icon": "tb-beer"
+    }
+},
+{
+    "pk": 15, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Prijzig", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "", 
+        "slug": "pricy", 
+        "icon": "tb-money2"
+    }
+},
+{
+    "pk": 16, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Bewezen veilig", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Deze software is ontwikkeld door experts en/of heeft een zeer goede reputatie m.b.t. beveiliging. Helaas zijn er ook voor software van deze klasse geen garanties te geven.", 
+        "slug": "secure", 
+        "icon": "tb-shield"
+    }
+},
+{
+    "pk": 17, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Toegankelijkheidsfuncties voor mensen met een beperking", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "", 
+        "slug": "accessibel", 
+        "icon": "tb-wheelchair"
+    }
+},
+{
+    "pk": 18, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Vereist kennis enige kennis", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Deze tool vereist dat de gebruiker zich goed inleest. In het geval van anonimiserende netwerken is het van z\u00e9\u00e9r groot belang dat de gebruiker begrijpt wat de beperkingen zijn van de software. Er kan anders een gevoel van schijnveiligheid ontstaan. Vraag een expert om het de software uit te leggen als je mogelijk een kwetsbaar doelwit bent.", 
+        "slug": "study", 
+        "icon": "tb-books"
+    }
+},
+{
+    "pk": 19, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Schendt je privacy", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Deze App of de maker staan erom bekend om niet goed met uw privacy om te gaan.", 
+        "slug": "bad-privacy", 
+        "icon": "tb-eye"
+    }
+},
+{
+    "pk": 20, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Privacy vriendelijk", 
+        "is_bad": false, 
+        "is_good": true, 
+        "intro": "Deze app en zijn maker staan erom bekend goed met privacy om te gaan.", 
+        "slug": "good-privacy", 
+        "icon": "tb-eye-blocked"
+    }
+},
+{
+    "pk": 21, 
+    "model": "toolbox.property", 
+    "fields": {
+        "title": "Encryptie techniek is niet bewezen", 
+        "is_bad": true, 
+        "is_good": false, 
+        "intro": "Het is moeilijk om vast te stellen of de cryptografische functionaliteit van deze App deugen aangezien gebruik wordt gemaakt van een eigen implementatie die niet standaard is.", 
+        "slug": "non-standard-crypto", 
+        "icon": "tb-unlocked"
+    }
+},
+{
+    "pk": 2, 
+    "model": "toolbox.parentcategories", 
+    "fields": {
+        "categories": [
+            7, 
+            8
+        ], 
+        "show_in_sitemap": true, 
+        "name": "Messaging", 
+        "show_in_nav": true, 
+        "icon": "tb-envelope"
+    }
+},
+{
+    "pk": 3, 
+    "model": "toolbox.parentcategories", 
+    "fields": {
+        "categories": [
+            8, 
+            12
+        ], 
+        "show_in_sitemap": true, 
+        "name": "Web", 
+        "show_in_nav": true, 
+        "icon": "tb-globe"
+    }
+},
+{
+    "pk": 4, 
+    "model": "toolbox.parentcategories", 
+    "fields": {
+        "categories": [
+            10, 
+            11, 
+            13
+        ], 
+        "show_in_sitemap": true, 
+        "name": "Doel", 
+        "show_in_nav": true, 
+        "icon": "tb-target"
+    }
+},
+{
+    "pk": 3, 
+    "model": "toolbox.formfactor", 
+    "fields": {
+        "name": "Mobiel", 
+        "show_in_nav": true, 
+        "platforms": [
+            1, 
+            3, 
+            4
+        ], 
+        "show_in_sitemap": true, 
+        "slug": "mobiel", 
+        "icon": "tb-mobile"
+    }
+},
+{
+    "pk": 4, 
+    "model": "toolbox.formfactor", 
+    "fields": {
+        "name": "Tablet", 
+        "show_in_nav": true, 
+        "platforms": [
+            1, 
+            3, 
+            4
+        ], 
+        "show_in_sitemap": true, 
+        "slug": "tablet", 
+        "icon": "tb-tablet"
+    }
+},
+{
+    "pk": 5, 
+    "model": "toolbox.formfactor", 
+    "fields": {
+        "name": "Laptop", 
+        "show_in_nav": false, 
+        "platforms": [
+            2, 
+            6, 
+            7
+        ], 
+        "show_in_sitemap": true, 
+        "slug": "laptop", 
+        "icon": "tb-laptop"
+    }
+},
+{
+    "pk": 6, 
+    "model": "toolbox.formfactor", 
+    "fields": {
+        "name": "Computer", 
+        "show_in_nav": true, 
+        "platforms": [
+            2, 
+            6, 
+            7
+        ], 
+        "show_in_sitemap": true, 
+        "slug": "computer", 
+        "icon": "tb-desktop"
+    }
+},
+{
+    "pk": 7, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-bubbles", 
+        "show_in_sitemap": true, 
+        "slug": "chat", 
+        "show_in_nav": true, 
+        "name": "Chat"
+    }
+},
+{
+    "pk": 8, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-envelope", 
+        "show_in_sitemap": true, 
+        "slug": "e-mail", 
+        "show_in_nav": true, 
+        "name": "E-mail"
+    }
+},
+{
+    "pk": 10, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-anonimity", 
+        "show_in_sitemap": true, 
+        "slug": "anonimiteit", 
+        "show_in_nav": true, 
+        "name": "Anonimiteit"
+    }
+},
+{
+    "pk": 11, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-eye", 
+        "show_in_sitemap": true, 
+        "slug": "privacy", 
+        "show_in_nav": true, 
+        "name": "Privacy"
+    }
+},
+{
+    "pk": 12, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-globe", 
+        "show_in_sitemap": true, 
+        "slug": "browsers", 
+        "show_in_nav": true, 
+        "name": "Browsers"
+    }
+},
+{
+    "pk": 13, 
+    "model": "toolbox.category", 
+    "fields": {
+        "icon": "tb-key", 
+        "show_in_sitemap": true, 
+        "slug": "encryptie", 
+        "show_in_nav": true, 
+        "name": "Encryptie"
+    }
+},
+{
+    "pk": 1, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-apple", 
+        "vendor": "Apple", 
+        "slug": "ios", 
+        "name": "iOS"
+    }
+},
+{
+    "pk": 2, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-windows", 
+        "vendor": "Microsoft", 
+        "slug": "windows", 
+        "name": "Windows"
+    }
+},
+{
+    "pk": 3, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-android", 
+        "vendor": "Google", 
+        "slug": "android", 
+        "name": "Android"
+    }
+},
+{
+    "pk": 4, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-windows", 
+        "vendor": "Microsoft", 
+        "slug": "windows-phone", 
+        "name": "Windows Phone"
+    }
+},
+{
+    "pk": 5, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-globe", 
+        "vendor": "Alle apparaten met een browser", 
+        "slug": "web", 
+        "name": "Web"
+    }
+},
+{
+    "pk": 6, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-osx", 
+        "vendor": "Apple", 
+        "slug": "mac-osx", 
+        "name": "Mac OSX"
+    }
+},
+{
+    "pk": 7, 
+    "model": "toolbox.platform", 
+    "fields": {
+        "icon": "tb-linux", 
+        "vendor": "Community", 
+        "slug": "linux", 
+        "name": "Linux"
+    }
+},
+{
+    "pk": 1, 
+    "model": "toolbox.mainnav", 
+    "fields": {
+        "categories": [
+            2, 
+            3, 
+            4
+        ], 
+        "name": "Categorie", 
+        "publish": true, 
+        "icon": "tb-category"
+    }
+}
+]

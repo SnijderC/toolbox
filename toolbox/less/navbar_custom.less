@@ -1,0 +1,65 @@
+body  
+{ 
+    padding-top : 50px;
+}
+nav.navbar
+{
+    box-shadow  : 5px 3px 5px rgba(0,0,0,.5);
+
+    .search-form
+    {
+        margin-top       : 6px;
+        padding-left     : 0;
+    }
+    
+    // It's possible to add some buttons that are non collapsible 
+    // for mobile layouts. This was removed in Bootstrap 3.
+    .no-collapse li, .no-collapse li a
+    {
+        text-align  : center;
+        float       : none;
+        display     : inline-block;
+    }
+    
+    // Vertical divider was removed in Bootstrap 3.
+    .divider-vertical 
+    {
+        height: 50px;
+        border-right: 1px solid #ffffff;
+        border-left: 1px solid #e0e0e0;
+    }
+    
+    @media (max-width: 767px) 
+    {
+        .navbar-collapse .divider-vertical 
+        {
+            display: none;
+        }
+    }
+    
+    // Slight display adjustment for the dropdown menu's
+    ul.dropdown-menu
+    {
+        padding-top : 0;
+        margin-top  : 0px;
+    }
+    
+    // Remove a tiny bit of padding in the navbar
+    @media (max-width: @screen-md-min)
+    {
+        li a
+        {
+            padding-right: 2px;
+        }
+    }
+    // Headers in the dropdowns are a bit vague IMO, this 
+    // will make it look like a grey gradient with sunken text.
+    li.dropdown-header, p.dropdown-header
+    {
+        #gradient > .vertical(#ddd, #ccc);
+        padding : 10px 0 10px 10px;
+        font-family: @font-family-sans-serif-bold;
+        margin-bottom: 0;
+        text-shadow: 1px 1px 0 rgba(255,255,255,.9);
+    }
+}
