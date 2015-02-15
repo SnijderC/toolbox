@@ -66,7 +66,7 @@ def main():
         return False
     
     commands = [
-                    'pip install -r requirements.txt --allow-external mysql-connector-python',
+                    'pip install -r requirements.txt',
                     'mkdir toolbox/logs',
                     './manage.py syncdb --noinput',
                     './manage.py migrate toolbox --noinput',
