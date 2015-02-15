@@ -18,7 +18,40 @@ Met bijdragen van:
  - Jeroen van der Ham
     - Website: [1sand0s.nl](https://1sand0s.nl)    
     - Twitter: [@1sand0s](https://twitter.com/1sand0s) 
- 
+ - Bernard Spil
+    - &#115;&#112;&#105;&#108;&#46;&#111;&#115;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
+    - [GPG key](https://keybase.io/spil/key.asc)
+    - Twitter: [@Sp1l](https://twitter.com/Sp1l)
+    - Website: [https://wiki.freebsd.org/BernardSpil](https://wiki.freebsd.org/BernardSpil)
+ - Maurits Reijnoudt
+    - &#115;&#112;&#105;&#108;&#46;&#111;&#115;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
+    - [GPG key](http://www.mauritsreijnoudt.nl/Pub_Key.txt)
+    - Twitter: [@maurits_r](https://twitter.com/maurits_r)
+    - Website: [www.mauritsreijnoudt.nl](www.mauritsreijnoudt.nl)
+ - Peter Uithoven
+    - &#112;&#101;&#116;&#101;&#114;&#64;&#112;&#101;&#116;&#101;&#114;&#117;&#105;&#116;&#104;&#111;&#118;&#101;&#110;&#46;&#110;&#108;
+ - Saro van Cleynenbreugel
+    - &#115;&#97;&#114;&#111;&#118;&#99;&#64;&#105;&#99;&#108;&#111;&#117;&#100;&#46;&#99;&#111;&#109;
+ - Els Engel
+    - &#101;&#108;&#115;&#64;&#112;&#114;&#105;&#110;&#116;&#112;&#108;&#97;&#97;&#116;&#106;&#101;&#115;&#46;&#110;&#108;
+    - [http://printplaatjes.nl](http://printplaatjes.nl)
+ - Felix Stegerman
+    - &#102;&#108;&#120;&#64;&#102;&#115;&#102;&#101;&#46;&#111;&#114;&#103;
+    - [GPG key](https://github.com/obfusk/gpg)
+    - Twitter: [@obfusk](https://twitter.com/obfusk) 
+    - Website: [https://blogs.fsfe.org/flx](https://blogs.fsfe.org/flx)
+ - Bram Wets
+    - &#98;&#114;&#97;&#109;&#64;&#100;&#105;&#103;&#105;&#116;&#97;&#108;&#112;&#114;&#105;&#118;&#97;&#116;&#101;&#101;&#110;&#118;&#105;&#114;&#111;&#110;&#109;&#101;&#110;&#116;&#46;&#111;&#114;&#103;
+    - [GPG key](http://pgp.mit.edu/pks/lookup?op=vindex&search=0x919C9EBCA0430B96)
+    - Website: [www.digitalprivateenvironment.org](www.digitalprivateenvironment.org)
+    - Website: [www.privacycafe.be](www.privacycafe.be)
+ - Harld Röling
+    - &#104;&#97;&#114;&#108;&#100;&#46;&#114;&#111;&#108;&#105;&#110;&#103;&#64;&#104;&#114;&#111;&#108;&#105;&#110;&#103;&#46;&#110;&#108;
+    - [GPG key](https://www.hroling.nl/pki/certificaten/Harld_Roling_0xF1E7EC17.asc)
+    - Twitter: [@OpenKortenhoef](https://twitter.com/OpenKortenhoef) 
+    - Diaspora*: [harld@pod.readme.is](https://pod.readme.is/u/harld)
+    - Website: https://www.hroling.nl 
+    - Blog: https://cryptoblog.hroling.nl
 
 Special thanks to...
 ====================
