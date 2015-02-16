@@ -52,7 +52,13 @@ Met bijdragen van:
     - Diaspora*: [harld@pod.readme.is](https://pod.readme.is/u/harld)
     - Website: https://www.hroling.nl 
     - Blog: https://cryptoblog.hroling.nl
-
+ - Manon de Vries
+ - Tako Marks
+    - &#109;&#97;&#105;&#108;&#64;&#116;&#116;&#110;&#109;&#46;&#110;&#108;
+    - [GPG key](http://pgp.mit.edu/pks/lookup?op=vindex&search=0x236A1975F4BA978B)
+ - Rob van der Wouw
+ - Evelyn Austin
+ 
 Special thanks to...
 ====================
 
