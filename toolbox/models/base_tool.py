@@ -2,7 +2,7 @@
 from django.db import models
 from common import CommonFields
   
-class ToolOrService(CommonFields):
+class Tool(CommonFields):
     
     # Risk Tuple
     RISK_TUPLE = (
@@ -60,19 +60,7 @@ class ToolOrService(CommonFields):
                                        blank           = True,
                                        verbose_name    = 'Alternatief'
                                        ) 
-    
-    """
-        
-        Until there is time for someone to make this a symmetrical m2m relation I think it should go.. 
-        
-            
-        alt_services= models.ManyToManyField ( 
-                                            'Service',
-                                            verbose_name    = 'Alternatieve Dienst',
-                                            related_name    = "%(class)s_alt_services",
-                                            blank           = True
-                                            )
-    """                                          
+                                             
     risk        = models.CharField   (      
                                         verbose_name    = 'Privacy inbreuk risico',
                                         max_length      = 1,
@@ -134,9 +122,84 @@ class ToolOrService(CommonFields):
         else:
             return "Van deze %s is redelijk zeker dat hij privacy vriendelijk is." % str_tors
     
+            
+    def i_am(self):
+        """ 
+            Return the name of the model.
+        """
+        if "newtool" in self.__dict__():
+            return "tool"
+        else:
+            return "service"
+    
+    def url_slug(self):
+        """
+            Return the item type slug of the model.
+        """
+        return "tools"
+    
     class Meta:
         """
             Change display of model in Django admin
         """
         app_label = "toolbox"
-        abstract = True
+        verbose_name = "Tools"
+        verbose_name_plural = "Tools"
+        
+class App(Tool):
+    
+    playstore  = models.CharField   (      
+                                        verbose_name    = 'Playstore id',
+                                        max_length      = 150,
+                                        blank           = True,
+                                        help_text       = "Vul het id in, niet een link dus: com.google.android.apps.maps"
+                                     )
+    
+    appstore   = models.CharField   (      
+                                        verbose_name    = 'Appstore',
+                                        max_length      = 150,
+                                        blank           = True,
+                                        help_text       = "Vul het id in, niet een link dus: googlemaps"
+
+                                     )
+    marketplace= models.CharField   (      
+                                        verbose_name    = 'Marketplace',
+                                        max_length      = 150,
+                                        blank           = True,
+                                        help_text       = "Vul het id in, niet een link dus: c14e93aa-27d7-df11-a844-00237de2db9e"
+
+                                     )
+
+
+    
+        
+    def playstore_url(self):
+        """
+            Make a valid URL out of a playstore ID
+        """
+        return "http://play.google.com/store/apps/details?id=%s" % self.playstore
+    
+    def appstore_url(self):
+        """
+            Make a valid URL out of a appstore ID
+        """
+        return "http://appstore.com/%s" % self.appstore
+   
+    def marketplace_url(self):
+        """
+            Make a valid URL out of a marketplace ID
+        """
+        return "http://windowsphone.com/s?appId=%s" % self.marketplace
+    
+    def url_count(self):
+        """
+            Return the amount of filled in store ID's.
+            
+            This is done to simplify the templates.
+        """
+        
+        count = 0
+        for url in (self.playstore,self.appstore,self.marketplace,self.url):
+            if url != "":
+                count += 1
+        return count

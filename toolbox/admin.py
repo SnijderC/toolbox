@@ -8,7 +8,7 @@
         If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, Platform, Category, License, Service, Advice, Property, ParentCategories, MainNav, Formfactor
+from toolbox.models import Tool, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor
 from forms import CommonFieldsForm, LicenseForm
 from django.contrib import admin
 
@@ -38,9 +38,6 @@ class CommonFieldsAdmin(admin.ModelAdmin):
 class LicenseAdmin(admin.ModelAdmin):
     form    = LicenseForm
 
-class ToolServiceAdmin(CommonFieldsAdmin):
-    filter_horizontal   = ('categories', 'platforms', 'pros', 'cons', 'alternative','formfactors')
-
 class ParentCategoriesAdmin(admin.ModelAdmin):
     filter_horizontal   = ('categories',)
 
@@ -50,7 +47,8 @@ class FormfactorAdmin(admin.ModelAdmin):
 class MainNavAdmin(admin.ModelAdmin):
     #filter_horizontal   = ('categories',) # somehow this doesn't work?!
     pass
-class ToolAdmin(ToolServiceAdmin):
+class ToolAdmin(CommonFieldsAdmin):
+    filter_horizontal   = ('categories', 'platforms', 'pros', 'cons', 'alternative','formfactors')
     fieldsets = (
         (None, {
             'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
@@ -60,19 +58,6 @@ class ToolAdmin(ToolServiceAdmin):
         }),
         ('Properties', {
             'fields': ('url', 'author', 'author_url', 'appstore', 'playstore', 'marketplace', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
-        })
-    )
-
-class ServiceAdmin(ToolServiceAdmin):
-    fieldsets = (
-        (None, {
-            'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
-        }),
-        ('Tagging', {
-            'fields': ('license',('categories', 'alternative'),('formfactors','platforms')),
-        }),
-        ('Properties', {
-            'fields': ('url', 'author', 'author_url',('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
         })
     )
     
@@ -93,7 +78,6 @@ class AdviceAdmin(CommonFieldsAdmin):
 adminlist = (
                 (Advice, AdviceAdmin),
                 (Tool, ToolAdmin),
-                (Service, ServiceAdmin),
                 (License, LicenseAdmin),    
                 Platform,
                 Category,
