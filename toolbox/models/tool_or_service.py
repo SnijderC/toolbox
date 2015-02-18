@@ -115,7 +115,7 @@ class ToolOrService(CommonFields):
             return "tb-eye risk medium"
         else:
             return "tb-eye-blocked risk low"
-    
+        
     def risk_text(self):
         """
             Return the risk text that is associated with the risk level.
@@ -128,12 +128,12 @@ class ToolOrService(CommonFields):
         else:
             str_tors = "dienst"
         if self.risk == "H":
-            return "Deze %s is niet privacy vriendelijk!" % str_tors
+            return "Dit symbool geeft aan dat de %(stor)s die je hebt geselecteerd je privacy niet – of onvoldoende respecteert. Het verdient aanbeveling om een alternatief te zoeken voor deze %(stor)s." % {'stor':str_tors}
         elif self.risk == "V":
-            return "Van deze %s is niet met zekerheid vast te stellen of hij privacy vriendelijk is." % str_tors
+            return "Dit symbool geeft aan dat het moeilijk is om vast te stellen of de %(stor)s die je hebt geselecteerd je privacy respecteert en/of voldoende waarborgt, wees voorzichtig met deze %(stor)s." % {'stor':str_tors}
         else:
-            return "Van deze %s is redelijk zeker dat hij privacy vriendelijk is." % str_tors
-    
+            return "Dit symbool geeft aan dat de intenties en belangen van de organisatie achter de %(stor)s in overeenstemming zijn met jouw privacy belangen. Deze %(stor)s is dus relatief privacy vriendelijk." % {'stor':str_tors}
+        
     class Meta:
         """
             Change display of model in Django admin

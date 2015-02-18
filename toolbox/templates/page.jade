@@ -66,11 +66,11 @@ block content
                                     //- Show how trustworthy an item is, open source? good policy?
                                     .trust
                                         if item.license.open_source
-                                            span.tb-open-source.pull-right(title="Open source!")                                          
+                                            span.tb-open-source.pull-right(title="Deze tool is open-source, de broncode is te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")  
                                         elif item.license.open_source == False
-                                            span.tb-closed-source.pull-right(title="Closed source..")
+                                            span.tb-closed-source.pull-right(title="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                         if item.risk_class
-                                            span.pull-right(class="{{item.risk_class}}",title="{{item.risk_text}}")
+                                            span.pull-right(class="{{item.risk_class}}",title="{{item.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                         .clearfix.hidden-xs
                                         if item.i_am == "tool" or item.i_am == "service" 
                                             if item.is_free
@@ -181,10 +181,10 @@ block content
                                                             if alt_tool.risk_class
                                                                 span.trust.col-xs-6
                                                                     if alt_tool.license.open_source
-                                                                        span.tb-open-source.pull-right(title="Open source!")                                             
+                                                                        span.tb-open-source.pull-right(title="Deze tool is open-source, de broncode is te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")                                          
                                                                     elif alt_tool.license.open_source == False
-                                                                        span.tb-closed-source.pull-right(title="Close source..")
-                                                                    span.pull-right(class="{{alt_tool.risk_class}}",title="{{alt_tool.risk_text}}")
+                                                                        span.tb-closed-source.pull-right(title="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
+                                                                    span.pull-right(class="{{alt_tool.risk_class}}",title="{{alt_tool.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                                         p.list-group-item-text
                                                             img.pull-left.media-object(src="{{alt_tool.image|thumbnail_url:'icon_thumb'}}")
                                                             {{ alt_tool.intro }}
