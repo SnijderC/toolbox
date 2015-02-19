@@ -198,4 +198,22 @@ class App(Tool):
             if url != "":
                 count += 1
         return count
+    
+    class Meta:
+        """
+            Change display of model in Django admin
+        """
+        app_label = "toolbox"
+        verbose_name = "Apps"
+        verbose_name_plural = "Apps"
 
+class Service(Tool):
+    
+    class Meta:
+        """
+            Change display of model in Django admin
+        """
+        app_label = "toolbox"
+        verbose_name = "Diensten"
+        verbose_name_plural = "Diensten"
+    

@@ -5,8 +5,7 @@ from properties import Property
 from advice import Advice
 from common import CommonFields
 from generic import GenericFields
-from tool import Tool
-from tool import App
+from tool import Tool, App, Service
 from parent_categories import ParentCategories
 from formfactor import Formfactor
 from categories import Category
