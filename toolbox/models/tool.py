@@ -121,13 +121,11 @@ class Tool(CommonFields):
         else:
             return "Van deze %s is redelijk zeker dat hij privacy vriendelijk is." % str_tors
     
-    class Meta:
+    def url_slug(self):
         """
-            Change display of model in Django admin
+            Return the item type slug of the model.
         """
-        app_label = "toolbox"
-        verbose_name = "Tools"
-        verbose_name_plural = "Tools"
+        return "tools"
     
     def i_am(self):
         """ 
@@ -137,6 +135,14 @@ class Tool(CommonFields):
             return 'app'
         else:
             return "tool"
+    
+    class Meta:
+        """
+            Change display of model in Django admin
+        """
+        app_label = "toolbox"
+        verbose_name = "Tools"
+        verbose_name_plural = "Tools"
         
 class App(Tool):
     
@@ -162,11 +168,6 @@ class App(Tool):
 
                                      )
 
-    def url_slug(self):
-        """
-            Return the item type slug of the model.
-        """
-        return "tools"
         
     def playstore_url(self):
         """
