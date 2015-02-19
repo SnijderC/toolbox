@@ -2,7 +2,7 @@
 from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
-from django.db import models
+from django.db import models, connection
 
 
 class Migration(SchemaMigration):
@@ -14,8 +14,9 @@ class Migration(SchemaMigration):
         if not db.dry_run:
             cursor = connection.cursor()
             
-            cursor.execute('''INSERT INTO toolbox_tool (`slug`,`title`,`intro_md`,`intro_html`,`content_md`,`content_html`,`date`,`user_id`,`published`,`cost`,`url`,`author`,`author_url`,`license_id`,`risk`,`image_id`,`feature_score`,`credit`)
-                              SELECT `slug`,`title`,`intro_md`,`intro_html`,`content_md`,`content_html`,`date`,`user_id`,`published`,`cost`,`url`,`author`,`author_url`,`license_id`,`risk`,`image_id`,`feature_score`,`credit` FROM toolbox_service''')
+            cursor.execute('''INSERT INTO toolbox_tool (`slug`,`title`,`intro_md`,`intro_html`,`content_md`,`content_html`,`date`,`user_id`,`published`,`cost`,`url`,`author`,`author_url`,`license_id`,`risk`,`image_id`,`feature_score`,`credit`, `playstore`, `appstore`, `marketplace`)
+                              SELECT                    `slug`,`title`,`intro_md`,`intro_html`,`content_md`,`content_html`,`date`,`user_id`,`published`,`cost`,`url`,`author`,`author_url`,`license_id`,`risk`,`image_id`,`feature_score`,`credit`,  '',          '',         '' 
+                              FROM toolbox_service''')
 
         # Deleting model 'Service'
         db.delete_table(u'toolbox_service')
