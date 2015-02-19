@@ -4,7 +4,7 @@ from django.template.loader import get_template
 import re
 from helpers.page_class import Page
 from helpers.navigation import Navigation
-from toolbox.models import Tool, Advice, Service
+from toolbox.models import Tool, Advice
 from django.db.models import Q
 from django.db import OperationalError
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
@@ -17,7 +17,7 @@ def indexpage(request,slugs):
     # nav provides Navbar, Sitemap, selected Filters, processing of slugs etc.
     nav = Navigation(slugs)
     # A dict of models for the index pages, all for index.jade or one for page.jade
-    table_objects = { "services" : Service, "advices" : Advice, "tools" : Tool }
+    table_objects = { "advices" : Advice, "tools" : Tool }
     # Get selected filters to pass to models..
     filters = nav.filters
     # Get reverse slugs from nav.

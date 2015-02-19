@@ -52,7 +52,7 @@ block content
                                     
                                     //- More item details if this is not an index.
                                     if page.index == False
-                                        if item.i_am == "tool"
+                                        if item.i_am == "tool" or item.i_am == "app"
                                             div
                                                 |Ontwikkelaar: 
                                                 a(href="{{item.author_url}}", target="_blank") {{item.author}}             
@@ -72,7 +72,7 @@ block content
                                         if item.risk_class
                                             span.pull-right(class="{{item.risk_class}}",title="{{item.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                         .clearfix.hidden-xs
-                                        if item.i_am == "tool" or item.i_am == "service" 
+                                        if item.i_am == "tool" or item.i_am == "app"
                                             if item.is_free
                                                 .label.label-success.price.pull-right
                                                     {{ item.format_cost|safe }}
@@ -82,11 +82,12 @@ block content
                                 //- If this is not an index page, show the urls to download pages etc.
                                 if page.index == False
                                     .col-sm-2.col-xs-12
-                                        //- Display of links for tools is different from services, i.e. no actual
-                                            download urls. Advise doesn't have a url.
-                                        if item.i_am == "tool"
+                                        //- If this is an app you can download it (from multiple sources maybe)
+                                            If not, you can only visit the website (one link)
+                                            
+                                        if item.i_am == "app"
                                             //- More than one url should be put into a dropdown..
-                                            if item.url_count > 1
+                                            if item.app.url_count > 1
                                                 .trust.row
                                                     .btn-group
                                                         button.btn.btn-default.dropdown-toggle.btn-success(type="button",data-toggle="dropdown")
@@ -96,29 +97,29 @@ block content
                                                             if item.url
                                                                 li
                                                                     a.tb-globe(href="{{item.url}}", target="_blank") Bezoek
-                                                            if item.appstore
+                                                            if item.app.appstore
                                                                 li
-                                                                    a.tb-apple(href="{{item.appstore_url}}", target="_blank") Appstore
-                                                            if item.playstore
+                                                                    a.tb-apple(href="{{item.app.appstore_url}}", target="_blank") Appstore
+                                                            if item.app.playstore
                                                                 li
-                                                                    a.tb-android(href="{{item.playstore_url}}", target="_blank") Playstore
-                                                            if item.marketplace
+                                                                    a.tb-android(href="{{item.app.playstore_url}}", target="_blank") Playstore
+                                                            if item.app.marketplace
                                                                 li
-                                                                    a.tb-windows(href="{{item.marketplace_url}}", target="_blank") Marketplace
+                                                                    a.tb-windows(href="{{item.app.marketplace_url}}", target="_blank") Marketplace
                                             else
                                                 .trust.row
                                                     if item.url
                                                         a.btn.btn-default.btn-success.btn-visit.tb-globe(href="{{item.url}}", target="_blank") Bezoek
                                                     if item.appstore
-                                                        a.btn.btn-default.btn-success.btn-visit.tb-apple(href="{{item.appstore_url}}", target="_blank") Appstore
+                                                        a.btn.btn-default.btn-success.btn-visit.tb-apple(href="{{item.app.appstore_url}}", target="_blank") Appstore
                                                     if item.playstore
-                                                        a.btn.btn-default.btn-success.btn-visit.tb-android(href="{{item.playstore_url}}", target="_blank") Playstore
+                                                        a.btn.btn-default.btn-success.btn-visit.tb-android(href="{{item.app.playstore_url}}", target="_blank") Playstore
                                                     if item.marketplace
-                                                        a.btn.btn-default.btn-success.btn-visit.tb-windows(href="{{item.marketplace_url}}", target="_blank") Marketplace
+                                                        a.btn.btn-default.btn-success.btn-visit.tb-windows(href="{{item.app.marketplace_url}}", target="_blank") Marketplace
                                         else
-                                            if item.url
-                                                .trust.row.pull-right
-                                                    a.btn.btn-default.btn-success.btn-visit(href="{{item.url}}") Bezoek
+                                            .trust.row
+                                                if item.url
+                                                        a.btn.btn-default.btn-success.btn-visit.tb-globe(href="{{item.url}}", target="_blank") Bezoek
                         //- Icon and Intro text.
                         .panel-body
                             if item.is_featured

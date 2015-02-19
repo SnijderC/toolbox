@@ -73,7 +73,7 @@ class Navigation(object):
         # setnavitems append items to the class attributes: navbar and sitemap
         self.navbar, self.sitemap = self.setnavitems()
 
-        # Generate links for the page indexes (tools, advise, services)
+        # Generate links for the page indexes (tools, advise)
         for key, val in enumerate(sluglist):
             if sluglist[val]['single']:
                 self.itemtypelinks[val] = self.makelink(val)    
@@ -225,7 +225,7 @@ class Navigation(object):
         
         # Loop through all filters
         for strslug in filters:
-            # We don't want these for main selection (tools, advise, services)
+            # We don't want these for main selection (tools, advise)
             if strslug not in ("item_slug","item_arg"):
                 # If one of these is a match set specific class, 
                 # might be better to move to the CSS/LESS file instead.

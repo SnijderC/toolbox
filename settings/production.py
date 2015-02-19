@@ -43,7 +43,6 @@ slugs = {
         'prijs'       : { 'slug' : 'prices'     , 'single' : False , 'multiple' : False},
         'formfactor'  : { 'slug' : 'formfactors', 'single' : False , 'multiple' : False},
         'page'        : { 'slug' : 'pagenr'     , 'single' : False , 'multiple' : False}, 
-        'adviezen'    : { 'slug' : 'advices'    , 'single' : True  , 'multiple' : False}, # this
         'diensten'    : { 'slug' : 'services'   , 'single' : True  , 'multiple' : False}, # XOR this
         'tools'       : { 'slug' : 'tools'      , 'single' : True  , 'multiple' : False}, # XOR this
         'overzicht'   : { 'slug' : 'overview'   , 'single' : True  , 'multiple' : False}, # XOR this
