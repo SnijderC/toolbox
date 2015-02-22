@@ -79,6 +79,7 @@ class CommonFields(GenericFields):
 
     image       = FilerImageField (
                                        related_name    = "%(class)s_image",
+                                       on_delete       = models.SET_NULL,
                                        verbose_name    = 'Logo/Icoon',
                                        blank           = True,
                                        null            = True,

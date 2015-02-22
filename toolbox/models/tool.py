@@ -38,8 +38,10 @@ class Tool(CommonFields):
     license     = models.ForeignKey  (  
                                         'License',
                                         verbose_name    = 'Licentie',
+                                        on_delete       = models.SET_NULL,
                                         default         = None,
-                                        blank           = True
+                                        blank           = True,
+                                        null            = True
                                      )
                                                                       
     pros        = models.ManyToManyField ( 
@@ -205,8 +207,8 @@ class App(Tool):
             Change display of model in Django admin
         """
         app_label = "toolbox"
-        verbose_name = "Apps"
-        verbose_name_plural = "Apps"
+        verbose_name = "Tools"
+        verbose_name_plural = "Tools"
 
 class Service(Tool):
     
