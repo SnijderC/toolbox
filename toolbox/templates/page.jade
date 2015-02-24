@@ -188,7 +188,7 @@ block content
                                                                     span.pull-right(class="{{alt_tool.risk_class}}",title="{{alt_tool.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                                         p.list-group-item-text
                                                             img.pull-left.media-object(src="{{alt_tool.image|thumbnail_url:'icon_thumb'}}")
-                                                            {{ alt_tool.intro }}
+                                                            {{ alt_tool.intro_no_url }}
                                                             each platform in alt_tool.platforms.all
                                                                 i.platform-indicator(class="tb-{{platform.slug}}")
                             if item.i_am == "advice" and item.related.count > 0
@@ -206,7 +206,7 @@ block content
                                                                 {{ related.title }}
                                                         p.list-group-item-text
                                                             img.pull-left.media-object(src="{{related.image|thumbnail_url:'icon_thumb'}}")
-                                                            {{ related.intro }}
+                                                            {{ related.intro_no_url }}
                                                             //- each platform in related.platforms.all
                                                                 i.platform-indicator(class="tb-{{platform.slug}}")
                         if page.index == False 

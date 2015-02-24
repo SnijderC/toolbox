@@ -164,6 +164,9 @@ class CommonFields(GenericFields):
         """
         return mark_safe(self.intro_html)    
     
+    def intro_no_url(self):
+        return mark_safe(re.sub(r'</?(a|A).*?>', '', self.intro_html, flags=re.MULTILINE))
+    
     def contributor(self):
         """
             Get the full name of the Django user..
