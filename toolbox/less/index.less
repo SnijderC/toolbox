@@ -156,32 +156,40 @@ body
         // At least on mobile devices big images don't screw up the layout.
         img
         {
-            &.pull-right, &.pull-left
+            margin              : 20px auto 20px auto;
+            display             : block;
+            max-width           : 100%;
+            clear               : both;
+            
+            &.pull-right, &.pull-left, &.float-left, &.float-right
             {
-                margin          : 10px auto 10px auto;
                 display         : block;
                 max-width       : 100%; //responsive img 
                 height          : auto;
                 clear           : both;
                 float           : none !important;
                 display         : block;
-                margin          : 20px auto 20px auto;
-            }    
+                margin          : 20px;
+            }
+            &.pull-right
+            {
+                margin          : 20px 20px 20px auto;
+            }
+            &.float-right
+            {
+                float       : right !important;
+                clear       : left;
+            }
+            &.float-left
+            {
+                float       : left !important;
+                clear       : right;
+            }
             @media screen and (min-width: @screen-sm-min)
             {
-                &.pull-right, &.pull-left
-                {
-                    margin          : 10px 20px 10px 20px;
-                }
-                &.pull-right
-                {
-                    float       : right !important;
-                    clear       : right;
-                }
                 &.pull-left
                 {
-                    float       : left !important;
-                    clear       : left;
+                    margin      : 20px auto 20px 20px;
                 }
             }  
         }
@@ -238,6 +246,7 @@ body
         display            : block;
         position           : relative;
     }
+    @import "./icon_popovers.less";
     
     // more precisely place the download links..
     @media (min-width: @screen-sm-min)

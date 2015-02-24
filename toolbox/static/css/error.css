@@ -1,1 +1,52 @@
-#shell{margin:0;padding:5px;list-style:none;background:#141414;color:#45D40C;font:.8em Consolas,'Courier New';line-height:1.6em;height:400px;width:100%}#shell li.command:before{content:'[root@bof-server]# ';position:absolute;left:0;top:0}#shell li{word-wrap:break-word;position:relative;display:block}#shell li.command{padding:0 0 0 110pt}#shell li:last-child:after{content:'█';animation:blink 1s step-start 0s infinite;-webkit-animation:blink 1s step-start 0s infinite}@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@-webkit-keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+#shell {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  background: #141414;
+  color: #45D40C;
+  font: 0.8em Consolas, 'Courier New';
+  line-height: 1.6em;
+  height: 400px;
+  width: 100%;
+}
+#shell li.command:before {
+  content: '[root@bof-server]# ';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#shell li {
+  word-wrap: break-word;
+  position: relative;
+  display: block;
+}
+#shell li.command {
+  padding: 0 0 0 110pt;
+}
+#shell li:last-child:after {
+  content: '█';
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}

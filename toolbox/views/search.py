@@ -5,7 +5,7 @@ import re
 import settings
 from django.db import models
 from django.http import HttpResponse
-from toolbox.models import Tool, Advice, Service, Category, Platform
+from toolbox.models import Tool, Advice, Category, Platform
 
 def query(request, query):
     """
@@ -32,14 +32,7 @@ def query(request, query):
                                     'checkpublished': True,
                                     'hasIcon'       : False,
                                     'href'          : "/adviezen/%s/"
-                                  },                
-                    'diensten'  : {                 
-                                    'model'         : Service,
-                                    'field'         : 'title',
-                                    'checkpublished': True,
-                                    'hasIcon'       : False,
-                                    'href'          : "/diensten/%s/"
-                                  },                
+                                  },                                
                     'categorie' : {                 
                                     'model'         : Category,
                                     'field'         : 'name',

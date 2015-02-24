@@ -2,12 +2,10 @@
 from django.db import models
 from license import License
 from properties import Property
-from tool import Tool
-from service import Service
 from advice import Advice
 from common import CommonFields
 from generic import GenericFields
-from tool_or_service import ToolOrService
+from tool import Tool, App, Service
 from parent_categories import ParentCategories
 from formfactor import Formfactor
 from categories import Category

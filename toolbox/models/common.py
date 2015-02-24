@@ -79,6 +79,7 @@ class CommonFields(GenericFields):
 
     image       = FilerImageField (
                                        related_name    = "%(class)s_image",
+                                       on_delete       = models.SET_NULL,
                                        verbose_name    = 'Logo/Icoon',
                                        blank           = True,
                                        null            = True,
@@ -162,6 +163,9 @@ class CommonFields(GenericFields):
             Simplify access to the actual intro data..
         """
         return mark_safe(self.intro_html)    
+    
+    def intro_no_url(self):
+        return mark_safe(re.sub(r'</?(a|A).*?>', '', self.intro_html, flags=re.MULTILINE))
     
     def contributor(self):
         """

@@ -58,6 +58,7 @@ Met bijdragen van:
     - [GPG key](http://pgp.mit.edu/pks/lookup?op=vindex&search=0x236A1975F4BA978B)
  - Rob van der Wouw
  - Evelyn Austin
+ - Tessel Renzenbrink
  
 Special thanks to...
 ====================
