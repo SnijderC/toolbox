@@ -6,6 +6,8 @@ from django.utils.safestring import mark_safe
 from filer.fields.image import FilerImageField
 from filer.models.imagemodels import Image as FilerImage
 from django.core.exceptions import ValidationError
+from terms import Terms
+import datetime
 import markdown
 import settings
 import re
@@ -41,8 +43,7 @@ class CommonFields(GenericFields):
                                      )
 
     date        = models.DateTimeField (  
-                                        verbose_name    = 'Gepubliceerd',
-                                        auto_now        = True
+                                        verbose_name    = 'Laatste update'
                                      ) 
                                            
     user        = models.ForeignKey  (
@@ -94,6 +95,13 @@ class CommonFields(GenericFields):
                                                            "het item ergens tussenin te krijgen.",
                                          default         = 0
                                                       )
+    topic         = models.CharField   (
+                                         verbose_name    = 'Onderwerp (punt-komma gescheiden)',
+                                         help_text       = 'Zet hierin woorden die je zelf uitlegt in het artikel, de woord verklaringsfunctie wordt voor deze woorden niet toegepast.',
+                                         max_length      = 150,
+                                         blank           = True,
+                                     )
+
                               
     published = models.BooleanField ( verbose_name   = "Publiseer" )
 
@@ -146,9 +154,28 @@ class CommonFields(GenericFields):
         """            
             Convert markdown to html to speed up the pageloading.
         """
+        
+        if not kw.pop('skip_date_update', False):
+            self.date = datetime.datetime.now()
+        
         md = markdown.Markdown(extensions=['extra','nl2br','smarty', 'toc'],output_format='html5')
-        self.intro_html = md.convert(self.str_intro_md).encode("utf-8")
-        self.content_html = md.convert(self.str_content_md).encode("utf-8")
+        
+        if self.str_content_md not in self.__dict__:
+            self.str_content_md = self.content_md + self.process_inline_images(self.content_md)
+        if self.str_intro_md not in self.__dict__:
+            self.str_intro_md   = self.intro_md + self.process_inline_images(self.intro_md)
+        
+        
+        wordlist = "\n"
+        for term_obj in Terms.objects.all():
+            terms = term_obj.term.split(";")
+            topics = self.topic.split(";")
+            for term in terms:
+                if term not in topics:
+                    wordlist += "*[%s]: %s\n" % (term, term_obj.description)
+        
+        self.intro_html = md.convert(self.str_intro_md+wordlist).encode("utf-8")
+        self.content_html = md.convert(self.str_content_md+wordlist).encode("utf-8")
         
         super(CommonFields, self).save(*args, **kw)
 

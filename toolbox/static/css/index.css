@@ -564,6 +564,16 @@ em strong,
 i strong {
   font-family: 'DINWeb-BoldIta', Arial, sans-serif;
 }
+abbr[data-original-title] {
+  border-bottom: 0 !important;
+}
+abbr[data-original-title]:after {
+  position: relative;
+  content: "?";
+  font-size: 8pt;
+  top: -6pt;
+  color: #5aa500;
+}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -4249,7 +4259,7 @@ a.list-group-item-danger.active:focus {
   padding: 0 5px;
 }
 .tooltip-inner {
-  max-width: 250px;
+  max-width: 300px;
   padding: 3px 8px;
   color: #ffffff;
   text-align: center;
