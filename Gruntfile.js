@@ -14,7 +14,7 @@ var JAVASCRIPT_CONCAT = [
 //                            'vendors/bootstrap/js/scrollspy.js',
 //                            'vendors/bootstrap/js/tab.js',
                             'vendors/bootstrap/js/tooltip.js',
-//                            'vendors/bootstrap/js/popover.js',
+                            'vendors/bootstrap/js/popover.js',
                             'vendors/bootstrap/js/transistion.js',
                             'vendors/typeahead.js/dist/typeahead.bundle.js',
                             'toolbox/js/index.js'

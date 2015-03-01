@@ -172,7 +172,7 @@ class CommonFields(GenericFields):
             topics = self.topic.split(";")
             for term in terms:
                 if term not in topics:
-                    wordlist += "*[%s]: %s\n" % (term, term_obj.description)
+                    wordlist += "*[%s]: %s\n" % (term, term_obj.description_html)
         
         self.intro_html = md.convert(self.str_intro_md+wordlist).encode("utf-8")
         self.content_html = md.convert(self.str_content_md+wordlist).encode("utf-8")

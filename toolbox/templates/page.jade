@@ -66,11 +66,11 @@ block content
                                     //- Show how trustworthy an item is, open source? good policy?
                                     .trust
                                         if item.license.open_source
-                                            span.tb-open-source.pull-right(title="Deze tool is open-source, de broncode is te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")  
+                                            span.tb-open-source.pull-right(data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover",data-placement="bottom",)  
                                         elif item.license.open_source == False
-                                            span.tb-closed-source.pull-right(title="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
+                                            span.tb-closed-source.pull-right(data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover",data-placement="bottom")
                                         if item.risk_class
-                                            span.pull-right(class="{{item.risk_class}}",title="{{item.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
+                                            span.pull-right(class="{{item.risk_class}}",data-content="{{item.risk_text}}",data-toggle="popover",data-placement="bottom")
                                         .clearfix.hidden-xs
                                         if item.i_am == "tool" or item.i_am == "app"
                                             if item.is_free
