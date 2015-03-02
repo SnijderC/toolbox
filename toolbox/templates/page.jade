@@ -72,13 +72,14 @@ block content
                                         if item.risk_class
                                             span.pull-right(class="{{item.risk_class}}",title="{{item.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
                                         .clearfix.hidden-xs
-                                        if item.i_am == "tool" or item.i_am == "app"
-                                            if item.is_free
-                                                .label.label-success.price.pull-right
-                                                    {{ item.format_cost|safe }}
-                                            else
-                                                .label.label-danger.price.pull-right
-                                                    {{ item.format_cost|safe }}
+                                        if item.cost
+                                            if item.i_am == "tool" or item.i_am == "app"
+                                                if item.is_free
+                                                    .label.label-success.price.pull-right
+                                                        {{ item.format_cost|safe }}
+                                                else
+                                                    .label.label-danger.price.pull-right
+                                                        {{ item.format_cost|safe }}
                                 //- If this is not an index page, show the urls to download pages etc.
                                 if page.index == False
                                     .col-sm-2.col-xs-12
@@ -173,24 +174,25 @@ block content
                                     div.list-group
                                         //- Loop though the list of alternatives..
                                         for alt_tool in item.alternative.all
-                                            a.list-group-item(href="/{{item.url_slug}}/{{ alt_tool.slug }}/") 
-                                                .media
-                                                    .media-body
-                                                        .row
-                                                            h4.media-heading.col-xs-6
-                                                                {{ alt_tool.title }}
-                                                            if alt_tool.risk_class
-                                                                span.trust.col-xs-6
-                                                                    if alt_tool.license.open_source
-                                                                        span.tb-open-source.pull-right(title="Deze tool is open-source, de broncode is te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")                                          
-                                                                    elif alt_tool.license.open_source == False
-                                                                        span.tb-closed-source.pull-right(title="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
-                                                                    span.pull-right(class="{{alt_tool.risk_class}}",title="{{alt_tool.risk_text}}",data-toggle="tooltip",data-placement="bottom",data-container="body",data-delay="300")
-                                                        p.list-group-item-text
-                                                            img.pull-left.media-object(src="{{alt_tool.image|thumbnail_url:'icon_thumb'}}")
-                                                            {{ alt_tool.intro_no_url }}
-                                                            each platform in alt_tool.platforms.all
-                                                                i.platform-indicator(class="tb-{{platform.slug}}")
+                                            if alt_tool.published
+                                                a.list-group-item(href="/{{item.url_slug}}/{{ alt_tool.slug }}/") 
+                                                    .media
+                                                        .media-body
+                                                            .row
+                                                                h4.media-heading.col-xs-6
+                                                                    {{ alt_tool.title }}
+                                                                if alt_tool.risk_class
+                                                                    span.trust.col-xs-6
+                                                                        if alt_tool.license.open_source
+                                                                            span.tb-open-source.pull-right(data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover",data-placement="bottom")                                          
+                                                                        elif alt_tool.license.open_source == False
+                                                                            span.tb-closed-source.pull-right(data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover",data-placement="bottom")
+                                                                        span.pull-right(class="{{alt_tool.risk_class}}",data-content="{{alt_tool.risk_text}}",data-toggle="popover",data-placement="bottom")
+                                                            p.list-group-item-text
+                                                                img.pull-left.media-object(src="{{alt_tool.image|thumbnail_url:'icon_thumb'}}")
+                                                                {{ alt_tool.intro_no_url }}
+                                                                each platform in alt_tool.platforms.all
+                                                                    i.platform-indicator(class="tb-{{platform.slug}}")
                             if item.i_am == "advice" and item.related.count > 0
                                 hr
                                 .panel-body.alternatives
@@ -198,17 +200,18 @@ block content
                                     div.list-group
                                         //- Loop though the list of related advisory..
                                         for related in item.related.all
-                                            a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/") 
-                                                .media
-                                                    .media-body
-                                                        .row
-                                                            h4.media-heading.col-xs-6
-                                                                {{ related.title }}
-                                                        p.list-group-item-text
-                                                            img.pull-left.media-object(src="{{related.image|thumbnail_url:'icon_thumb'}}")
-                                                            {{ related.intro_no_url }}
-                                                            //- each platform in related.platforms.all
-                                                                i.platform-indicator(class="tb-{{platform.slug}}")
+                                            if related.published
+                                                a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/") 
+                                                    .media
+                                                        .media-body
+                                                            .row
+                                                                h4.media-heading.col-xs-6
+                                                                    {{ related.title }}
+                                                            p.list-group-item-text
+                                                                img.pull-left.media-object(src="{{related.image|thumbnail_url:'icon_thumb'}}")
+                                                                {{ related.intro_no_url }}
+                                                                //- each platform in related.platforms.all
+                                                                    i.platform-indicator(class="tb-{{platform.slug}}")
                         if page.index == False 
                             .panel-footer
                                 .row
