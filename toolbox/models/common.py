@@ -181,9 +181,38 @@ class CommonFields(GenericFields):
 
     def content(self):
         """
-            Simplify access to the actual content data..
+            Aside from what is written below this is an alias to .content_html
+
+            Markdown automatically generates links.
+            Markdown automatically generates <abbr> tags for wordlists (add-on).
+            
+            In the toolbox we now use popovers for <abbr> tags. 
+            It looks pretty bad when these show up wrapped inside links..
+            
+            Preventing it from happening seems pretty hard so to hack around this issue I remove the 
+            <abbr...><abbr> with regex magic.
+            The pattern: (<a(?![a-z]).*?>.*?)<abbr.*>(.*)</abbr>(.*?</a>)
+            
+            It consists of multiple groups:
+             1. (<a(?![a-z]).*?>.*?)
+             x  <abbr.*>
+             2. (.*)
+             x  </abbr>
+             3. (.*?</a>)
+             
+            1. Grabs the start of the anchor and it's contents up to the start of the <abbr> tag.
+            x  <abbr.*> should be discarded
+            2. Captures anything inside the <abbr> tag (that should not be lost).
+            x  </abbr> is the end of the <abbr> tag and should be discarded
+            3. Is the last bit of text before the anchor is closed, including the anchor's closing tag.
+            
+            Replacement string is simply all capturing groups combined.
+            
+            This should be cached because it may be CPU intensive but for testing if anyhing odd occurs
+            this is left as an on-the-fly action.
+             
         """
-        return mark_safe(self.content_html)
+        return mark_safe(re.sub(r"(<a(?![a-z]).*?>.*?)<abbr.*>(.*)</abbr>(.*?</a>)", "\\1\\2\\3", self.content_html, flags=re.MULTILINE))
 
     def intro(self):
         """
@@ -192,7 +221,13 @@ class CommonFields(GenericFields):
         return mark_safe(self.intro_html)    
     
     def intro_no_url(self):
-        return mark_safe(re.sub(r'</?(a|A).*?>', '', self.intro_html, flags=re.MULTILINE))
+        """ For intro texts there should be a anchor-less version as these are wrapped in anchors entirely
+            This can be optimised for speed by caching the outcome in another model field.
+            Pattern: </?(a|A)(?![a-zA-Z]).*?>
+            Matching anything like "<a hre...", "<a>", "</a>" but nothing in between.
+            Specifically not matching <abbr>, <address>, <applet> etc. ie. character after "a" in <a> is not a-z.
+        """
+        return mark_safe(re.sub(r'</?(a|A)(?![a-zA-Z]).*?>', '', self.intro_html, flags=re.MULTILINE))
     
     def contributor(self):
         """
