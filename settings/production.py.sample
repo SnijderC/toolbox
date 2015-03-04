@@ -12,19 +12,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))+"/toolbox/"
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-"""
-    Fill in the DB details and uncomment these lines..
-"""
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE'    : 'django.db.backends.mysql',
-#        'NAME'      : 'toolbox-prod',
-#        'HOST'      : 'localhost',
-#        'USER'      : 'toolbox-prod',
-#        'PASSWORD'  : 'banaan01'
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE'    : 'django.db.backends.mysql',
+        'NAME'      : 'toolbox-prod',
+        'HOST'      : 'localhost',
+        'USER'      : 'toolbox-prod',
+        'PASSWORD'  : 'banaan01'
+    }
+}
 
 """
 

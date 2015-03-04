@@ -36,27 +36,25 @@ This is my first project using Python and Django. Feedback is always welcome..
     source ./bin/activate
 	```
         
- 3. Make appropriate changes to the `settings/production.py` file, at a minimum supply a database backend, username and password.
-    Find these settings in the `settings/production.py`
-    Note: *For a development setup you need to change the `develop.py` file instead. Settings in `develop.py` overwrite settings in `production.py`.*
+ 3. Make appropriate changes to the `settings/production.py.sample` file, at a minimum supply a database backend, username and password.
+    Then rename it to `settings/production.py`
+    Note: *For a development setup you need to change the `develop.py` file instead. Settings in `develop.py` overrule settings in `production.py`.*
+
+    At a minimum Find these lines and fill in your database settings:
 
     ~~~
     # Database
     # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-    
-    """
-        Fill in the DB details and uncomment these lines..
-    """
-    
-    #DATABASES = {
-    #    'default': {
-    #        'ENGINE'    : 'django.db.backends.mysql',
-    #        'NAME'      : 'toolbox-prod',
-    #        'HOST'      : 'localhost',
-    #        'USER'      : 'toolbox-prod',
-    #        'PASSWORD'  : 'banaan01'
-    #    }
-    #} 
+
+    DATABASES = {
+        'default': {
+            'ENGINE'    : 'django.db.backends.mysql',
+            'NAME'      : 'toolbox-prod',
+            'HOST'      : 'localhost',
+            'USER'      : 'toolbox-prod',
+            'PASSWORD'  : 'banaan01'
+        }
+    } 
     ~~~
     
     Fill in the database settings (host, username, password, etc.), then **uncomment the lines**. 
