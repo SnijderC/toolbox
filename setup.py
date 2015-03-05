@@ -5,39 +5,6 @@ import subprocess
 import os, shlex, time
 import settings
 import argparse
-'''
-from setuptools import setup
-
-README = open(os.path.join(os.path.dirname(__file__), 'README.MD')).read()
-
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-
-setup(
-    name='bof-toolbox',
-    version='0.9',
-    packages=['toolbox'],
-    include_package_data=True,
-    license='CCBy-sa 4.0',
-    description='BOF Toolbox',
-    long_description=README,
-    url='https://toolbox.bof.nl',
-    author='Chris Snijder',
-    author_email='chrissnijder@me.com',
-    classifiers=[
-        'Environment :: Web Environment',
-        'Framework :: Django',
-        'Intended Audience :: Digital privacy heroes',
-        'License :: OSI Approved :: BSD License', # example license
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        # Replace these appropriately if you are stuck on Python 2.
-        'Programming Language :: Python :: 2.7',
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    ],
-)
-'''
 
 def yes_or_no(strquestion, default=None, intljust=65):
     answer = ""
@@ -126,6 +93,7 @@ def main():
     if failures:
         print '\033[01;31mSome task has failed, please see the readme for instructions!\n\033[00m==='
     else: 
+        f = open('./.installed', 'a').close()
         print '\033[01;32mCompleted all tasks.\n\033[00m'
         if args.action=="install":
             print '\033[01;43m\033[01;31mPlease run: `python manage.py createsuperuser` to create an administrator account for Django.\033[00m\n==='
