@@ -38,7 +38,7 @@ def main():
     
     failures = False
 
-    if os.path.isfile('./settings/production.py') or os.path.isfile('./settings/development.py') == False:
+    if (os.path.isfile('./settings/production.py') or os.path.isfile('./settings/development.py')) == False:
         print 'Please change the settings in ./settings/production.py.sample and rename it to ./settings/production.py'
         print 'You can also setup a ./settings/development.py file to overwrite the settings.'
         exit(1) 
@@ -61,7 +61,7 @@ def main():
     elif args.action=="install":
         commands = [
                         'pip install -r requirements.txt',
-                        'mkdir toolbox/logs',
+#                        'mkdir toolbox/logs',
                         './manage.py syncdb --noinput',
                         './manage.py migrate toolbox --noinput',
                         './manage.py collectstatic --noinput',
@@ -93,10 +93,11 @@ def main():
     if failures:
         print '\033[01;31mSome task has failed, please see the readme for instructions!\n\033[00m==='
     else: 
-        f = open('./.installed', 'a').close()
         print '\033[01;32mCompleted all tasks.\n\033[00m'
         if args.action=="install":
             print '\033[01;43m\033[01;31mPlease run: `python manage.py createsuperuser` to create an administrator account for Django.\033[00m\n==='
+    
+    f = open('./.installed', 'a').close()
 
 if __name__ == "__main__":
    main()
