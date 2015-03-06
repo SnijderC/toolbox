@@ -8,7 +8,7 @@
         If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor
+from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor, Terms
 from forms import CommonFieldsForm, LicenseForm
 from django.contrib import admin
 
@@ -33,7 +33,7 @@ contributor_name.short_description = 'contributor'
 class CommonFieldsAdmin(admin.ModelAdmin):
     form            = CommonFieldsForm
     actions         = [make_published,make_unpublished]
-    list_display    = ('title', contributor_name, 'slug','credit')
+    list_display    = ('title', contributor_name, 'slug','credit','date')
     
 class LicenseAdmin(admin.ModelAdmin):
     form    = LicenseForm
@@ -54,7 +54,7 @@ class AppAdmin(CommonFieldsAdmin):
             'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
         }),
         ('Tagging', {
-            'fields': ('license',('categories', 'alternative'),('formfactors','platforms')),
+            'fields': ('license',('categories', 'alternative'),('formfactors','platforms'),('topic')),
         }),
         ('Properties', {
             'fields': ('url', 'author', 'author_url', 'appstore', 'playstore', 'marketplace', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
@@ -67,7 +67,7 @@ class ServiceAdmin(CommonFieldsAdmin):
             'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
         }),
         ('Tagging', {
-            'fields': ('license',('categories', 'alternative'),('formfactors','platforms')),
+            'fields': ('license',('categories', 'alternative'),('formfactors','platforms'),('topic')),
         }),
         ('Properties', {
             'fields': ('url', 'author', 'author_url', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
@@ -80,7 +80,7 @@ class AdviceAdmin(CommonFieldsAdmin):
             'fields': (('title', 'time', 'slug'), 'image', 'intro_md','content_md'),
         }),
         ('Tagging', {
-            'fields': ('categories', ('formfactors','platforms'), 'related')
+            'fields': ('categories', ('formfactors','platforms'),('topic'), 'related')
         }),
         ('Properties', {
             'fields': (('user', 'credit'), ('published', 'feature_score'))
@@ -88,9 +88,14 @@ class AdviceAdmin(CommonFieldsAdmin):
     )
     filter_horizontal = ('categories', 'platforms','formfactors','related')
 
+class TermsAdmin(admin.ModelAdmin):
+    pass
+
+
 adminlist = (
                 (Advice, AdviceAdmin),
                 (App, AppAdmin),
+                (Terms, TermsAdmin),
                 (Service, ServiceAdmin),
                 (License, LicenseAdmin),    
                 Platform,

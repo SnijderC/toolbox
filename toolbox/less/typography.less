@@ -57,3 +57,15 @@ em, i
 
 }
 
+abbr
+{
+    border-bottom          : 0 !important;
+    &:after
+    {
+        position            : relative;
+        content             : "?";
+        font-size           : 8pt;
+        top                 : -6pt;
+        color               : @bof-color;
+    }
+}
