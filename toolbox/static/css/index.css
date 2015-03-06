@@ -6016,7 +6016,7 @@ body .btn {
   border-right: 15px solid #ccc;
   border-bottom: 15px solid transparent;
   border-top: 15px solid transparent;
-  margin: -3px 0 0 -14px;
+  margin: -3px 0 0 -13px;
 }
 #main .filters .filter:after {
   content: '';
@@ -6026,7 +6026,7 @@ body .btn {
   width: 7px;
   border-radius: 7px;
   background: #fff;
-  margin: -13px 0 0 0px;
+  margin: -15px 0 0 0px;
   padding: 0;
   float: left;
 }
