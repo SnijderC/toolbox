@@ -51,4 +51,5 @@ class Terms(models.Model):
             model = models.get_model('toolbox', model)
             for item in model.objects.all():
                 item.date = item.date                
+                item.clean()
                 item.save(skip_date_update=True)
