@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from terms import Terms
+from filer.models.imagemodels import Image as FilerImage
 import re, markdown
 
 class GenericFields(models.Model):
@@ -11,6 +12,8 @@ class GenericFields(models.Model):
                                          max_length      = 60,
                                          help_text       = "slug"
                                      )
+
+    md = None
 
     def save(self, *args, **kw):
         
@@ -51,12 +54,13 @@ class GenericFields(models.Model):
         else:
             return str_img 
             
-    def cache_md(self, arr_markdown, arr_extensions=['extra','nl2br','smarty', 'toc']):
+    def cache_md(self, str_markdown, arr_extensions=['extra','nl2br','smarty', 'toc']):
         '''
             Generic function for caching HTML from MD files.
         '''
         # Set md object
-        md = markdown.Markdown(arr_extensions,output_format='html5')
+        if self.md == None:
+            self.md = markdown.Markdown(arr_extensions,output_format='html5')
         
         # Cache wordlist
         wordlist = "\n"
@@ -69,10 +73,8 @@ class GenericFields(models.Model):
             for term in terms:
                 if term not in topics:
                     wordlist += "*[%s]: %s\n" % (term, term_obj.description_html)
-        arr_return=[]
-        for str_md in arr_markdown:        
-            arr_return.append(md.convert(str_md+wordlist).encode("utf-8"))
-            return arr_return
+
+        return self.md.convert(str_markdown+wordlist).encode("utf-8")
 
     class Meta:
         """

@@ -125,7 +125,8 @@ class CommonFields(GenericFields):
         if not kw.pop('skip_date_update', False):
             self.date = datetime.datetime.now()
         
-        self.intro_html, self.content_html = self.cache_md([self.str_intro_md,self.str_content_md])
+        self.content_html = self.cache_md(self.str_content_md)
+        self.intro_html   = self.cache_md(self.str_intro_md)
         
         super(CommonFields, self).save(*args, **kw)
 
