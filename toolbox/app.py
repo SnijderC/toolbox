@@ -45,9 +45,9 @@ urlpatterns += [
     # Search queries. (max 120 chars, input allows 40, every char may be "%20"
     url(r'^search/(?P<query>.{2,120})/$', search.query),
     # Playlists selection
-    url(r'^playlist/(?P<playlist>.{2,120})/$', playlist.playlist),
+    url(r'^playlist/(?P<playlist>[a-zA-Z0-9\-]{2,40})/$', playlist.playlist),
     # Playlists page selection
-    url(r'^playlist/(?P<playlist>.{2,120})/(?P<page>[0-9]{1,2})/$', playlist.playlist_item),
+    url(r'^playlist/(?P<playlist>[a-zA-Z0-9\-]{2,40})/(?P<item>[0-9]{1,3})/$', playlist.playlist_item),
     # Dynamic pages based on custom slugs functions in views/helpers/navigation.py    
     url(r'^([a-zA-Z0-9\-\/]{1,2000}/)?$', index.indexpage),
     ]

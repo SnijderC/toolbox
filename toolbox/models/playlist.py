@@ -62,7 +62,6 @@ class Playlist(GenericFields):
     playlist    = models.ManyToManyField ( 
                                        'Advice',
                                        verbose_name    = 'Playlist',
-                                       related_name    = 'playlist_items',
                                        blank           = True,
                                        through         = 'PlaylistOrder',
                                      )

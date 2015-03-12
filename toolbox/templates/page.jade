@@ -189,7 +189,7 @@ block content
                                                                 {{ alt_tool.intro_no_url }}
                                                                 each platform in alt_tool.platforms.all
                                                                     i.platform-indicator(class="tb-{{platform.slug}}")
-                            if item.i_am == "advice" and item.related.count > 0
+                            if page.playlist == False and item.i_am == "advice" and item.related.count > 0
                                 hr
                                 .panel-body.alternatives
                                     h4 Gerelateerde {{item.url_slug}}
