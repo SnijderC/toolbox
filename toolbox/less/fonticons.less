@@ -95,46 +95,50 @@
     }
 }
 .tb-bof_logo:before {
-	content: "\e601";
+	content     : "\e601";
 }
 // BOF logo in it's own colours (2)
-.tb-bof-logo-color
-{
 
-    margin            : 0 0 0 28px;
+a.tb-bof-logo-color
+{ 
     &:hover, &:active
     {
-        &:before
+        span:before
         {
             color    : #34a100 !important;
         }
-        &:after
+        span:before
         {
-            color    : #000000;
+            color    : #fff;
         }
     }
-    
-    &:before
+    span
     {
-        content  : "\e602"; 
-        font-size: 32px !important;
-        position : absolute;
-        left     : -20px;
-        line-height:0.65;
+        position: relative;
+        left    : -28px;
+        &:before
+        {
+            content     : "\e602"; 
+            font-size   : 28px !important;
+            position    : absolute;
+            left        : 0px;
+            //line-height : 1;
+        }
+        &:after
+        {
+            content     : "\e603";
+            position    : absolute;
+            font-size   : 28px !important;
+            left        : 0px;
+            //line-height : 16pt;
+        }
     }
-    &:after
-    {
-        content  : "\e603";
-        position : absolute;
-        font-size: 32px !important;
-        left     : -20px;
-        line-height:0.65;
-    }
-}
+}    
+  
 .tb-prica-logo:before 
 {
 	content     : "\e604";
-    font-size: 24px !important;
+    font-size   : 24px !important;
 }
 
 // All the other icons..

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from toolbox.models import Category, ParentCategories, Platform, Formfactor, MainNav
+from toolbox.models import Category, ParentCategories, Platform, Formfactor, MainNav, Playlist
 from settings import slugs as sluglist, title as page_title
 import copy
 
@@ -87,48 +87,6 @@ class Navigation(object):
         sitemap = []
         
         """
-            This is all about all the categories that are simple slugs..     
-        """
-        
-        # all navigation items are related to this model
-        objmainnav = MainNav.objects.select_related()
-        
-        for navitem in objmainnav:
-            navbar.append({
-                        'name'      : navitem.name,   
-                        'icon'      : navitem.icon,
-                        'children'  : [] 
-                     })
-            # make a short reference to the current menu item         
-            navbarobj = navbar[-1]['children']
-            
-            # Loop through parentcategories and get the attributes..
-            for parentcategory in navitem.categories.all():
-                
-                parentcategoryobj = {
-                                'name'      : parentcategory.name,
-                                'icon'      : parentcategory.icon,
-                                'children'  : []
-                            }
-                if parentcategory.show_in_nav:
-                    navbarobj.append(copy.deepcopy(parentcategoryobj))
-                    navbargroup = navbarobj[-1]['children']
-                if parentcategory.show_in_sitemap:
-                    sitemap.append(parentcategoryobj)
-                    sitemapgroup = sitemap[-1]['children']
-                    # loop trough parentcategories' categories and get the attributes..
-                    for category in parentcategory.categories.all():
-                        categoryobj = {
-                                        'name' : category.name,
-                                        'icon' : category.icon,
-                                        "href" : self.categories[category.slug]['href']
-                                      }
-                        if category.show_in_nav and parentcategory.show_in_nav:
-                            navbargroup.append(copy.deepcopy(categoryobj))
-                        if category.show_in_sitemap and parentcategory.show_in_sitemap:
-                            sitemapgroup.append(categoryobj)
-        
-        """
             This is all about platforms and formfactor combinations..
             These are more complex combinations..
         """
@@ -177,7 +135,72 @@ class Navigation(object):
         
         # reorder the navbar to put Platform (which is now last) first
         navbar.insert(0,navbar.pop())
+        
+        """
+            This is all about all the categories that are simple slugs..     
+        """
+        
+        # all navigation items are related to this model
+        objmainnav = MainNav.objects.select_related()
+        
+        for navitem in objmainnav:
+            navbar.append({
+                        'name'      : navitem.name,   
+                        'icon'      : navitem.icon,
+                        'children'  : [] 
+                     })
+            # make a short reference to the current menu item         
+            navbarobj = navbar[-1]['children']
+            
+            # Loop through parentcategories and get the attributes..
+            for parentcategory in navitem.categories.all():
+                
+                parentcategoryobj = {
+                                'name'      : parentcategory.name,
+                                'icon'      : parentcategory.icon,
+                                'children'  : []
+                            }
+                if parentcategory.show_in_nav:
+                    navbarobj.append(copy.deepcopy(parentcategoryobj))
+                    navbargroup = navbarobj[-1]['children']
+                if parentcategory.show_in_sitemap:
+                    sitemap.append(parentcategoryobj)
+                    sitemapgroup = sitemap[-1]['children']
+                    # loop trough parentcategories' categories and get the attributes..
+                    for category in parentcategory.categories.all():
+                        categoryobj = {
+                                        'name' : category.name,
+                                        'icon' : category.icon,
+                                        "href" : self.categories[category.slug]['href']
+                                      }
+                        if category.show_in_nav and parentcategory.show_in_nav:
+                            navbargroup.append(copy.deepcopy(categoryobj))
+                        if category.show_in_sitemap and parentcategory.show_in_sitemap:
+                            sitemapgroup.append(categoryobj)
 
+        # Add the playlists
+        navbar.append({
+                        'name'      : "Ik wil..",   
+                        'icon'      : "tb-rocket",
+                        'children'  : [
+                            {
+                                'name'    : "Playlists",
+                                'icon'    : "tb-rocket",
+                                'children': []
+                            }
+                        ] 
+                     })        
+        navbarobj = navbar[-1]['children'][-1]['children']
+        
+        playlists = Playlist.objects.all().exclude(published=False)
+        for playlist in playlists:
+            playlist_obj = {
+                                'name'      : playlist.i_want_to,
+                                'icon'      : "tb-rocket",#playlist.icon,
+                                'href'      : "/playlist/%s" % playlist.slug
+                            }
+            navbarobj.append(copy.deepcopy(playlist_obj))
+        
         return (navbar, sitemap)
         
     

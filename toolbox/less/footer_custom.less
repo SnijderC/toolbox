@@ -84,34 +84,23 @@
                     color           : #eee;
                 }
             }
-            // bof logo adjustment.. This sucks but it works..
-            &.tb-bof-logo-color 
-            {
-                padding-left    : 10px;
-                margin-left     : 20px;
-                &:before, &:after
-                {
-                    padding-left    : 39px;
-                }
-            }
         }
 
     }
     // License icons
-    .legal
+    .legal, .contact
     {
-        margin-top      : 40px;
+        margin-top      : 60px;
         a
         {
+            line-height     : 16pt;
+            vertical-align  : top;
+            display         : inline-block;
             .tb-cc, .tb-cc-by, .tb-cc-sa
-            {
-                    line-height     : 16pt;
-                    vertical-align  : top;
-                    display         : inline-block;
+            {    
                 &:before
                 {
                     font-size       : 16pt;
-                    line-height     : 16pt;
                 }
             }
         }
@@ -120,4 +109,8 @@
             margin             : 10px 0 0 0;
         }
     }   
+    .legal
+    {
+        margin-top             : 30px;
+    }
 }
