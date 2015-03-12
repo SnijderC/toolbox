@@ -1,11 +1,15 @@
 .playlist_nav
-    if page.data.previous
-        a(href="{{page.data.previous}}",title="Vorige item")
-            span.tb-previous
-    
-    a(href="{{page.data.playlist}}",title="Vorige item")
-        span.index_button.tb-beer
+    if page.data.next or page.data.previous
+        if page.data.previous
+            a(href="{{page.data.previous}}",title="Vorige item")
+                span.tb-previous
         
-    if page.data.next
-        a(href="{{page.data.next}}",title="Volgende item")
-            span.tb-next
+        a(href="{{page.data.playlist}}",title="Vorige item")
+            span.index_button.tb-beer
+            
+        if page.data.next
+            a(href="{{page.data.next}}",title="Volgende item")
+                span.tb-next
+    else
+        a(href="{{page.data.playlist}}1/",title="Eerste item")
+            span.tb-play

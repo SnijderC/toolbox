@@ -36,7 +36,7 @@
 {
     /* Better Font Rendering =========== */
 	-webkit-font-smoothing  : antialiased;
-	-moz-osx-font-smoothing : grayscale;
+	//-moz-osx-font-smoothing : grayscale;
 }
 
 .font-icon.bigger, blockquote.bigger:before, .tb-bigger:before
@@ -73,7 +73,7 @@
 // Some specific cases for icons.. 
 .navbar-brand:before
 {
-    padding-left    : 10px;
+    padding-left    : 6px;
 }
 .navbar
 {
@@ -88,7 +88,7 @@
 .platform-indicator
 {
     font-size   : 24px;
-    text-shadow : -1px -1px 1px #fff;
+    text-shadow : -1px -1px 1px #000;
     &.lighter
     {
         color   : #999;
@@ -183,6 +183,12 @@ a.tb-bof-logo-color
 	    content: "\e61b";
     }
 }
+.tb-play:before
+{
+    content: "\25B6";    
+    margin : 0 4px 0 4px;
+}
+
 .tb-envelope:before {
 	content: "\e657";
 }

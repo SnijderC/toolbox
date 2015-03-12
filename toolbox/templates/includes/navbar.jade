@@ -20,13 +20,24 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                 //-li
                     a.tb-question(href="/faq") FAQ
                 li
-                    a.tb-envelope(href="/doc/faq") Contact
+                    a.tb-envelope(href="/doc/contact") Contact
             ul.nav.navbar-nav
                 li.divider-vertical
 
                 li
-                    {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
+                    {% dictitem  page.data.nav.itemtypelinks 'adviezen' as href%}
                     a.tb-info3(href="{{href}}") Advies
                 li
                     {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
                     a.tb-wrench(href="{{href}}") Tools 
+                
+                each mainnav in page.data.nav.navbar_items
+                    li.dropdown
+                        a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{mainnav.icon}}",role="button",aria-expanded="false") 
+                            {{mainnav.name}}
+                            b.caret
+                  
+                        ul.dropdown-menu
+                            each nav in mainnav.children
+                                li
+                                    a(href="{{nav.href}}",class="{{nav.icon}}")=nav.name

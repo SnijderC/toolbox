@@ -177,33 +177,34 @@ class Navigation(object):
                             navbargroup.append(copy.deepcopy(categoryobj))
                         if category.show_in_sitemap and parentcategory.show_in_sitemap:
                             sitemapgroup.append(categoryobj)
-
+        
+        return (navbar, sitemap)
+        
+    def navbar_items(self):
+        '''
+            Generate the dynamic navbar items.
+            This will replace the old navbar generator.
+        '''
+        navbar = []
         # Add the playlists
         navbar.append({
                         'name'      : "Ik wil..",   
                         'icon'      : "tb-rocket",
-                        'children'  : [
-                            {
-                                'name'    : "Playlists",
-                                'icon'    : "tb-rocket",
-                                'children': []
-                            }
-                        ] 
+                        'children'  : [] 
                      })        
-        navbarobj = navbar[-1]['children'][-1]['children']
+        navbarobj = navbar[-1]['children']
         
         playlists = Playlist.objects.all().exclude(published=False)
         for playlist in playlists:
             playlist_obj = {
                                 'name'      : playlist.i_want_to,
-                                'icon'      : "tb-rocket",#playlist.icon,
+                                'icon'      : playlist.icon,
                                 'href'      : "/playlist/%s" % playlist.slug
                             }
             navbarobj.append(copy.deepcopy(playlist_obj))
-        
-        return (navbar, sitemap)
-        
-    
+
+        return navbar
+
     def getfilteritems(self,model,slug):
         """
             Generate a list of categories and links to those.

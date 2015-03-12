@@ -9,11 +9,13 @@ block content
     .row
         .col-md-10.col-md-offset-1
                 br
-                .panel.panel-default
+                .panel.panel-primary
                         .panel-heading.container-fluid
                             .row
                                 .col-sm-10.col-xs-12
-                                    h2 {{ page.data.item.title }}
+                                    h3 
+                                        i(class="{{page.data.item.icon}}")
+                                        {{ page.data.item.title }}
                                         
                         //- Icon and Intro text.
                         .panel-body
@@ -21,11 +23,8 @@ block content
                                 {{ page.data.item.intro|safe }}
                                 br
                                 .row
-                                    .col-xs-10.col-xs-offset-1
+                                    .col-xs-12.col-sm-10.col-sm-offset-1
                                         .list-group.playlist-list-group.list-group-inverse
-                                            .list-group-item.list-group-header
-                                                b
-                                                    {{ page.data.item.title }} artikelen
                                             for item in page.data.item.playlistorder_set.all
                                                 //- Link to /playlist/[playlist]/[nr] e.g. /playlist/essential/1/.
                                                 

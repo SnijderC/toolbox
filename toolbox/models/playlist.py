@@ -65,6 +65,12 @@ class Playlist(GenericFields):
                                        blank           = True,
                                        through         = 'PlaylistOrder',
                                      )
+    icon        = models.CharField(
+                                   verbose_name        = 'Font icon',
+                                   blank               = True,
+                                   max_length          = 32
+                                 )
+ 
 
     str_intro_md = ""
         
@@ -85,7 +91,7 @@ class Playlist(GenericFields):
         if not kw.pop('skip_date_update', False):
             self.date = datetime.datetime.now()
         
-        self.intro_html = self.cache_md([self.str_intro_md])[0]
+        self.intro_html = self.cache_md(self.str_intro_md)
         
         super(GenericFields, self).save(*args, **kw)
 
