@@ -17,41 +17,41 @@ block content
                     br
                     
                     //- Bootstrap panel.
-                    .panel.panel-default
+                    .panel.panel-primary
                         .panel-heading.container-fluid
                             .row
                                 .col-sm-10.col-xs-12
                                     //- Link to /url_slug/item_slug/ e.g. /tools/tor/.
                                     h3
                                         a(href="/{{item.url_slug}}/{{item.slug}}/")=item.title
-                                        
-                                    
-                                    //- If the the item has categories, show them all separated by comma
-                                        with links to the categorie index.
-                                    if item.categories.count > 0
-                                        | Categorieën: 
-                                        for category in item.categories.all
-                                            
-                                            //- Take the preloaded category link from the dict.
-                                            {% dictitem page.data.nav.categorieslinks category.slug as href%}
-                                            a(href="{{href}}") {{ category.name }}
-                                            if not category == item.categories.last 
-                                                ,
-                                        br
-                                    
-                                    //- If the the item has platforms, show them all separated by comma.
-                                    if item.platforms.count > 0
-                                        | Platformen: 
-                                        for platform in item.platforms.all
-                                            
-                                            //- Take the preloaded platform link from the dict.
-                                            {% dictitem page.data.nav.platformslinks platform.slug as href%}
-                                            a(href="{{href}}") {{ platform.name }}
-                                            if not platform == item.platforms.last 
-                                                ,
-                                    
-                                    //- More item details if this is not an index.
+                                    if page.index
+                                        each platform in item.platforms.all
+                                            i.platform-indicator(class="tb-{{platform.slug}}")    
                                     if page.index == False
+                                        //- If the the item has categories, show them all separated by comma
+                                            with links to the categorie index.
+                                        if item.categories.count > 0
+                                            | Categorieën: 
+                                            for category in item.categories.all
+                                                
+                                                //- Take the preloaded category link from the dict.
+                                                {% dictitem page.data.nav.categorieslinks category.slug as href%}
+                                                a(href="{{href}}") {{ category.name }}
+                                                if not category == item.categories.last 
+                                                    ,
+                                            br
+                                        
+                                        //- If the the item has platforms, show them all separated by comma.
+                                        if item.platforms.count > 0
+                                            | Platformen: 
+                                            for platform in item.platforms.all
+                                                
+                                                //- Take the preloaded platform link from the dict.
+                                                {% dictitem page.data.nav.platformslinks platform.slug as href%}
+                                                a(href="{{href}}") {{ platform.name }}
+                                                if not platform == item.platforms.last 
+                                                    ,
+                                    
                                         if item.i_am == "tool" or item.i_am == "app"
                                             div
                                                 |Ontwikkelaar: 
@@ -123,10 +123,6 @@ block content
                                                         a.btn.btn-default.btn-success.btn-visit.tb-globe(href="{{item.url}}", target="_blank") Bezoek
                         //- Icon and Intro text.
                         .panel-body
-                            if item.is_featured
-                                .ribbon(title="Featured item")
-                                    span
-                                        i.tb-star
                             .lead
                                 if item.has_image
                                     //- Index shows a smaller icon, thumbnailer is user for generatring the thumbnails.
@@ -193,7 +189,7 @@ block content
                                                                 {{ alt_tool.intro_no_url }}
                                                                 each platform in alt_tool.platforms.all
                                                                     i.platform-indicator(class="tb-{{platform.slug}}")
-                            if item.i_am == "advice" and item.related.count > 0
+                            if page.playlist == False and item.i_am == "advice" and item.related.count > 0
                                 hr
                                 .panel-body.alternatives
                                     h4 Gerelateerde {{item.url_slug}}

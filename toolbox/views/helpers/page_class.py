@@ -12,3 +12,5 @@ class Page(object):
         self.debug = settings.DEBUG
         self.index = True
         self.title = ""
+        self.show_filters = False
+        self.playlist = False

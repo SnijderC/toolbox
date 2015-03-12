@@ -1,0 +1,60 @@
+.playlist_nav
+{
+    display             : block;
+    position            : fixed;
+    bottom              : 0;
+    right               : 20px;
+    @media screen and (min-width: @screen-sm-min)
+    {
+        right           : 100px;
+    }
+    padding             : 6px 6px 6px 12px;
+    margin-bottom       : 60px;
+    z-index             : 1100;
+    background          : rgba(0,0,0,.8);
+    border-radius       : 24px; 
+    text-align          : center; 
+    border              : 3px solid #fff;
+    box-shadow          : 4px 4px 5px 0 rgba(0,0,0,0.8);
+    a
+    {
+        color               : #ccc;
+        &:hover, &:active, &:focus
+        {
+            text-decoration : none;
+            color           : #fff;
+            span:before
+            {
+                color           : #fff;
+            }
+        }
+        span:before
+        {
+            color           : #ccc;
+            font-size       : 26px; 
+        }
+    }
+    .index_button
+    {
+        margin          : 0 10px 0 10px;     
+    }
+}
+     
+#main
+{
+    .playlist-list-group
+    {
+        a
+        {
+            color       : @bof-color;
+            font-weight : bold;
+        }
+        .list-group-header
+        {
+            background  : #222;
+            color       : #fff;
+            border-color: #000; 
+        }
+    }
+
+}

@@ -8,7 +8,6 @@ from filer.models.imagemodels import Image as FilerImage
 from django.core.exceptions import ValidationError
 from terms import Terms
 import datetime
-import markdown
 import settings
 import re
 
@@ -107,42 +106,10 @@ class CommonFields(GenericFields):
 
     str_intro_md = ""
     str_content_md = ""
-    
-    def process_inline_images(self,str_md):
-        """
-            Place filer images in markdown code
-            
-            FOR EVERY: ![Alt text][id] OR ![id]
-            ADD      : [id]: url/to/image  "Optional title attribute"
-            
-            
-            
-            Pattern: /(?<!\\)\!(?:\[.*\])?\[([a-zA-Z0-9\-\+\_\.\ \]{4,200})\]/
-            Finds what is between in the [id] block only, alt text is ignored.
-            Alt text can contain anything except likebreaks.
-            ID's can contain [ a-Z 0-9 - + _ . ] and space, min 4, max 200 tekens.    
-            
-        """
-
-        # Items to be added..
-        pat = re.compile(r'(?<!\\)\!(?:\[.*\])?\[([a-zA-Z0-9\-\+\_\.\ ]{4,200})\]')
-        arr_images = re.findall(pat,str_md)
-        str_img = ""
-        errors = ""
-        for image in arr_images:
-            fi = FilerImage.objects.filter(name=image)
-            if len(fi) > 0:
-                str_img += "\n[%s]: %s  \"%s\"\n" % (image, fi.first().url, fi.first().default_caption) 
-            else:
-                errors += "No file found for %s.\n" % image
-        if len(errors) > 0:
-            raise ValidationError(errors.strip("\n"))
-        else:
-            return str_img 
         
     def clean(self):
         """
-            Process inline images for markdown, check if thet exist or raise Exception.
+            Process inline images for markdown, check if they exist or raise Exception.
         """
         try:
             self.str_content_md = self.content_md + self.process_inline_images(self.content_md)
@@ -158,24 +125,8 @@ class CommonFields(GenericFields):
         if not kw.pop('skip_date_update', False):
             self.date = datetime.datetime.now()
         
-        md = markdown.Markdown(extensions=['extra','nl2br','smarty', 'toc'],output_format='html5')
-        
-        if self.str_content_md not in self.__dict__:
-            self.str_content_md = self.content_md + self.process_inline_images(self.content_md)
-        if self.str_intro_md not in self.__dict__:
-            self.str_intro_md   = self.intro_md + self.process_inline_images(self.intro_md)
-        
-        
-        wordlist = "\n"
-        for term_obj in Terms.objects.all():
-            terms = term_obj.term.split(";")
-            topics = self.topic.split(";")
-            for term in terms:
-                if term not in topics:
-                    wordlist += "*[%s]: %s\n" % (term, term_obj.description_html)
-        
-        self.intro_html = md.convert(self.str_intro_md+wordlist).encode("utf-8")
-        self.content_html = md.convert(self.str_content_md+wordlist).encode("utf-8")
+        self.content_html = self.cache_md(self.str_content_md)
+        self.intro_html   = self.cache_md(self.str_intro_md)
         
         super(CommonFields, self).save(*args, **kw)
 
@@ -217,8 +168,9 @@ class CommonFields(GenericFields):
     def intro(self):
         """
             Simplify access to the actual intro data..
+            For more info see self.content() comments.
         """
-        return mark_safe(self.intro_html)    
+        return mark_safe(re.sub(r"(<a(?![a-z]).*?>.*?)<abbr.*>(.*)</abbr>(.*?</a>)", "\\1\\2\\3", self.intro_html, flags=re.MULTILINE))  
     
     def intro_no_url(self):
         """ For intro texts there should be a anchor-less version as these are wrapped in anchors entirely

@@ -4,11 +4,16 @@ body
 }
 nav.navbar
 {
-    box-shadow  : 5px 3px 5px rgba(0,0,0,.5);
-
+    .navbar-brand
+    {
+        padding-right   : 12px;
+    }
+    
+    box-shadow           : 5px 3px 5px rgba(0,0,0,.5);
+    
     .search-form
     {
-        margin-top       : 6px;
+        margin-top       : 8px;
         padding-left     : 0;
     }
     
@@ -25,8 +30,8 @@ nav.navbar
     .divider-vertical 
     {
         height: 50px;
-        border-right: 1px solid #ffffff;
-        border-left: 1px solid #e0e0e0;
+        border-right: 1px solid #3a3a3a;
+        border-left: 1px solid #555;
     }
     
     @media (max-width: 767px) 
@@ -37,13 +42,6 @@ nav.navbar
         }
     }
     
-    // Slight display adjustment for the dropdown menu's
-    ul.dropdown-menu
-    {
-        padding-top : 0;
-        margin-top  : 0px;
-    }
-    
     // Remove a tiny bit of padding in the navbar
     @media (max-width: @screen-md-min)
     {
@@ -52,14 +50,14 @@ nav.navbar
             padding-right: 2px;
         }
     }
-    // Headers in the dropdowns are a bit vague IMO, this 
-    // will make it look like a grey gradient with sunken text.
-    li.dropdown-header, p.dropdown-header
-    {
-        #gradient > .vertical(#ddd, #ccc);
-        padding : 10px 0 10px 10px;
-        font-family: @font-family-sans-serif-bold;
-        margin-bottom: 0;
-        text-shadow: 1px 1px 0 rgba(255,255,255,.9);
-    }
+}
+// Headers in the dropdowns are a bit vague IMO, this 
+// will make it look like a grey gradient with sunken text.
+li.dropdown-header, p.dropdown-header
+{
+    #gradient > .vertical(#333, #555);
+    padding : 10px 0 10px 10px;
+    font-family: @font-family-sans-serif-bold;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.9);
 }

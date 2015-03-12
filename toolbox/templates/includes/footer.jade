@@ -12,24 +12,21 @@
                                 li
                                     a(href="{{category.href}}",class="{{category.icon}}")
                                         {{ category.name }}
-                    if forloop.counter0 == 2
-                        .col-xs-6.col-sm-3
-                            h4.footer-header.tb-link Links
-                            ul                            
-                                li
-                                    a(href="http://www.privacycafe.nl", target="_blank").tb-prica-logo Privacy Café
-                                li
-                                    a(href="https://www.bof.nl", target="_blank").tb-bof-logo-color Bits of Freedom
-                                li
-                                    a(href="https://twitter.com/bitsoffreedom", target="_blank").tb-twitter @bitsoffreedom
-                                li
-                                    a(href="https://nl-nl.facebook.com/BitsofFreedom", target="_blank").tb-facebook BitsofFreedom
-                                li
-                                    a(href="http://www.linkedin.com/company/bits-of-freedom", target="_blank").tb-linkedin bits-of-freedom
-                                li
-                                    a(href="irc://irc.freenode.net/bof-toolbox").tb-bubbles #bof-toolbox (IRC)
                         .clearfix
                 
+        .contact.row
+            .col-xs-10.col-xs-offset-1
+                .row
+                    .col-xs-6.col-sm-3.text-center
+                        a(href="https://www.bof.nl", target="_blank").tb-bof-logo-color
+                            span.font-icon
+                            |Bits of Freedom
+                    .col-xs-6.col-sm-3.text-center
+                        a(href="http://www.privacycafe.nl", target="_blank").tb-prica-logo Privacy Café
+                    .col-xs-6.col-sm-3.text-center
+                        a(href="https://twitter.com/bitsoffreedom", target="_blank").tb-twitter @bitsoffreedom
+                    .col-xs-6.col-sm-3.text-center
+                        a(href="https://nl-nl.facebook.com/BitsofFreedom", target="_blank").tb-facebook BitsofFreedom
         .legal.row
             .col-xs-10.col-xs-offset-1
                 .row

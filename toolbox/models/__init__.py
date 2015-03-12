@@ -12,3 +12,4 @@ from categories import Category
 from platform import Platform
 from main_nav import MainNav
 from terms import Terms
+from playlist import PlaylistOrder, Playlist

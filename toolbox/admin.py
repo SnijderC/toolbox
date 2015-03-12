@@ -8,8 +8,8 @@
         If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor, Terms
-from forms import CommonFieldsForm, LicenseForm
+from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor, Terms, Playlist, PlaylistOrder
+from forms import CommonFieldsForm, LicenseForm, PlaylistForm, PlaylistOrderForm
 from django.contrib import admin
 
 def make_published(modeladmin, request, queryset):
@@ -91,13 +91,24 @@ class AdviceAdmin(CommonFieldsAdmin):
 class TermsAdmin(admin.ModelAdmin):
     pass
 
+class PlaylistAdmin(admin.ModelAdmin):
+    form              = PlaylistForm
+    actions           = [make_published,make_unpublished]
+    list_display      = ('title', 'slug', 'date')
+    filter_horizontal = ('playlist',)
+
+class PlaylistOrderAdmin(admin.ModelAdmin):
+    form              = PlaylistOrderForm
+    list_display      = ('playlist', 'number', 'advice')
 
 adminlist = (
                 (Advice, AdviceAdmin),
                 (App, AppAdmin),
                 (Terms, TermsAdmin),
                 (Service, ServiceAdmin),
-                (License, LicenseAdmin),    
+                (License, LicenseAdmin),
+                (Playlist, PlaylistAdmin),
+                (PlaylistOrder, PlaylistOrderAdmin),    
                 Platform,
                 Category,
                 (ParentCategories, ParentCategoriesAdmin),
