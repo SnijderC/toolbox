@@ -5976,9 +5976,6 @@ body .btn {
 #main .panel-heading h3 {
   margin: 8px 0 8px 4px;
 }
-#main .time {
-  margin-top: 13px;
-}
 #main .intro,
 #main .lead {
   padding-top: 24px;
@@ -6374,4 +6371,13 @@ body .btn {
 }
 #main blockquote cite:before {
   content: '\2014\20\20';
+}
+#main .playlist-list-group a {
+  color: #5aa500;
+  font-weight: bold;
+}
+#main .playlist-list-group .list-group-header {
+  background: #222;
+  color: #fff;
+  border-color: #000;
 }
