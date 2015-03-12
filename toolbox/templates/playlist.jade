@@ -1,0 +1,44 @@
+//- Based on the default layout..
+extends "layout.jade"
+//- Load thumbnailer and custom dictionary lookup function.
+- load thumbnail
+- load dictionaryitems
+//- Main content can be either an index page with multiple items
+    or a single detaild item.
+block content
+    .row
+        .col-md-10.col-md-offset-1
+                br
+                .panel.panel-default
+                        .panel-heading.container-fluid
+                            .row
+                                .col-sm-10.col-xs-12
+                                    h2 {{ page.data.item.title }}
+                                        
+                        //- Icon and Intro text.
+                        .panel-body
+                            .lead
+                                {{ page.data.item.intro|safe }}
+
+                            for item in page.data.item.playlist.all
+                                .row
+                                    .col-sm-10.col-xs-12
+                                        //- Link to /url_slug/item_slug/ e.g. /tools/tor/.
+                                        h3
+                                            a(href="/{{item.url_slug}}/{{item.slug}}/")
+                                                {{ loop.index }}
+                                                {{ item.title }}
+                                    .col-xs-12.col-sm-2
+                                        //- If a time is set for the item, let the user know how much time
+                                            it's gonna take to read this.
+                                        if item.time
+                                            span.badge.time.pull-right
+                                                span.tb-clock=item.time_formatted
+                            
+
+                        .panel-footer
+                            .row
+                                .col-xs-6
+                                    
+                                .col-xs-6.text-right                                  
+
