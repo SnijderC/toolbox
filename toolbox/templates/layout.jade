@@ -22,8 +22,8 @@ html(lang="en")
         #main.container-fluid
         
             //- If set this displays a debug text at the top of the page..
-            if page.data.debug
-                {{ page.data.debug_str }}
+            if page.debug
+                {{ page.data.debug }}
             
             //- Filter dropdowns
             if page.show_filters

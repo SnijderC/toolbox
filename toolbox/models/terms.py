@@ -47,7 +47,7 @@ class Terms(models.Model):
         
         super(Terms, self).save(*args, **kw)
         
-        for model in ('Advice', 'Tool'):
+        for model in ('Advice', 'Tool', 'FAQ'):
             model = models.get_model('toolbox', model)
             for item in model.objects.all():
                 item.date = item.date                

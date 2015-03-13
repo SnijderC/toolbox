@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from pagedown.widgets import AdminPagedownWidget
 from django import forms
-from toolbox.models import CommonFields, License, Playlist, PlaylistOrder
+from toolbox.models import CommonFields, License, Playlist, PlaylistOrder, FAQ
 
 class LicenseForm(forms.ModelForm):
     license_md = forms.CharField(widget=AdminPagedownWidget())
@@ -27,3 +27,9 @@ class PlaylistOrderForm(forms.ModelForm):
     
     class Meta:
         model = PlaylistOrder
+
+class FAQForm(forms.ModelForm):
+    answer_md = forms.CharField(widget=AdminPagedownWidget(),label="Antwoord")            
+    
+    class Meta:
+        model = FAQ
