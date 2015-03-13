@@ -78,7 +78,7 @@ blockquote:before,
 }
 .platform-indicator {
   font-size: 24px;
-  text-shadow: -1px -1px 1px #000000;
+  text-shadow: -1px -1px 1px #ffffff;
 }
 .platform-indicator.lighter {
   color: #999;
@@ -6167,7 +6167,7 @@ body .btn {
 #main .tb-open-source:before,
 #main .tb-closed-source {
   font-size: 36px;
-  text-shadow: 1px 1px 0px #000;
+  text-shadow: 1px 1px 0px #fff;
   display: inline-block;
 }
 #main .tb-open-source:before {
@@ -6184,7 +6184,7 @@ body .btn {
 }
 #main .risk:before {
   font-size: 36px;
-  text-shadow: 1px 1px 0px #000;
+  text-shadow: 1px 1px 0px #fff;
 }
 #main .risk.high:before {
   color: #d9534f;
