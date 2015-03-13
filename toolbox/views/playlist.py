@@ -32,6 +32,7 @@ def playlist(request,playlist):
     page.data['debug_str']      = ''#playlist_obj.playlistorder_set.__dict__
     page.data['item']           = playlist_obj
     page.data['playlist']       = playlist_order_obj
+    page.data['playlist_href']  = "/playlist/%s/" % playlist
     page.playlist               = True 
        
     return render_to_response(template, {"page":page})
@@ -71,6 +72,7 @@ def playlist_item(request,playlist,item):
     page.data['nav']            = nav
     page.data['navlinks']       = nav.categorieslinks
     page.data['item']           = (advice,)
+    page.data['playlist_href']  = "/playlist/%s/" % playlist
     page.index                  = False
     page.playlist               = True
        
