@@ -16,7 +16,7 @@ class MainNav(models.Model):
     
     categories = models.ManyToManyField ( 
                                'ParentCategories',
-                               verbose_name    = 'Hoofd categorieën',
+                               verbose_name    = u'Hoofd categorieën',
                                blank           = True,
                              )
 

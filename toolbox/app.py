@@ -20,7 +20,7 @@ import setup
 from django.conf.urls import patterns, url, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
-from toolbox.views import index, static_doc, search, errorhandlers, playlist
+from toolbox.views import index, static_doc, search, errorhandlers, playlist, faq
 
 admin.autodiscover()
 
@@ -44,6 +44,8 @@ urlpatterns += [
     url(r'^doc/(licenses/[a-zA-Z0-9\-]{1,40})/$', static_doc.doc, {"strformat":"markdown"}),
     # Search queries. (max 120 chars, input allows 40, every char may be "%20"
     url(r'^search/(?P<query>.{2,120})/$', search.query),
+    # FAQ
+    url(r'^faq/$', faq.faq),
     # Playlists selection
     url(r'^playlist/(?P<playlist>[a-zA-Z0-9\-]{2,40})/$', playlist.playlist),
     # Playlists page selection
