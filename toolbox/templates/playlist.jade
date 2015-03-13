@@ -25,7 +25,7 @@ block content
                                 .row
                                     .col-xs-12.col-sm-10.col-sm-offset-1
                                         .list-group.playlist-list-group.list-group-inverse
-                                            for item in page.data.item.playlistorder_set.all
+                                            for item in page.data.playlist
                                                 //- Link to /playlist/[playlist]/[nr] e.g. /playlist/essential/1/.
                                                 
                                                 a.list-group-item(href="/playlist/{{page.data.item.slug}}/{{item.number}}/")

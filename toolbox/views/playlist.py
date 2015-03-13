@@ -22,14 +22,16 @@ def playlist(request,playlist):
     
     try:
         playlist_obj = Playlist.objects.exclude(published=False).get(slug=playlist)
+        playlist_order_obj = PlaylistOrder.objects.exclude(playlist__published=False).filter(playlist__slug=playlist).order_by('number')
     except Playlist.DoesNotExist:
         raise Http404
 
     page.title = "%s | %s" % (playlist_obj.title,settings.title)
     page.data['nav']            = nav
     page.data['navlinks']       = nav.categorieslinks
-    page.data['debug']          = ''#playlist_obj.playlistorder_set.__dict__
+    page.data['debug_str']      = ''#playlist_obj.playlistorder_set.__dict__
     page.data['item']           = playlist_obj
+    page.data['playlist']       = playlist_order_obj
     page.playlist               = True 
        
     return render_to_response(template, {"page":page})

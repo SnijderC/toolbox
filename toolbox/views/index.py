@@ -75,7 +75,7 @@ def indexpage(request,slugs):
     page.data['navlinks']       = nav.categorieslinks
     page.data['request']        = request
     page.data['filters']        = nav.filter_tags()
-    page.data['debug']          = ""
+    page.data['debug_str']      = ""
     page.data['errorpage']      = False
        
     return render_to_response(template, {"page":page})
