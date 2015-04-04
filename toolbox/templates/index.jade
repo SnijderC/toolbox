@@ -9,15 +9,15 @@ mixin index_item(obj_items, slugtype, obj_title, icon)
         //- Header per category: tools, advice..
         h3
             i(class="{{icon}}")
-            a(href="{{href}}") {{obj_title}}
-
+            a(href="{{href}}") {{obj_title}}    
+    
     div.panel-body
         //- If there are items for this category, loop through them..
         if obj_items
             for item in obj_items
                 .row
                     if item.time 
-                        //- If a duration is givenm show it..
+                        //- If a duration is given show it..
                         .col-xs-8
                             h4
                                 a(href="/{{slugtype}}/{{item.slug}}/")=item.title
@@ -55,8 +55,10 @@ mixin index_item(obj_items, slugtype, obj_title, icon)
                 //- end of commented block                    
         else
             p Geen {{slugtype}} gevonden
+
 //- <------ END MIXIN FOR ITEMS 
             
+
 block content         
     .row
         //- Load all 3 panels, tools and advice by calling a mixin, less code repetition, yay :)

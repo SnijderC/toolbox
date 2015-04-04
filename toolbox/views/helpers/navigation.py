@@ -47,7 +47,6 @@ class Navigation(object):
         self.platforms          = {}
         self.sluglistrev        = {}
         self.navigation_items   = []
-        self.navbar             = []
         self.sitemap            = []
         self.categorieslinks    = {}
         self.platformslinks     = {}
@@ -71,54 +70,63 @@ class Navigation(object):
         self.formfactors, self.formfactorslinks = self.getfilteritems(Formfactor,"formfactors")      
         
         # setnavitems append items to the class attributes: navbar and sitemap
-        self.navbar, self.sitemap = self.setnavitems()
+        self.filter_dropdowns, self.sitemap = self.set_navitems()
 
         # Generate links for the page indexes (tools, advise)
         for key, val in enumerate(sluglist):
             if sluglist[val]['single']:
                 self.itemtypelinks[val] = self.makelink(val)    
 
-    def setnavitems(self):
+    def set_navitems(self):
         """
             Get the entire menu structure from the database (Navbar + Sitemap)
             
         """
-        navbar = []
         sitemap = []
+        filters = []
         
+        def filter_dropdown(slug,icon,name):
+            """ 
+                Function to add a complete dropdown structure.
+            """
+            return {
+                'name'    : name,
+                'id'      : slug,
+                'icon'    : icon,
+                'children': [],
+            }
         """
             This is all about platforms and formfactor combinations..
             These are more complex combinations..
         """
-        
         # all navigation items are related to this model
-        objformfactor = Formfactor.objects.select_related()
+        objformfactor = Formfactor.objects.select_related()  
         
-        # make a short reference to the current menu item and add its references
-        navbar.append({
-                        'name'      : 'Platform',
-                        'icon'      : 'tb-platforms',
-                        'children'  : [] 
-                      })
-        # copy of navbar content..              
-        #sitemap = copy.deepcopy(navbar)
-        navbarobj  = navbar[-1]['children']
-        #sitemapobj = sitemap[-1]['children']
+        filters.append(filter_dropdown('platforms','tb-platforms','Alle platformen'))        
+        filterobj = filters[-1]['children']
+        str_formfactor_name = None
+        str_platform_name   = None
         # Loop through formfactors and get the attributes..
         for formfactor in objformfactor.all():
             formfactorobj = {
                                 'name'      : formfactor.name,
                                 'icon'      : formfactor.icon,
                                 'href'      : self.formfactors[formfactor.slug]['href'],
+                                'group'     : True,
                                 'children'  : []
                              }
-            if formfactor.show_in_nav:
-                navbarobj.append(copy.deepcopy(formfactorobj))
-                navbargroup = navbarobj[-1]['children']
-            if formfactor.show_in_sitemap:    
+                           
+            if formfactor.show_in_sitemap:  
                 sitemap.append(formfactorobj)
                 sitemapgroup = sitemap[-1]['children']
 
+
+            filterobj.append(formfactorobj)  
+            if 'formfactors' in self.filters.keys() and self.filters['formfactors'][0]==formfactor.slug:
+                    str_formfactor_name = formfactor.name
+                    str_formfactor_icon = formfactor.icon
+
+            
             #loop trough formfactors' platforms and get the attributes..
             for platform in formfactor.platforms.all():
                 #if platform.show_in_nav: this attribute does not exist, reason:
@@ -128,57 +136,67 @@ class Navigation(object):
                                 'icon' : platform.icon,
                                 'href' : self.makelink("formfactor/%s/platform/%s" % (formfactor.slug,platform.slug)),
                               }
-                if formfactor.show_in_nav:
-                    navbargroup.append(copy.deepcopy(platformobj))
+                              
                 if formfactor.show_in_sitemap:
                     sitemapgroup.append(platformobj)
-        
-        # reorder the navbar to put Platform (which is now last) first
-        navbar.insert(0,navbar.pop())
-        
+                
+                filterobj.append(platformobj)
+            
+                if 'platforms' in self.filters.keys() and self.filters['platforms'][0]==platform.slug:
+                    str_platform_name = platform.name
+                    str_platform_icon = platform.icon
+            
+            if str_formfactor_name != None and str_platform_name != None:
+                filters[0]['name'] = "%s + %s" % (str_formfactor_name,str_platform_name)
+                filters[0]['icon'] = str_platform_icon
+            elif str_formfactor_name != None:
+                filters[0]['name'] = str_formfactor_name
+                filters[0]['icon'] = str_formfactor_icon
+            elif str_platform_name != None:
+                filters[0]['name'] = str_platform_name
+                filters[0]['icon'] = str_platform_icon                
+                
+                  
         """
             This is all about all the categories that are simple slugs..     
         """
         
         # all navigation items are related to this model
         objmainnav = MainNav.objects.select_related()
-        
+        filters.append(filter_dropdown('categories','tb-tags','Alle categorieën'))        
+        filterobj = filters[-1]['children']
         for navitem in objmainnav:
-            navbar.append({
-                        'name'      : navitem.name,   
-                        'icon'      : navitem.icon,
-                        'children'  : [] 
-                     })
-            # make a short reference to the current menu item         
-            navbarobj = navbar[-1]['children']
-            
             # Loop through parentcategories and get the attributes..
             for parentcategory in navitem.categories.all():
                 
                 parentcategoryobj = {
                                 'name'      : parentcategory.name,
                                 'icon'      : parentcategory.icon,
-                                'children'  : []
+                                'children'  : [],
+                                'group'     : True
                             }
-                if parentcategory.show_in_nav:
-                    navbarobj.append(copy.deepcopy(parentcategoryobj))
-                    navbargroup = navbarobj[-1]['children']
+                filterobj.append(parentcategoryobj)
                 if parentcategory.show_in_sitemap:
                     sitemap.append(parentcategoryobj)
                     sitemapgroup = sitemap[-1]['children']
-                    # loop trough parentcategories' categories and get the attributes..
-                    for category in parentcategory.categories.all():
-                        categoryobj = {
-                                        'name' : category.name,
-                                        'icon' : category.icon,
-                                        "href" : self.categories[category.slug]['href']
-                                      }
-                        if category.show_in_nav and parentcategory.show_in_nav:
-                            navbargroup.append(copy.deepcopy(categoryobj))
-                        if category.show_in_sitemap and parentcategory.show_in_sitemap:
-                            sitemapgroup.append(categoryobj)
-        
-        return (navbar, sitemap)
+                
+                # loop trough parentcategories' categories and get the attributes..
+                for category in parentcategory.categories.all():
+                    categoryobj = {
+                                    'name' : category.name,
+                                    'icon' : category.icon,
+                                    "href" : self.categories[category.slug]['href']
+                                  }
+                    if category.show_in_sitemap and parentcategory.show_in_sitemap:
+                        sitemapgroup.append(categoryobj)
+                    
+                    filterobj.append(categoryobj)
+                    
+                    if 'categories' in self.filters.keys() and self.filters['categories'][0]==category.slug:
+                        filters[1]['name'] = category.name
+                        filters[1]['icon'] = category.icon
+                    
+        return filters, sitemap
         
     def navbar_items(self):
         '''
@@ -233,45 +251,6 @@ class Navigation(object):
                                 }
         # Return both lists independently
         return target, directlinks
-    
-    def filter_tags(self):
-        """
-            Generate a list of selected filters to be displayed 
-            as tags on the index page.
-        """
-        
-        # Alias some variables for easy access
-        revnewslug      = self.sluglistrev        
-        req             = self.slugs
-        filters         = self.filters
-        # Place holder
-        obj_filters     = []
-        
-        # Loop through all filters
-        for strslug in filters:
-            # We don't want these for main selection (tools, advise)
-            if strslug not in ("item_slug","item_arg"):
-                # If one of these is a match set specific class, 
-                # might be better to move to the CSS/LESS file instead.
-                if strslug == "categories":
-                    strclass = "category"
-                elif strslug == "formfactors":
-                    strclass = "light-bulb"
-                # Or use the slug as the class
-                else:
-                    strclass = strslug
-                
-                # For each selection under a slug that may or may not be multiple
-                # Add an item to the list.
-                args  = filters[strslug]                  
-                for strarg in args:
-                    obj_filters.append({ 
-                            'class': 'tb-%s' % strclass,
-                            'text' : self[strslug][strarg]['name'],
-                            'href' : req.replace("%s/%s/" % (revnewslug[strslug]['slug'],strarg) ,""),
-                          })
-    
-        return obj_filters
            
     def makelink(self,slugstr):
         # Alias the currently selected filters.

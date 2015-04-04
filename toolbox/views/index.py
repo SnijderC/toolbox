@@ -74,9 +74,12 @@ def indexpage(request,slugs):
     page.data['nav']            = nav
     page.data['navlinks']       = nav.categorieslinks
     page.data['request']        = request
-    page.data['filters']        = nav.filter_tags()
+    page.data['filters']        = nav.filter_dropdowns
     page.data['debug_str']      = ""
     page.data['errorpage']      = False
+    page.data['itemslug']       = sluglistrev[item_slug]['slug']
+    #page.data['debug']          = ''
+    page.show_filters           = True
        
     return render_to_response(template, {"page":page})
     

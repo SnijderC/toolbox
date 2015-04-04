@@ -57,8 +57,18 @@ body
     position                : relative;
     padding-bottom          : 80px; 
 
-    @import "./filters.less";
     
+    .filterbar
+    {
+        padding-bottom          : 10px;
+        .btn-default
+        {
+            padding             : 8px 14px 8px 14px;
+            #gradient.vertical(#fff; #eee);        
+            border              : 1px solid rgba(0,0,0,.3);
+            color               : @text-color;
+        }
+    }
     .panel-primary
     {
         .panel-heading

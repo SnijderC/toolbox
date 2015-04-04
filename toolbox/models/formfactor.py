@@ -19,12 +19,9 @@ class Formfactor(GenericFields):
                                    'Platform',
                                    verbose_name    = 'Platformen',
                                    blank           = True,
+                                   null            = True,
                                  )
 
-    show_in_nav = models.BooleanField(    
-                                   verbose_name = 'In navbar?',
-                                   default      = True
-                                         )
     show_in_sitemap = models.BooleanField(    
                                    verbose_name = 'In sitemap?',
                                    default      = True

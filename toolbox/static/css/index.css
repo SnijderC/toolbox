@@ -5784,14 +5784,13 @@ nav.navbar .divider-vertical {
 }
 li.dropdown-header,
 p.dropdown-header {
-  background-image: -webkit-linear-gradient(top, #333333 0%, #555555 100%);
-  background-image: -o-linear-gradient(top, #333333 0%, #555555 100%);
-  background-image: linear-gradient(to bottom, #333333 0%, #555555 100%);
+  background-image: -webkit-linear-gradient(top, #333333 0%, #444444 100%);
+  background-image: -o-linear-gradient(top, #333333 0%, #444444 100%);
+  background-image: linear-gradient(to bottom, #333333 0%, #444444 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff555555', GradientType=0);
-  padding: 10px 0 10px 10px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff444444', GradientType=0);
   font-family: 'DINWeb-Bold', Arial, sans-serif;
-  margin-bottom: 0;
+  padding: 4px 0 0 12px;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.9);
 }
 #footer {
@@ -5944,6 +5943,24 @@ body .btn {
   background: url("/static/media/drape.png") repeat-x;
   height: 70px;
 }
+#heading1,
+#heading2 {
+  color: #fff;
+  text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
+}
+#heading1 h1,
+#heading2 h1 {
+  padding: 50px 0 0 6%;
+}
+#heading2 {
+  padding: 100px 0 0 80%;
+}
+#header-img {
+  background: #000000 url("/static/media/bg_tb.jpg");
+  height: 400px;
+  background-position: center center;
+  background-size: auto 550px;
+}
 #main {
   background: #fff;
   display: block;
@@ -5963,60 +5980,18 @@ body .btn {
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 }
-#main .filters {
-  padding: 10px 0 25px 32px;
+#main .filterbar {
+  padding-bottom: 10px;
 }
-#main .filters.tb-filter:before {
-  position: absolute;
-  font-size: 16pt;
-  color: #555;
-  float: left;
-  margin: 4px 0 0 -22px;
-}
-#main .filters .filter {
-  display: inline-block;
-  background: #CCC;
-  border-radius: 5px;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
-  padding: 4px 10px 1px 0px;
-  margin: 0 0 0 20px;
-}
-#main .filters .filter a {
-  font-family: 'DINWeb-Bold', Arial, sans-serif;
-  color: #000;
-  text-decoration: none;
-  font-size: 11pt;
-  padding-left: 20px;
-}
-#main .filters .filter a:after {
-  line-height: 12pt;
-  padding-left: 10px;
-  content: "\00D7";
-  font-size: 14pt;
-}
-#main .filters .filter:before {
-  position: relative;
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  float: left;
-  border-right: 15px solid #ccc;
-  border-bottom: 15px solid transparent;
-  border-top: 15px solid transparent;
-  margin: -3px 0 0 -13px;
-}
-#main .filters .filter:after {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 7px;
-  width: 7px;
-  border-radius: 7px;
-  background: #fff;
-  margin: -15px 0 0 0px;
-  padding: 0;
-  float: left;
+#main .filterbar .btn-default {
+  padding: 8px 14px 8px 14px;
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+  background-image: -o-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: #333333;
 }
 #main .panel-primary .panel-heading h3 a {
   color: #fff;

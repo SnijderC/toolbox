@@ -30,7 +30,10 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                 li
                     {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
                     a.tb-wrench(href="{{href}}") Tools 
-                
+                li
+                    {% dictitem page.data.nav.itemtypelinks 'overzicht' as href%}
+                    a.tb-wrench(href="{{href}}") Overzicht
+                     
                 each mainnav in page.data.nav.navbar_items
                     li.dropdown
                         a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{mainnav.icon}}",role="button",aria-expanded="false") 

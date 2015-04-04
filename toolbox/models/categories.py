@@ -14,11 +14,7 @@ class Category(GenericFields):
                                 blank          = True,
                                 max_length     = 32
                             )
-    
-    show_in_nav = models.BooleanField(    
-                                verbose_name   = 'In navbar?',
-                                default        = True
-                            )
+                            
     show_in_sitemap = models.BooleanField(    
                                 verbose_name   = 'In sitemap?',
                                 default        = True
