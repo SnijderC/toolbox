@@ -5403,7 +5403,6 @@ fieldset[disabled] .btn {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-default.btn-lg:active,
 .btn-default.btn-block:active,
@@ -5453,7 +5452,6 @@ fieldset[disabled] .btn-default.active {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-primary.btn-lg:active,
 .btn-primary.btn-block:active,
@@ -5503,7 +5501,6 @@ fieldset[disabled] .btn-primary.active {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-success.btn-lg:active,
 .btn-success.btn-block:active,
@@ -5553,7 +5550,6 @@ fieldset[disabled] .btn-success.active {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-info.btn-lg:active,
 .btn-info.btn-block:active,
@@ -5603,7 +5599,6 @@ fieldset[disabled] .btn-info.active {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-warning.btn-lg:active,
 .btn-warning.btn-block:active,
@@ -5653,7 +5648,6 @@ fieldset[disabled] .btn-warning.active {
   background-image: none;
   border-bottom-width: 0px;
   top: 6px;
-  margin: 4px 4px 10px 4px !important;
 }
 .btn-danger.btn-lg:active,
 .btn-danger.btn-block:active,
@@ -5992,6 +5986,10 @@ body .btn {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
   border: 1px solid rgba(0, 0, 0, 0.3);
   color: #333333;
+}
+#main .filterbar .btn-default:active,
+#main .filterbar .btn-default.active {
+  top: 1px;
 }
 #main .panel-primary .panel-heading h3 a {
   color: #fff;
