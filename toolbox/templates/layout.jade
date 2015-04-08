@@ -27,28 +27,7 @@ html(lang="en")
             
             //- Filter dropdowns
             if page.show_filters
-                .row
-                    .col-xs-10.col-xs-offset-1.filterbar
-                        i.tb-filter
-                        |Toon:
-                        for filter in page.data.filters
-                            span.dropdown
-                                button.btn.dropdown-toggle.btn-default(id="filter-{{loop.index}}", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") 
-                                    i(class="{{filter.icon}}")
-                                    {{filter.name}}
-                                    span.caret
-                                ul.dropdown-menu(role="menu", aria-labelledby="filter-{{loop.index}}")
-                                    for item in filter.children
-                                        if item.group
-                                            li.dropdown-header(role="presentation")
-                                                {{item.name}}
-                                        else
-                                            li 
-                                                a(href="{{item.href}}", class="{{item.icon}}")
-                                                    {{item.name}}
-                        a.btn.btn-default(href="/{{page.data.itemslug}}/")
-                            i.tb-cancel-circle
-                            | Reset filters
+                include includes/filters
                     
             //- This is the actual content, this is the actual entry point, this layout is loaded around it.
             block content

@@ -72,6 +72,40 @@ body
                 top             : 1px;
             }
         }
+        .filter-toggle
+        {
+
+            color               : #555;
+            text-decoration     : none;
+            
+            &:after, &:before
+            {
+                
+                vertical-align  : middle;
+                margin-left     : 4px;
+            }
+            &[aria-expanded="false"]
+            {
+                &:after
+                {
+                    content     : "\25BC";    
+                    font-size   : 80%;
+                }
+            }
+            &[aria-expanded="true"]
+            {
+                &:after
+                {
+                    content     : "\25B2";    
+                    font-size   : 80%;
+                    
+                }
+            }
+        }
+        .well
+        {
+            padding         : 5px 5px 8px 5px;
+        }
     }
     .panel-primary
     {

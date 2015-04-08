@@ -80,6 +80,11 @@ def indexpage(request,slugs):
     page.data['itemslug']       = sluglistrev[item_slug]['slug']
     #page.data['debug']          = ''
     page.show_filters           = True
+    if nav.show_filters:
+        page.data['filterclass']= 'in'
+        page.data['ariaexpanded'] = "true"
+    else:
+        page.data['ariaexpanded'] = "false"
        
     return render_to_response(template, {"page":page})
     

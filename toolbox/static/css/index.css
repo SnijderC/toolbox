@@ -5991,6 +5991,26 @@ body .btn {
 #main .filterbar .btn-default.active {
   top: 1px;
 }
+#main .filterbar .filter-toggle {
+  color: #555;
+  text-decoration: none;
+}
+#main .filterbar .filter-toggle:after,
+#main .filterbar .filter-toggle:before {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+#main .filterbar .filter-toggle[aria-expanded="false"]:after {
+  content: "\25BC";
+  font-size: 80%;
+}
+#main .filterbar .filter-toggle[aria-expanded="true"]:after {
+  content: "\25B2";
+  font-size: 80%;
+}
+#main .filterbar .well {
+  padding: 5px 5px 8px 5px;
+}
 #main .panel-primary .panel-heading h3 a {
   color: #fff;
 }

@@ -8,7 +8,7 @@
         If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, MainNav, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories
+from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories
 from forms import CommonFieldsForm, LicenseForm, PlaylistForm, PlaylistOrderForm, FAQForm
 from django.contrib import admin
 
@@ -44,9 +44,6 @@ class ParentCategoriesAdmin(admin.ModelAdmin):
 class FormfactorAdmin(admin.ModelAdmin):
     filter_horizontal   = ('platforms',)
 
-class MainNavAdmin(admin.ModelAdmin):
-    filter_horizontal   = ('categories',) # somehow this doesn't work?!
-    pass
 class AppAdmin(CommonFieldsAdmin):
     filter_horizontal   = ('categories', 'platforms', 'pros', 'cons', 'alternative','formfactors')
     fieldsets = (
@@ -126,7 +123,6 @@ adminlist = (
                 Category,
                 (ParentCategories, ParentCategoriesAdmin),
                 Property,
-                (MainNav, MainNavAdmin),
                 (Formfactor, FormfactorAdmin),
                 (FAQ, FAQAdmin),
                 FAQCategories

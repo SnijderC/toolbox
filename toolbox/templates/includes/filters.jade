@@ -1,0 +1,25 @@
+.row
+    .col-lg-7.col-md-8.col-sm-9.col-sm-offset-1.col-xs-12.filterbar
+        a.filter-toggle(data-toggle="collapse",data-target="#collapseFilters",aria-expanded="{{page.data.ariaexpanded}}",aria-controls="collapseFilters", href="#")
+            i.tb-filter
+            |Filters..
+        ul.nav.nav-pills.nav-justified.collapse(class="{{page.data.filterclass}}")#collapseFilters.well
+            for filter in page.data.filters
+                li(role="presentation").dropdown
+                    a.btn.dropdown-toggle.btn-default(id="filter-{{loop.index}}", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") 
+                        i(class="{{filter.icon}}")
+                        {{filter.name}}
+                        span.caret
+                    ul.dropdown-menu(role="menu", aria-labelledby="filter-{{loop.index}}")
+                        for item in filter.children
+                            if item.group
+                                li.dropdown-header(role="presentation")
+                                    {{item.name}}
+                            else
+                                li 
+                                    a(href="{{item.href}}", class="{{item.icon}}")
+                                        {{item.name}}
+            li(role="presentation")
+                a.btn.btn-default(href="/{{page.data.itemslug}}/")
+                    i.tb-cancel-circle
+                    | Reset alle filters

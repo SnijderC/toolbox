@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from toolbox.models import Category, ParentCategories, Platform, Formfactor, MainNav, Playlist
+from toolbox.models import Category, ParentCategories, Platform, Formfactor, Playlist
 from settings import slugs as sluglist, title as page_title
 import copy
 
@@ -52,6 +52,7 @@ class Navigation(object):
         self.platformslinks     = {}
         self.formfactorslinks   = {}
         self.itemtypelinks      = {}
+        self.show_filters       = False
         
         self.slugs = "/"+str(slugs)
         
@@ -76,6 +77,9 @@ class Navigation(object):
         for key, val in enumerate(sluglist):
             if sluglist[val]['single']:
                 self.itemtypelinks[val] = self.makelink(val)    
+        
+        if len(set(('formfactors', 'categories', 'platforms')) &  set(self.filters)) > 0:
+            self.show_filters = True
 
     def set_navitems(self):
         """
@@ -102,8 +106,9 @@ class Navigation(object):
         # all navigation items are related to this model
         objformfactor = Formfactor.objects.select_related()  
         
-        filters.append(filter_dropdown('platforms','tb-platforms','Alle platformen'))        
+        filters.append(filter_dropdown('platforms','tb-platforms','Alle apparaten'))        
         filterobj = filters[-1]['children']
+
         str_formfactor_name = None
         str_platform_name   = None
         # Loop through formfactors and get the attributes..
@@ -129,8 +134,6 @@ class Navigation(object):
             
             #loop trough formfactors' platforms and get the attributes..
             for platform in formfactor.platforms.all():
-                #if platform.show_in_nav: this attribute does not exist, reason:
-                #why would you exclude a platform?
                 platformobj = {
                                 'name' : platform.name,
                                 'icon' : platform.icon,
@@ -155,47 +158,60 @@ class Navigation(object):
             elif str_platform_name != None:
                 filters[0]['name'] = str_platform_name
                 filters[0]['icon'] = str_platform_icon                
-                
+            
+        if str_formfactor_name != None or str_platform_name != None:
+            filterobj.insert(0,{
+                        'name' : "Alle apparaten",
+                        'icon' : "tb-cancel-circle",
+                        'href' : self.makelink("/",['formfactors','platforms']),
+                     })
                   
         """
             This is all about all the categories that are simple slugs..     
         """
         
         # all navigation items are related to this model
-        objmainnav = MainNav.objects.select_related()
+        parentcategories = ParentCategories.objects.all()
         filters.append(filter_dropdown('categories','tb-tags','Alle categorieën'))        
         filterobj = filters[-1]['children']
-        for navitem in objmainnav:
-            # Loop through parentcategories and get the attributes..
-            for parentcategory in navitem.categories.all():
+        
+        # Loop through parentcategories and get the attributes..
+        for parentcategory in parentcategories.all():
+            
+            parentcategoryobj = {
+                            'name'      : parentcategory.name,
+                            'icon'      : parentcategory.icon,
+                            'children'  : [],
+                            'group'     : True
+                        }
+            filterobj.append(parentcategoryobj)
+            if parentcategory.show_in_sitemap:
+                sitemap.append(parentcategoryobj)
+                sitemapgroup = sitemap[-1]['children']
+            
+            # loop trough parentcategories' categories and get the attributes..
+            for category in parentcategory.categories.all():
+                categoryobj = {
+                                'name' : category.name,
+                                'icon' : category.icon,
+                                "href" : self.categories[category.slug]['href']
+                              }
+                if category.show_in_sitemap and parentcategory.show_in_sitemap:
+                    sitemapgroup.append(categoryobj)
                 
-                parentcategoryobj = {
-                                'name'      : parentcategory.name,
-                                'icon'      : parentcategory.icon,
-                                'children'  : [],
-                                'group'     : True
-                            }
-                filterobj.append(parentcategoryobj)
-                if parentcategory.show_in_sitemap:
-                    sitemap.append(parentcategoryobj)
-                    sitemapgroup = sitemap[-1]['children']
+                filterobj.append(categoryobj)
                 
-                # loop trough parentcategories' categories and get the attributes..
-                for category in parentcategory.categories.all():
-                    categoryobj = {
-                                    'name' : category.name,
-                                    'icon' : category.icon,
-                                    "href" : self.categories[category.slug]['href']
-                                  }
-                    if category.show_in_sitemap and parentcategory.show_in_sitemap:
-                        sitemapgroup.append(categoryobj)
-                    
-                    filterobj.append(categoryobj)
-                    
-                    if 'categories' in self.filters.keys() and self.filters['categories'][0]==category.slug:
-                        filters[1]['name'] = category.name
-                        filters[1]['icon'] = category.icon
-                    
+                if 'categories' in self.filters.keys() and self.filters['categories'][0]==category.slug:
+                    filters[1]['name'] = category.name
+                    filters[1]['icon'] = category.icon
+            
+        if 'categories' in self.filters.keys():
+            filterobj.insert(0,{
+                        'name' : "Alle categorieën",
+                        'icon' : "tb-cancel-circle",
+                        'href' : self.makelink("/",['categories']),
+                     })
+                
         return filters, sitemap
         
     def navbar_items(self):
@@ -252,7 +268,7 @@ class Navigation(object):
         # Return both lists independently
         return target, directlinks
            
-    def makelink(self,slugstr):
+    def makelink(self,slugstr,removeslugs=[]):
         # Alias the currently selected filters.
         oldslugs    = self.filters
         # Process slugstring into the filters that belong to the link that we 
@@ -272,29 +288,37 @@ class Navigation(object):
         
         # Now compile the list of slugs and arguments into a url.
         for slug in newslugs:
-            # These 2 slugs should be handled differently..
-            if slug not in ("item_slug","item_arg"):
-                # We need the user version of the slug, not the DB one.
-                slugrev = self.sluglistrev[slug]['slug']
-                # Add the user version slug and argument to the url
-                for arg in newslugs[slug]:
-                    link += '/%s/%s' % (slugrev , arg)
-            # New links will forget item_arg which is a single item..
-            elif slug == "item_slug":
-                """
-                    This should be used to stay in the same layout
-                    layout = self.sluglistrev[newslugs[slug]]['slug']
-                    this is deemed to complicated behaviour for average users
-                    always direct back to overview unless specifically chosen..
-                """
-                if linkslugs[slug]:
-                    # specifically chosen..
-                    layout = self.sluglistrev[linkslugs[slug]]['slug']
-                else:
-                    # not specifically chosen..
-                    layout = "overzicht"
-                # item_slug should come first..
-                link = '/%s%s'  % (layout,link)
+            # Remove these slugs in removeslugs
+            if slug not in removeslugs:
+                # These 2 slugs should be handled differently..
+                if slug not in ("item_slug","item_arg"):
+                    # We need the user version of the slug, not the DB one.
+                    slugrev = self.sluglistrev[slug]['slug']
+                    # Add the user version slug and argument to the url
+                    for arg in newslugs[slug]:
+                        link += '/%s/%s' % (slugrev , arg)
+                # New links will forget item_arg which is a single item..
+                elif slug == "item_slug":
+                    """
+                        This should be used to stay in the same layout
+                        layout = self.sluglistrev[newslugs[slug]]['slug']
+                        this is deemed to complicated behaviour for average users
+                        always direct back to overview unless specifically chosen..
+                    """
+                    # Previously users were led to /overzicht/[whatever] filters
+                    # if it was not specifically mentioned in the slugstr, now
+                    # it also preserves the specific index page (/tools or /advies).
+                    # Not sure what is considered most user friendly but I think this is.
+                    #if linkslugs[slug]:
+                    #    # specifically chosen..
+                    #    layout = self.sluglistrev[linkslugs[slug]]['slug']
+                    if newslugs[slug]:
+                        layout = self.sluglistrev[newslugs[slug]]['slug']
+                    else:
+                        # not specifically chosen..
+                        layout = "overzicht"
+                    # item_slug should come first.. 
+                    link = '/%s%s'  % (layout,link)
         link +='/'
         return link
 
