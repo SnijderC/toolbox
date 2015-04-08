@@ -5,7 +5,7 @@ import re
 import settings
 from django.db import models
 from django.http import HttpResponse
-from toolbox.models import Tool, Advice, Category, Platform
+from toolbox.models import Tool, Advice, Category, Platform, Playlist
 
 def query(request, query):
     """
@@ -13,92 +13,132 @@ def query(request, query):
     """
     resp = {}
     
+    
+    base_query = '''
+SELECT 
+    `id`,
+    %(icon)s
+    `%(table)s`.`slug`,
+    `%(table)s`.`%(title)s` as name,
+    (IF(`%(table)s`.`%(title)s` LIKE %%s,2,1) * MATCH (%(matches)s) AGAINST (%%s IN BOOLEAN MODE)) AS `relevance`
+FROM 
+    `%(table)s`
+WHERE 
+    %(check_published)s 
+    MATCH (%(matches)s) AGAINST (%%s IN BOOLEAN MODE)
+ORDER BY `relevance` DESC;
+'''    
     try:
     
         # This array determines the models and fields to be searched for the search function.
-        # "slug" : { 'model' : modelname, 'fields' : [ 'fieldname1', 'fieldname2' ] } 
         
-        models = { 
-                    'tools'     : {
-                                    'model'         : Tool,
-                                    'field'         : 'title',
-                                    'checkpublished': True,
-                                    'hasIcon'       : False,
-                                    'href'          : "/tools/%s/"
-                                  }, 
-                    'adviezen'  : {                 
-                                    'model'         : Advice,
-                                    'field'         : 'title',
-                                    'checkpublished': True,
-                                    'hasIcon'       : False,
-                                    'href'          : "/adviezen/%s/"
-                                  },                                
-                    'categorie' : {                 
-                                    'model'         : Category,
-                                    'field'         : 'name',
-                                    'checkpublished': False,
-                                    'hasIcon'       : True,
-                                    'href'          : "/overzicht/categorie/%s/"
-                                  },
-                    'platforms' : {                 
-                                    'model'         : Platform,
-                                    'field'         : 'name',
-                                    'checkpublished': False,
-                                    'hasIcon'       : True,
-                                    'href'          : "/overzicht/platform/%s/"
-                                  }
-             }
-        for name, model in models.iteritems():
+        models = [ 
+                    {
+                        'name'          : 'tools',
+                        'model'         : Tool,
+                        'fields'        : ['title', 'intro_md', 'content_md'],
+                        'title'         : 'title',
+                        'checkpublished': True,
+                        'hasIcon'       : False,
+                        'href'          : "/tools/%s/"
+                    }, 
+                    {
+                        'name'          : 'adviezen',
+                        'model'         : Advice,
+                        'fields'        : ['title', 'intro_md', 'content_md'],
+                        'title'         : 'title',
+                        'checkpublished': True,
+                        'hasIcon'       : False,
+                        'href'          : "/adviezen/%s/"
+                    },                                
+                    {       
+                        'name'          : 'categorie',        
+                        'model'         : Category,
+                        'fields'        : ['name'],
+                        'title'         : 'name',
+                        'checkpublished': False,
+                        'hasIcon'       : True,
+                        'href'          : "/overzicht/categorie/%s/"
+                    },
+                    {                 
+                        'name'          : 'platforms',
+                        'model'         : Platform,
+                        'fields'        : ['name'],
+                        'title'         : 'name',
+                        'checkpublished': False,
+                        'hasIcon'       : True,
+                        'href'          : "/overzicht/platform/%s/"
+                    },
+                    {                 
+                        'name'          : 'playlist',
+                        'model'         : Playlist,
+                        'fields'        : ['title'],
+                        'title'         : 'title',
+                        'checkpublished': False,
+                        'hasIcon'       : True,
+                        'href'          : "/overzicht/platform/%s/"
+                    }
+             ]
+        for model in models:
             # make a dict with modelname keys..
-            resp[name]   = []
+            resp[model['name']]   = []
         resp['messages'] = []
-            
-        query = query.replace("*","") + "*"
-    
+        
+        query = re.sub('[\W_]+', '', query)
+        like = "%%%s%%" % query
+        query += "*"
+
         # for each model..
-        for name, model in models.iteritems():
+        for model in models:
             # Search the models specified above.. 
-            
-            # Exclude unpublished items
-            searchres = model['model'].objects
-            
-            if model['checkpublished']:
-                searchres = searchres.exclude(published=False)
-
-            # Set model's field to search..
-            kwargs = { "%s__search" % model['field'] : query}
-
-            # Set output fields..
-            args   = [model['field'], 'slug']
+            tablename = model['model']._meta.db_table
+            model['table']           = tablename
+            model['icon']            = ''
+            model['check_published'] = ''
+            model['matches']         = ''
+            model['like']            = like 
             
             # Does this model have an icon field?
             if model['hasIcon']:
-                args.append('icon')
+                model['icon'] = '`%s`.`icon`,\n' % tablename
+             
+            # Categories have no published state
+            if model['checkpublished']:
+                model['check_published'] = '`%s`.`published` = TRUE AND\n' % tablename
             
-            # Apply the previous 2 variables..
-            searchres = searchres.filter(**kwargs).only(*args)
+            for field in model['fields']:
+                model['matches'] += '`%s`.`%s`, ' % (tablename, field)
             
-            for res in searchres.values():
+            model['matches'] = model['matches'].rstrip(", ")
+                
+            strquery = base_query % model
+            
+            # Exclude unpublished items
+            for res in model['model'].objects.raw(strquery,[like, query, query]):
                 
                 if model['hasIcon']:
-                    icon = res['icon']
+                    icon = res.icon
                 else:
-                    icon = "tb-"+name
+                    icon = "tb-"+model['name']
                 
                 # append seachresults
-                resp[name].append({
-                                    'title'     : res[model['field']],
-                                    'href'      : model['href'] % res['slug'],
+                resp[model['name']].append({
+                                    'title'     : res.name,
+                                    'href'      : model['href'] % res.slug,
                                     'icon'      : icon,
-                                    'group'     : name.capitalize()
+                                    'group'     : model['name'].capitalize()
                                 })
     # If some Exception occurs, give an error message..
-    except:
+    except Exception, e:
+        errstr = ''
+        if settings.DEBUG:
+            errstr = str(e)
         resp['messages'].append({
                                     'title'     : 'Onbekende fout opgetreden..',
                                     'href'      : '#',
                                     'icon'      : 'tb-warning',
-                                    'group'     : 'Messages'
+                                    'group'     : 'Messages',
+                                    'error'     : errstr
                                 })
     """
     if settings.DEBUG:

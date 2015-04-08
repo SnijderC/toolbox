@@ -22,19 +22,14 @@
 // Create search categories array..
 var arrSearchCategories = Array(
     {
-        name    : 'tools',
-        strclass: 'tb-tools',
-        title   : 'Tools'
-    },
-    {
         name    : 'adviezen',
         strclass: 'tb-adviezen',
         title   : 'Adviezen'
     },
     {
-        name    : 'diensten',
-        strclass: 'tb-diensten',
-        title   : 'Diensten'
+        name    : 'tools',
+        strclass: 'tb-tools',
+        title   : 'Tools'
     },
     {
         name    : 'categorie',
@@ -45,6 +40,11 @@ var arrSearchCategories = Array(
         name    : 'platforms',
         strclass: 'tb-platforms',
         title   : 'Platformen'
+    },
+        {
+        name    : 'playlist',
+        strclass: 'tb-rocket',
+        title   : 'Stappenplan'
     },
     {
         name    : 'messages',
@@ -105,7 +105,7 @@ var CreateSearch = function()
     // Init the typeaheads..
     $("#search").typeahead(
         {
-            minLength: 2,
+            minLength: 3,
             highlight: true,
             hint     : false
         },
