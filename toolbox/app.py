@@ -15,7 +15,6 @@
 """
 
 import settings
-import setup   
 
 from django.conf.urls import patterns, url, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

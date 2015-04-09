@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from generic import GenericFields  
-import markdown
+from helpers.tb_markdown import ToolboxMD
 from django.utils.safestring import mark_safe
 
 class License(GenericFields):
@@ -32,11 +32,13 @@ class License(GenericFields):
                                         default         = False
                                     )
 
+    md = ToolboxMD(extensions=['extra','nl2br','smarty'])
+
     def save(self, *args, **kw):
         """            
             Convert markdown to html to speed up the pageloading.
         """
-        self.license_html = markdown.markdown(self.license_html,extensions=['extra','nl2br','smarty'],output_format='html5').encode("utf-8")
+        self.license_html = self.md.convert(self.license_html)
         
         super(License, self).save(*args, **kw)
 

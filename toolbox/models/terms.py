@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-import markdown
+from helpers.tb_markdown import ToolboxMD
 
 class Terms(models.Model):
 
@@ -17,7 +17,10 @@ class Terms(models.Model):
                                          verbose_name    = 'Omschrijving van de term',
                                          editable        = False,
                                          blank           = True
-                            ) 
+                            )
+
+    # caching of wordlist must be switched off because after every save the list is changed.
+    md = ToolboxMD(extensions=['extra','nl2br','smarty'],cached_wordlist=False)
     
     class Meta:
         """
@@ -34,22 +37,16 @@ class Terms(models.Model):
         return self.term
     
     def save(self, *args, **kw):        
-        wordlist = "\n"
-        for term_obj in Terms.objects.all():
-            terms = term_obj.term.split(";")
-            topics = self.term.split(";")
-            for term in terms:
-                if term not in topics:
-                    wordlist += "*[%s]: %s\n" % (term, term_obj.description)
+        topics = self.term.split(";")        
         
-        md = markdown.Markdown(extensions=['extra','nl2br','smarty'],output_format='html5')
-        self.description_html = md.convert(self.description+wordlist).encode("utf-8")
+        self.description_html = self.md.convert(self.description,topics)
         
         super(Terms, self).save(*args, **kw)
         
         for model in ('Advice', 'Tool', 'FAQ'):
             model = models.get_model('toolbox', model)
             for item in model.objects.all():
-                item.date = item.date                
+                if 'date' in item._meta.local_fields:
+                    item.date = item.date                
                 item.clean()
                 item.save(skip_date_update=True)

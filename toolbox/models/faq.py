@@ -2,7 +2,7 @@
 from django.db import models
 from terms import Terms
 from toolbox.functions import fix_anchor_abbr
-import markdown
+from helpers.tb_markdown import ToolboxMD
 
 class FAQ(models.Model):
 
@@ -28,6 +28,8 @@ class FAQ(models.Model):
                                 blank           = True,
                             )
     
+    md = ToolboxMD(extensions=['extra','nl2br','smarty'])
+    
     def __unicode__(self):
         """
             String representation of the model
@@ -35,15 +37,9 @@ class FAQ(models.Model):
         return self.question
     
     def save(self, *args, **kw):        
-        wordlist = "\n"
-        for term_obj in Terms.objects.all():
-            terms = term_obj.term.split(";")
-            for term in terms:
-                wordlist += "*[%s]: %s\n" % (term, term_obj.description)
         
-        md = markdown.Markdown(extensions=['extra','nl2br','smarty'],output_format='html5')
-        self.answer_html = fix_anchor_abbr(md.convert(self.answer_md+wordlist).encode("utf-8"))
-        
+        self.answer_html = self.md.convert(self.answer_md)
+        kw.pop('skip_date_update')
         super(FAQ, self).save(*args, **kw)
     
     def answer(self):
