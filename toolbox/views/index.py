@@ -80,7 +80,7 @@ def indexpage(request,slugs):
     page.data['errorpage']      = False
     page.data['itemslug']       = sluglistrev[item_slug]['slug']
     #page.data['debug']          = ''
-    page.show_filters           = True
+    page.show_filters           = page.index
     if nav.show_filters:
         page.data['filterclass']= 'in'
         page.data['ariaexpanded'] = "true"
