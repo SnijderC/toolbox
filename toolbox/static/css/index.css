@@ -5933,6 +5933,16 @@ body .btn {
   font: 11pt/13pt 'DINWeb-Bold', Arial, sans-serif;
   margin: 4px 4px 4px 4px;
 }
+.tab-pane {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0px 0px 10px 10px;
+  padding: 10px;
+}
+.nav-tabs {
+  margin-bottom: 0;
+}
 #header {
   background: url("/static/media/drape.png") repeat-x;
   height: 70px;
