@@ -8,7 +8,7 @@
         If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories
+from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories, Manual
 from forms import CommonFieldsForm, LicenseForm, PlaylistForm, PlaylistOrderForm, FAQForm
 from django.contrib import admin
 
@@ -111,6 +111,21 @@ class FAQAdmin(admin.ModelAdmin):
     )
     filter_horizontal = ['categories']
 
+class ManualAdmin(CommonFieldsAdmin):
+    filter_horizontal   = ('categories', 'platforms', 'formfactors')
+    fieldsets = (
+        (None, {
+            'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
+        }),
+        ('Tagging', {
+            'fields': (('categories'),('formfactors','platforms'),('topic')),
+        }),
+        ('Properties', {
+            'fields': (('user', 'credit'), ('published', 'feature_score')),
+        })
+    )  
+
+
 adminlist = (
                 (Advice, AdviceAdmin),
                 (App, AppAdmin),
@@ -125,7 +140,8 @@ adminlist = (
                 Property,
                 (Formfactor, FormfactorAdmin),
                 (FAQ, FAQAdmin),
-                FAQCategories
+                FAQCategories,
+                (Manual, ManualAdmin),
             )
 
 

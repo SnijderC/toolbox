@@ -13,3 +13,4 @@ from platform import Platform
 from terms import Terms
 from playlist import PlaylistOrder, Playlist
 from faq import FAQ, FAQCategories
+from manual import Manual
