@@ -20,7 +20,7 @@ class Terms(models.Model):
                             )
 
     # caching of wordlist must be switched off because after every save the list is changed.
-    md = ToolboxMD(extensions=['extra','nl2br','smarty'],cached_wordlist=False)
+    md = ToolboxMD(extensions=['markdown.extensions.extra','markdown.extensions.nl2br','markdown.extensions.smarty'],cached_wordlist=False)
     
     class Meta:
         """

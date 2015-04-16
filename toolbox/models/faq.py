@@ -28,7 +28,7 @@ class FAQ(models.Model):
                                 blank           = True,
                             )
     
-    md = ToolboxMD(extensions=['extra','nl2br','smarty'])
+    md = ToolboxMD(extensions=['markdown.extensions.extra','markdown.extensions.nl2br','markdown.extensions.smarty'])
     
     def __unicode__(self):
         """

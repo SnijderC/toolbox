@@ -21,7 +21,7 @@ class ToolboxMD(markdown.Markdown):
         self.cached_wordlist    = cached_wordlist
         self.wordlist = None
         
-        super(ToolboxMD, self).__init__(extensions,output_format=output_format)
+        super(ToolboxMD, self).__init__(extensions=extensions,output_format=output_format)
                 
     def generate_wordlist(self, topics):
         

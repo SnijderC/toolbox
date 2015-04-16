@@ -6043,6 +6043,7 @@ body .btn {
 #main .filterbar .btn-default:active,
 #main .filterbar .btn-default.active {
   top: 1px;
+  margin-bottom: 0;
 }
 #main .filterbar .filter-toggle {
   color: #555;

@@ -9,9 +9,8 @@
   position: relative;
 
   &:hover,
-  &:focus,
-  &:active,
-  &.active {
+  &:focus
+  {
     color: @color;
     background-color: darken(@background,8%);
     border-bottom: 6px darken(@border,12%) solid;
@@ -19,9 +18,10 @@
   
   &:active, &.active
   {
-    background-image: none;
-    border-bottom-width: 0px;
-    top: 6px;
+    background-image        : none;
+    border-bottom-width     : 0px;
+    top                     : 6px;
+    margin-bottom           : 10px;
   }
   &.btn-lg, &.btn-block
   {
