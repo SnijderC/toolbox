@@ -15,27 +15,60 @@ class Migration(SchemaMigration):
               }
 
     def forwards(self, orm):
-        try:        
-            for table, fields in self.indexes.iteritems():
-                # comma separated list of fields
-                strfields = ', '.join(fields)
-                print 'Generating FULLTEXT INDEX on field(s) "%s" of tables "%s"..' % (strfields,table)
-                db.execute("ALTER TABLE %s ADD FULLTEXT tb_search (%s);" % (table, strfields))
-        except:
-            raise RuntimeError("Some index creation failed!")
+        for table, fields in self.indexes.iteritems():
         
-        print "Indexes created succesfully!"
+            strfields = ', '.join(fields)
+        
+            try:        
+                print 'Removing FULLTEXT INDEX on field "%s" of tables "%s"..' % (strfields, table)
+                db.execute("ALTER TABLE %s DROP INDEX tb_search;" % table)
+            except Exception, e:
+                if '__cause__' in e.__dict__:
+                    if e.__cause__[0] == 1091:
+                        pass
+                    else:
+                        raise e
+            try:        
+                print 'Removing FULLTEXT INDEX on field "%s" of tables "%s"..' % (strfields, table)
+                db.execute("ALTER TABLE %s DROP INDEX %s;" % (table,fields[0]))
+            except Exception, e:
+                if '__cause__' in e.__dict__:
+                    if e.__cause__[0] == 1091:
+                        pass
+                    else:
+                        raise e
+            try:        
+                    # comma separated list of fields
+                    
+                    print 'Generating FULLTEXT INDEX on field(s) "%s" of tables "%s"..' % (strfields,table)
+                    db.execute("ALTER TABLE %s ADD FULLTEXT tb_search (%s);" % (table, strfields))
+                    print "Indexes created succesfully!"
+            except:
+                raise RuntimeError("Some index creation failed!")
+            
+            
 
     def backwards(self, orm):
-        try:        
-            for table, fields in self.indexes.iteritems():
-                for field in fields:
-                    print 'Removing FULLTEXT INDEX on field "%s" of tables "%s"..' % (field, table)
-                    db.execute("ALTER TABLE %s DROP INDEX tb_search;" % (table, field))
-        except:
-            raise RuntimeError("Some index removal failed!")
-
-        print "Indexes removed succesfully!"    
+        for table, fields in self.indexes.iteritems():
+            strfields = ', '.join(fields)
+            try:        
+                print 'Removing FULLTEXT INDEX on field "%s" of tables "%s"..' % (strfields, table)
+                db.execute("ALTER TABLE %s DROP INDEX tb_search;" % table)
+            except Exception, e:
+                if '__cause__' in e.__dict__:
+                    if e.__cause__[0] == 1091:
+                        pass
+                    else:
+                        raise e
+            try:        
+                print 'Removing FULLTEXT INDEX on field "%s" of tables "%s"..' % (strfields, table)
+                db.execute("ALTER TABLE %s DROP INDEX %s;" % (table,fields[0]))
+            except Exception, e:
+                if '__cause__' in e.__dict__:
+                    if e.__cause__[0] == 1091:
+                        pass
+                    else:
+                        raise e
 
     models = {
         u'auth.group': {
