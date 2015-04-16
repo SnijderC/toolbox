@@ -8,8 +8,10 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                 span.icon-bar
                 span.icon-bar
             a.navbar-brand.tb-home(href="/", title="Startpagina",tabindex="0").font-icon.bigger
-            //-ul.nav.navbar-nav.no-collapse
-                
+            if page.data.nav_title
+                .navbar-text.hidden-lg.hidden-md
+                    {{ page.data.nav_title }}
+
         .collapse.navbar-collapse#bs-navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li.dropdown(role="search")#search_box

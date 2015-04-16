@@ -23,7 +23,11 @@ block content
                                 .col-sm-10.col-xs-12
                                     //- Link to /url_slug/item_slug/ e.g. /tools/tor/.
                                     h3
-                                        a(href="/{{item.url_slug}}/{{item.slug}}/")=item.title
+                                        a(href="/{{item.url_slug}}/{{item.slug}}/") 
+                                            if page.data.itemnr
+                                                {{page.data.itemnr}}: {{item.title}}
+                                            else
+                                                {{item.title}}
                                     if page.index
                                         each platform in item.platforms.all
                                             i.platform-indicator(class="tb-{{platform.slug}}")    

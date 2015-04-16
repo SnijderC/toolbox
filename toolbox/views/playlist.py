@@ -75,6 +75,8 @@ def playlist_item(request,playlist,item):
     page.data['playlist_href']  = "/playlist/%s/" % playlist
     page.index                  = False
     page.playlist               = True
+    page.data['itemnr']         = num
+    page.data['nav_title']      = "Stappenplan"
        
     return render_to_response(template, {"page":page})
     

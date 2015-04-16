@@ -1,15 +1,22 @@
 .playlist_nav
     if page.data.next or page.data.previous
         if page.data.previous
-            a(href="{{page.data.previous}}",title="Vorige item")
+            a(href="{{page.data.previous}}",title="Vorige item").pl-previous
+                span.tb-previous
+        else
+            a(href="#",title="Vorige item").pl-previous.disabled
                 span.tb-previous
         
-        a(href="{{page.data.playlist_href}}",title="Terug naar het overzicht")
+        a(href="{{page.data.playlist_href}}",title="Terug naar het overzicht").pl-index
             span.index_button.tb-beer
             
         if page.data.next
-            a(href="{{page.data.next}}",title="Volgende item")
+            a(href="{{page.data.next}}",title="Volgende item").pl-next
                 span.tb-next
+        else
+            a(href="#",title="Volgende item").pl-next.disabled
+                span.tb-next
+
     else
-        a(href="{{page.data.playlist_href}}1/",title="Eerste artikel")
+        a(href="{{page.data.playlist_href}}1/",title="Eerste artikel").pl-first
             span.tb-play
