@@ -7,40 +7,44 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            a.navbar-brand.tb-home(href="/", title="Startpagina").font-icon.bigger
+            a.navbar-brand.tb-home(href="/", title="Startpagina",tabindex="0").font-icon.bigger
             //-ul.nav.navbar-nav.no-collapse
                 
         .collapse.navbar-collapse#bs-navbar-collapse
-            form.navbar-right.search-form.col-sm-3.col-lg-2(role="search")
-               label.sr-only(for="search")=Zoeken
-               input#search.form-control(placeholder="Zoeken..",maxlength="40",autocomplete="off")
             ul.nav.navbar-nav.navbar-right
-                li
-                    a.tb-question(href="/doc/waarom/") Waarom
-                li
-                    a.tb-question(href="/faq/") FAQ
-                li
-                    a.tb-envelope(href="/doc/contact/") Contact
+                li.dropdown(role="search")#search_box
+                    label.sr-only(for="search")=Zoeken
+                    input#search.form-control(placeholder="Zoeken..",maxlength="40",autocomplete="off",tabindex="0",aria-expanded="false")
+                    .spinner.stopped
+                    ul.dropdown-menu.search-results
             ul.nav.navbar-nav
                 li.divider-vertical
 
                 li
-                    {% dictitem  page.data.nav.itemtypelinks 'adviezen' as href%}
-                    a.tb-info3(href="{{href}}") Advies
+                    {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
+                    a.tb-info3(href="{{href}}",tabindex="0") Advies
                 li
                     {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
-                    a.tb-wrench(href="{{href}}") Tools 
-                li
+                    a.tb-wrench(href="{{href}}",tabindex="0") Tools 
+                li.hidden-sm.hidden-xs
                     {% dictitem page.data.nav.itemtypelinks 'overzicht' as href%}
-                    a.tb-wrench(href="{{href}}") Overzicht
+                    a.tb-wrench(href="{{href}}",tabindex="0") Overzicht
                      
                 each mainnav in page.data.nav.navbar_items
                     li.dropdown
-                        a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{mainnav.icon}}",role="button",aria-expanded="false") 
+                        a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{mainnav.icon}}",role="button",aria-expanded="false",tabindex="0") 
                             {{mainnav.name}}
                             b.caret
                   
                         ul.dropdown-menu
                             each nav in mainnav.children
                                 li
-                                    a(href="{{nav.href}}",class="{{nav.icon}}")=nav.name
+                                    a(href="{{nav.href}}",class="{{nav.icon}}",tabindex="0")=nav.name 
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a.tb-question(href="/doc/waarom/",tabindex="0") Waarom
+                li
+                    a.tb-question(href="/faq/",tabindex="0") FAQ
+                li
+                    a.tb-envelope(href="/doc/contact/",tabindex="0") Contact
+                

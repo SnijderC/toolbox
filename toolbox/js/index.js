@@ -4,123 +4,158 @@
 // See README.MD for more info on this (see the section about Grunt).
 */
 
-/*
-// AJAX Search functionality
-// -------------------------
-// Uses Typeahead.js and Bloodhound
-// Typeahead is really nice for a single datasource..
-// Toolbox has a single datasource.. 
-// Typeahead is not nice for Toolbox.
-// 
-// The problem is, it seems to be impossible make headers for categories without supplying them all as datasources.
-// The solution is an unsemantic code soup according to the developers. Their suggestion is to make a new hound model
-// for each source, the a new Typeahead for each source too, static repeating code... I don't like code soup.
-// So the below is more complex than it can be but there are less lines of code that do more.
-// In the array just below you can define sources, the Bloodhounds and Typeaheads will be dynamically generated.
-*/
-
-// Create search categories array..
-var arrSearchCategories = Array(
-    {
-        name    : 'adviezen',
-        strclass: 'tb-adviezen',
-        title   : 'Adviezen'
-    },
-    {
-        name    : 'tools',
-        strclass: 'tb-tools',
-        title   : 'Tools'
-    },
-    {
-        name    : 'categorie',
-        strclass: 'tb-categorie',
-        title   : 'Categorie'
-    },
-    {
-        name    : 'platforms',
-        strclass: 'tb-platforms',
-        title   : 'Platformen'
-    },
-        {
-        name    : 'playlist',
-        strclass: 'tb-rocket',
-        title   : 'Stappenplan'
-    },
-    {
-        name    : 'messages',
-        strclass: '',
-        title   : 'Meldingen'
-    }
-);
-
-var hounds      = new Object();
-var typeaheads  = Array();
-
-var CreateSearch = function()
+var suggest_box
+var search_input
+var spin_box
+var resetSearch  = function(clear)
 {
-    // loop through the categories
-    $.each(arrSearchCategories, function(i,arr)
+    if (clear === true)
     {
-        // make some hounds..
-        hounds[arr.name] = new Bloodhound(
+        search_input.val("");
+    }
+    suggest_box.empty();
+    lastset = {}
+    suggest_box.parent().removeClass('open');
+    spinner(false);
+}
+var spinner = function(spinning)
+{
+    if (spinning===true)
+    {
+        $(spin_box).removeClass("stopped").addClass("spinning");
+    }
+    else if(spinning===false)
+    {
+        $(spin_box).removeClass("spinning").addClass("stopped");
+    }
+}
+var CreateSearch = function(input)
+{
+    settings        = {'minLength':3};
+    cache           = [];
+    lastset         = {};
+    suggest_box     = input.siblings("ul.search-results");
+    search_input    = input
+    spin_box        = input.siblings(".spinner");
+    var timeout;
+    
+    // loop through the categories
+    var fetch = function(query,callback)
+    {
+        if (query in cache)
+        {   
+            callback(cache[query]);
+        } 
+        else 
         {
-            remote  : 
+            $.get("/search/"+encodeURIComponent(query)+"/")
+            .done(function(data) 
+            {   
+                cache[query] = data;
+                callback(data,query);
+            })
+            .fail(function() 
             {
-                url: '/search/%QUERY/',
-                filter: 
-                    function (data) 
-                    {
-                        return data[arr.name];
-                    }
-            },
-            datumTokenizer: function(d) 
+                callback({'errors':
+                            {
+                                'icon':'tb-warning',
+                                'title':'Er ging helaas iets mis..',
+                                'suggestions':
+                                [{
+                                    'href':'/doc/contact/',
+                                    'title':'Klik hier om een probleem te melden.',
+                                    'icon':'tb-warning'
+                                }]
+                            }},query);
+            })
+            .always(function() 
             {
-                return Bloodhound.tokenizers.whitespace(d.val);
-            },
-            queryTokenizer: Bloodhound.tokenizers.whitespace
-        });
-        
-        // Init hounds..
-        hounds[arr.name].initialize();
-        
-        // Make some typeaheads
-        typeaheads.push( 
+                spinner(false);
+            });
+        }
+    };
+    
+    var parseData = function(data, query)
+    {
+        if (data === lastset)
         {
-            name        : arr.name,
-            source      : hounds[arr.name].ttAdapter(),
-            templates   :
+            return false;            
+        }
+        lastset = data
+        suggest_box.empty();
+        results = 0;
+        $.each(data,function()
+        {
+            if (this.suggestions.length > 0)
             {
-               header       :   function() // Template for headers in the searchresult dropdown..
-                                {
-                                    return '<p class="dropdown-header"><i class="'+arr.strclass+'"></i>'+arr.title+'</p>';
-                                },
-               suggestion   :   function(item) // Template for the searchresults.
-                                {
-                                    return '<a href="'+item.href+'"><p><i class="'+item.icon+'"></i>'+item.title+'</p></a>';
-                                }
+                $(suggest_box).append(
+                    $("<li>")
+                        .addClass("dropdown-header")
+                        .addClass(this.icon)
+                        .attr('role',"presentation")
+                        .html(this.title)
+                );
+                $.each(this.suggestions,function()
+                {
+                    var re = RegExp("("+query+")",'gi');
+                    $(suggest_box).append(
+                        $("<li>").append(
+                            $("<a>")
+                                .html(this.title.replace(re,"<strong>$1</strong>"))
+                                .addClass(this.icon)
+                                .attr('href',this.href)
+                                .attr('tabindex','0')
+                                .addClass('suggestion')
+                        )
+                    );
+                    results++;
+                });
             }
-        })
+        });
+        if (results === 0)
+        {
+            resetSearch();
+        }
+        else
+        {
+            input.dropdown('toggle');
+        }
+    }
+    
+    input.keyup(function(key)
+    {   
+        if (key.keyCode == 27)
+        {
+            resetSearch(true);
+        }
+        else
+        {
+            query = $(this).val();
+            if(query.length >= settings.minLength)
+            {
+                spinner(true);
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                     fetch(query,parseData);
+                }, 300);
+                
+            }
+            else
+            {
+                resetSearch();
+            }
+        }
     });
     
-    // Init the typeaheads..
-    $("#search").typeahead(
-        {
-            minLength: 3,
-            highlight: true,
-            hint     : false
-        },
-        typeaheads
-    )
-    // Make sure the dropdown is visible in repsonisve mode..
-    .on('typeahead:opened', function()
+    suggest_box.keyup(function(key)
     {
-        $(".navbar-collapse.in").css('overflow-y','visible');
-    })
-    .on('typeahead:closed', function()
-    {
-        $(".navbar-collapse.in").css('overflow-y','auto');
+       if (key.keyCode == 27)
+       {
+           resetSearch();
+       } 
     });
 }
+
 
 var SetPopovers = function(elements)
 {
@@ -188,12 +223,18 @@ var KillAllExcept = function(id)
 $(document).ready(function()
 {    
     // Init the typeaheads..
-    CreateSearch();
+    CreateSearch($("#search"));
     // Initialise Bootstrap pop-overs 
     SetPopovers("body");
     
-    var hidePopovers = function (e) 
+    var resetElements = function (e) 
     {
+        // Hide search dropdown
+        if (e.target.id !=="search" && !$("#search").siblings(".search-results").has(e.target).length)
+        {
+            resetSearch(true)
+        }
+        // Hide popovers..
         if (e.target.nodeName!="ABBR" && !(e.target.nodeName==="SPAN" && $(e.target).attr('data-toggle')==="popover"))
         {
             var none_of_these=true;
@@ -212,8 +253,8 @@ $(document).ready(function()
         }
     }
     
-    $('body').on('touchend', hidePopovers);
-    $('body').on('click', hidePopovers);
+    $('body').on('touchend', resetElements);
+    $('body').on('click', resetElements);
     
 })
 

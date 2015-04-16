@@ -5271,69 +5271,42 @@ a.list-group-item-danger.active:focus {
   top: 4px;
   margin: 0 14px 0 -40px;
 }
-.twitter-typeahead {
-  width: 100%;
+#search_box {
+  margin-top: 8px;
 }
-.twitter-typeahead *:focus {
+@media (max-width: 768px) {
+  #search_box {
+    max-width: 100% !important;
+    margin: 0 10px 0 10px;
+  }
+}
+#search_box *:focus {
   outline: none;
   border-color: #999999;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.twitter-typeahead input {
+#search_box input {
   border-radius: 20px;
   padding: 4px 28px 0 14px;
 }
-.twitter-typeahead:after {
-  position: absolute;
-  display: inline;
-  float: right;
-  font-family: 'Toolbox';
-  speak: none;
-  content: "\e614";
-  right: 10px;
-  top: 7px;
-}
-.tt-dropdown-menu {
-  min-width: 100%;
-  padding: 0 0 8px 0;
-  background-color: #fff;
+#search_box .search-results {
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 8px 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 768px) {
-  .tt-dropdown-menu {
+  #search_box .search-results {
     max-width: 100%;
   }
 }
-.tt-dropdown-menu .tt-suggestion {
-  padding: 0;
-  margin: 0;
-  line-height: 1.42857143;
-}
-.tt-dropdown-menu .tt-suggestion a,
-.tt-dropdown-menu .tt-suggestion a:hover,
-.tt-dropdown-menu .tt-suggestion a:active {
-  text-decoration: none;
-  color: #333333;
-}
-.tt-dropdown-menu .tt-suggestion.tt-cursor {
-  background-color: #eeeeee;
-}
-.tt-dropdown-menu .tt-suggestion strong {
-  background-color: #5aa500;
-  color: #fff;
-}
-.tt-dropdown-menu .tt-suggestion p {
-  display: inline-block;
-  max-width: 100%;
-  min-width: 100%;
-  margin: 0;
-  padding: 3px 20px;
+#search_box .search-results a.suggestion {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+#search_box .search-results a.suggestion strong {
+  background-color: #5aa500;
+  color: #fff;
 }
 .btn {
   display: inline-block;
@@ -5751,10 +5724,6 @@ nav.navbar {
 nav.navbar .navbar-brand {
   padding-right: 12px;
 }
-nav.navbar .search-form {
-  margin-top: 8px;
-  padding-left: 0;
-}
 nav.navbar .no-collapse li,
 nav.navbar .no-collapse li a {
   text-align: center;
@@ -5776,8 +5745,10 @@ nav.navbar .divider-vertical {
     padding-right: 2px;
   }
 }
-li.dropdown-header,
-p.dropdown-header {
+ul.dropdown-menu {
+  padding-top: 0;
+}
+li.dropdown-header {
   background-image: -webkit-linear-gradient(top, #333333 0%, #444444 100%);
   background-image: -o-linear-gradient(top, #333333 0%, #444444 100%);
   background-image: linear-gradient(to bottom, #333333 0%, #444444 100%);
@@ -5919,6 +5890,61 @@ p.dropdown-header {
   color: #fff;
   border-color: #000;
 }
+.spinner {
+  position: absolute;
+  float: right;
+  right: 18px;
+  top: 8px;
+  z-index: 9999;
+}
+.spinner.spinning {
+  height: 20px;
+  width: 20px;
+  -webkit-animation: rotation .6s infinite linear;
+  -moz-animation: rotation .6s infinite linear;
+  -o-animation: rotation .6s infinite linear;
+  animation: rotation .6s infinite linear;
+  border: 3px solid rgba(90, 165, 0, 0.3);
+  border-bottom: 3px solid rgba(90, 165, 0, 0.9);
+  border-radius: 100%;
+}
+.spinner.stopped:after {
+  font-family: 'Toolbox';
+  speak: none;
+  content: "\e614";
+}
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 body h1,
 body h2,
 body h3 {
@@ -5946,24 +5972,19 @@ body .btn {
 #header {
   background: url("/static/media/drape.png") repeat-x;
   height: 70px;
-}
-#heading1,
-#heading2 {
-  color: #fff;
-  text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
-}
-#heading1 h1,
-#heading2 h1 {
-  padding: 50px 0 0 6%;
-}
-#heading2 {
-  padding: 100px 0 0 80%;
+  padding: 50px;
 }
 #header-img {
   background: #000000 url("/static/media/bg_tb.jpg");
   height: 400px;
   background-position: center center;
   background-size: auto 550px;
+  color: #fff;
+  text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
+  padding: 40px 40px 40px 80px;
+}
+#header-img .indent {
+  margin: 30px 0 0 50px;
 }
 #main {
   background: #fff;
