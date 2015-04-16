@@ -5941,6 +5941,42 @@ li.dropdown-header {
     transform: rotate(359deg);
   }
 }
+.nav-tabs {
+  border-bottom: 0;
+}
+.nav-tabs > li > a {
+  top: 3px;
+  background-color: rgba(90, 165, 0, 0.2);
+  border-bottom: 1px solid #5aa500;
+  border-color: #5aa500;
+  z-index: 50;
+  margin-right: -4px;
+  padding: 8px 12px 6px 12px;
+}
+.nav-tabs > li > a:active,
+.nav-tabs > li > a:focus,
+.nav-tabs > li > a:hover {
+  border-color: #5aa500;
+  background-color: rgba(90, 165, 0, 0.1);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:active,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  top: 0px;
+  border-color: #5aa500;
+  background-color: #fff;
+  border-bottom-color: #fff;
+  z-index: 70;
+}
+.tab-pane {
+  position: relative;
+  z-index: 60;
+  border: 1px solid #5aa500;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #fff;
+}
 body h1,
 body h2,
 body h3 {
@@ -5954,16 +5990,6 @@ body h6 {
 body .btn {
   font: 11pt/13pt 'DINWeb-Bold', Arial, sans-serif;
   margin: 4px 4px 4px 4px;
-}
-.tab-pane {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  border-radius: 0px 0px 10px 10px;
-  padding: 10px;
-}
-.nav-tabs {
-  margin-bottom: 0;
 }
 #header {
   background: url("/static/media/drape.png") repeat-x;

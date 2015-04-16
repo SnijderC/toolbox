@@ -1,0 +1,47 @@
+@tb-tab-base-color  : @bof-color;
+@tb-tab-bg          : @bof-color;
+@tb-tab-border-color: @bof-color;
+
+.nav-tabs
+{
+    border-bottom               : 0;
+    > li
+    {
+        > a
+        {
+            top                 : 3px;
+            background-color    : fade(@tb-tab-bg,20%);
+            border-bottom       : 1px solid @tb-tab-border-color;
+            border-color        : @tb-tab-border-color;
+            z-index             : 50;
+            margin-right        : -4px;
+            padding             : 8px 12px 6px 12px;
+        }
+        > a:active, > a:focus, > a:hover
+        {
+            border-color        : @tb-tab-border-color;
+            background-color    : fade(@tb-tab-bg,10%);
+        }
+        &.active
+        {
+            > a, > a:active, > a:focus, > a:hover
+            {
+                top                 : 0px;
+                border-color        : @tb-tab-border-color;
+                background-color    : #fff;
+                border-bottom-color : #fff;
+                z-index             : 70;
+            }
+        }
+    }
+}
+.tab-pane 
+{
+    position                    : relative;
+    z-index                     : 60;
+    border                      : 1px solid @tb-tab-border-color;
+    padding                     : 10px;
+    border-radius               : 7px;
+    background-color            : #fff;
+}
+
