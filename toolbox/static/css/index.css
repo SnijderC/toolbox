@@ -5741,6 +5741,7 @@ nav.navbar .divider-vertical {
 }
 ul.dropdown-menu {
   padding-top: 0;
+  min-width: 100%;
 }
 li.dropdown-header {
   background-image: -webkit-linear-gradient(top, #333333 0%, #444444 100%);
