@@ -3,13 +3,43 @@ meta(charset="utf-8")
 meta(http-equiv="X-UA-Compatible", content="IE=edge")
 meta(name="viewport", content="width=device-width, initial-scale=1")
 link(rel="stylesheet", href="/static/css/index.css")
-link(rel="shortcut icon" href="/static/media/favicon.ico")
+link(rel="shortcut icon", href="/static/media/favicon.ico")
 script(src="/static/js/index.js")
 if page.debug
     script(src="http://localhost:35729/livereload.js?snipver=1")
-link(rel="apple-touch-icon", href="/static/media/touch-icon-iphone-precomposed.png")
-link(rel="apple-touch-icon", sizes="76x76", href="/static/media/touch-icon-ipad-precomposed.png")
-link(rel="apple-touch-icon", sizes="120x120", href="/static/media/touch-icon-iphone-retina-precomposed.png")
-link(rel="apple-touch-icon", sizes="152x152", href="/static/media/touch-icon-ipad-retina-precomposed.png")
-meta(name="apple-mobile-web-app-capable", content="yes")
-meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+
+//-- Generic metatags
+meta(name="description", content="{{page.meta.description}}")
+//-- Schema.org markup for Google+
+meta(itemprop="name", content="{{page.meta.title}}")
+meta(itemprop="description", content="{{page.meta.description}}")
+if page.meta.imagelink
+    meta(itemprop="image", content="{{page.meta.imagelink}}")
+//-- Twitter Card data
+meta(name="twitter:card", content="summary")
+meta(name="twitter:site", content="{{page.meta.twitter.publisher}}")
+meta(name="twitter:title", content="{{page.meta.title}}")
+meta(name="twitter:description", content="{{page.meta.description}}")
+meta(name="twitter:creator", content="{{page.meta.twitter.author}}")
+if page.meta.imagelink
+    meta(name="twitter:image", content="{{page.meta.imagelink}}")
+//-- Open Graph data
+meta(property="og:title", content="{{page.meta.title}}")
+meta(property="og:type", content="{{page.meta.type}}")
+meta(property="og:url", content="{{page.meta.permalink}}")
+if page.meta.imagelink
+    meta(property="og:image:secure_url", content="{{page.meta.imagelink}}")
+meta(property="og:description", content="{{page.meta.description}}")
+meta(property="og:site_name", content="{{page.meta.sitename}}")
+meta(property="article:published_time", content="{{page.meta.publishedtime}}")
+meta(property="article:modified_time", content="{{page.meta.modifiedtime}}")
+meta(property="article:section", content="{{page.meta.section}}")
+meta(property="og:locale", content="{{page.meta.locale}}")
+if page.meta.author
+    meta(property="article:author", content="{{page.meta.author}}")
+
+if page.meta.articletags
+    each tag in page.meta.articletags
+        meta(property="article:tag", content="{{tag}}")
+
+meta(property="fb:admins", content="{{page.meta.facebook.adminid}}")

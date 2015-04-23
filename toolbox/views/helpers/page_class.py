@@ -1,4 +1,5 @@
 import settings
+from copy import deepcopy
 
 class Page(object):
     """
@@ -14,3 +15,4 @@ class Page(object):
         self.title = ""
         self.show_filters = False
         self.playlist = False
+        self.meta = deepcopy(settings.meta_tags)

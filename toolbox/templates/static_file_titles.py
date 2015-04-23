@@ -15,4 +15,6 @@ titles = {
             'privacy-policy' : "Privacy policy | %s",
             'markdown'       : "Markdown documentatie | %s",
             'credits'        : "Credits | %s",
+            'waarom'         : "Waarom? | %s",
+            'contact'        : "Contact | %s",
          }

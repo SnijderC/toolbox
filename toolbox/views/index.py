@@ -4,6 +4,7 @@ from django.template.loader import get_template
 import re
 from helpers.page_class import Page
 from helpers.navigation import Navigation
+from helpers.metatags import set_metatags
 from toolbox.models import Tool, Advice, Manual
 from django.db.models import Q
 from django.db import OperationalError
@@ -47,6 +48,10 @@ def indexpage(request,slugs):
         if item_slug and item_arg:
             table_objects[key] = table_objects[key].objects.filter(slug=item_arg)
             page.index = False
+            
+            # Set metatags
+            page.meta = set_metatags(page.meta, table_objects[key][0])
+                
         else:
             table_objects[key] = table_objects[key].objects.order_by('-date').order_by('-feature_score').defer("intro_md","content_md")
             for strslug in filters:
@@ -55,6 +60,10 @@ def indexpage(request,slugs):
                         if re.match("^[a-zA-Z0-9\-\_]*$",strslug):
                             kwargs = { "%s__id" % strslug : nav[strslug][strarg]['id'] } 
                             table_objects[key] = table_objects[key].filter(**kwargs)
+            
+            page.meta['tweet_article'] = settings.tweet_templates['index']
+
+            page.meta['permalink'] = settings.meta_templates['permalink'] % "/%s" % sluglistrev[item_slug]['slug']
 
         table_objects[key] = table_objects[key].exclude(published=False)
 
@@ -76,11 +85,12 @@ def indexpage(request,slugs):
     page.data['navlinks']       = nav.categorieslinks
     page.data['request']        = request
     page.data['filters']        = nav.filter_dropdowns
-    page.data['debug_str']      = ""
     page.data['errorpage']      = False
     page.data['itemslug']       = sluglistrev[item_slug]['slug']
-    #page.data['debug']          = ''
     page.show_filters           = page.index
+
+    #page.data['debug']          = page.meta
+
     if nav.show_filters:
         page.data['filterclass']= 'in'
         page.data['ariaexpanded'] = "true"

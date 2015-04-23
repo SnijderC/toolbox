@@ -1,8 +1,12 @@
 .row
-    .col-lg-7.col-md-8.col-sm-9.col-sm-offset-1.col-xs-12.filterbar
-        a.filter-toggle(data-toggle="collapse",data-target="#collapseFilters",aria-expanded="{{page.data.ariaexpanded}}",aria-controls="collapseFilters", href="#")
+    .col-xs-4.col-md-5.col-md-offset-1
+        a.btn.btn-default.filter-toggle(data-toggle="collapse",data-target="#collapseFilters",aria-expanded="{{page.data.ariaexpanded}}",aria-controls="collapseFilters", href="#")
             i.tb-filter
             |Filters..
+    .col-xs-8.col-md-5.col-sm-8.social
+        include includes/social
+.row.filterbar
+    .col-xs-12.col-md-10.col-md-offset-1
         ul.nav.nav-pills.nav-justified.collapse(class="{{page.data.filterclass}}")#collapseFilters.well
             for filter in page.data.filters
                 li(role="presentation").dropdown

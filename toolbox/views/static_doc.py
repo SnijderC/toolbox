@@ -35,6 +35,7 @@ def doc(request,filename,strformat):
     nav                 = Navigation("/")
     page_filters        = nav.process_slugs()
     page                = Page()
+    page.index          = False
     page.data['nav']    = nav
     try:
         filename = filename.lower()

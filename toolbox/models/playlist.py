@@ -118,6 +118,21 @@ class Playlist(GenericFields):
         """    
         return self.date.strftime('%d-%m-%Y om %H:%M')
     
+    def i_am(self):
+        return "playlist"
+    
+    def url_slug(self):
+        """
+            Return the item type slug of the model.
+        """
+        return "playlist"
+    
+    def has_image(self):
+        """
+            Return true if there's an image related, false if not.
+        """
+        return False 
+    
     class Meta:
         """
             Change display of model in Django admin

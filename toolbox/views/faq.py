@@ -13,11 +13,14 @@ def faq(request):
     print "dafaq!"
     # placeholder for page data
     page = Page()
+    page.index = False
     # nav provides Navbar, Sitemap, selected Filters, processing of slugs etc.
     nav = Navigation('')
     # Get reverse slugs from nav.
     sluglistrev = nav.sluglistrev
-
+    
+    page.meta['section'] = "FAQ"
+    
     # Set the template to the playlist template
     template = "faq.jade"
     try:

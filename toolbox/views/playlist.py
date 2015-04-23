@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from helpers.page_class import Page
 from helpers.navigation import Navigation
+from helpers.metatags import set_metatags
 from toolbox.models import Advice, Playlist, PlaylistOrder
 from django.db import OperationalError
 from django.http import Http404
@@ -12,8 +13,10 @@ import settings
 def playlist(request,playlist):
     # placeholder for page data
     page = Page()
+    page.index = False
     # nav provides Navbar, Sitemap, selected Filters, processing of slugs etc.
     nav = Navigation('')
+    
     # Get reverse slugs from nav.
     sluglistrev = nav.sluglistrev
 
@@ -25,7 +28,8 @@ def playlist(request,playlist):
         playlist_order_obj = PlaylistOrder.objects.exclude(playlist__published=False).filter(playlist__slug=playlist).order_by('number')
     except Playlist.DoesNotExist:
         raise Http404
-
+    
+    page.meta = set_metatags(page.meta,playlist_obj)
     page.title = "%s | %s" % (playlist_obj.title,settings.title)
     page.data['nav']            = nav
     page.data['navlinks']       = nav.categorieslinks
@@ -56,6 +60,8 @@ def playlist_item(request,playlist,item):
     except IndexError:
         raise Http404
     
+    page.meta = set_metatags(page.meta, advice)
+    
     num = 0    
     for i, item in enumerate(playlist_obj):
         if item.advice.id == advice.id:
@@ -75,7 +81,7 @@ def playlist_item(request,playlist,item):
     page.data['playlist_href']  = "/playlist/%s/" % playlist
     page.index                  = False
     page.playlist               = True
-    page.data['itemnr']         = num
+    page.data['itemnr']         = num+1
     page.data['nav_title']      = "Stappenplan"
        
     return render_to_response(template, {"page":page})

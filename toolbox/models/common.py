@@ -42,8 +42,13 @@ class CommonFields(GenericFields):
 
     date        = models.DateTimeField (  
                                         verbose_name    = 'Laatste update'
-                                     ) 
-                                           
+                                     )
+    
+    creationdate= models.DateTimeField (  
+                                        verbose_name    = 'Toegevoegd',
+                                        auto_now_add    = True
+                                     )
+                                       
     user        = models.ForeignKey  (
                                         User,
                                         verbose_name    = 'Vrijwilliger'
@@ -179,7 +184,19 @@ class CommonFields(GenericFields):
         """
             Format the date and time nicely
         """    
-        return self.date.strftime('%d-%m-%Y om %H:%M')
+        return self.creationdate.strftime('%d-%m-%Y om %H:%M')
+    
+    def meta_datemodified(self):
+        """
+            Format the date and time nicely
+        """    
+        return self.date.strftime('%Y-%d-m %H:%M:%S')
+    
+    def meta_date(self):
+        """
+            Format the date and time nicely
+        """    
+        return self.creationdate.strftime('%Y-%d-m %H:%M:%S')
     
     class Meta:
         """

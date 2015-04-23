@@ -5867,6 +5867,12 @@ li.dropdown-header {
   color: #ccc;
   font-size: 26px;
 }
+.playlist_nav a.disabled {
+  cursor: not-allowed;
+}
+.playlist_nav a.disabled span:before {
+  color: #444;
+}
 .playlist_nav a.pl-previous {
   float: left;
   margin-left: 33px;
@@ -5992,6 +5998,9 @@ body .btn {
   font: 11pt/13pt 'DINWeb-Bold', Arial, sans-serif;
   margin: 4px 4px 4px 4px;
 }
+body .btn-group .btn {
+  margin: 4px 0 4px 0;
+}
 #header {
   background: url("/static/media/drape.png") repeat-x;
   height: 70px;
@@ -6028,8 +6037,26 @@ body .btn {
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 }
+#main .filter-toggle {
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+#main .filter-toggle:after,
+#main .filter-toggle:before {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+#main .filter-toggle[aria-expanded="false"]:after {
+  content: "\25BC";
+  font-size: 80%;
+}
+#main .filter-toggle[aria-expanded="true"]:after {
+  content: "\25B2";
+  font-size: 80%;
+}
 #main .filterbar {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 #main .filterbar .btn-default {
   padding: 8px 14px 8px 14px;
@@ -6046,31 +6073,39 @@ body .btn {
   top: 1px;
   margin-bottom: 0;
 }
-#main .filterbar .filter-toggle {
-  color: #555;
-  text-decoration: none;
-}
-#main .filterbar .filter-toggle:after,
-#main .filterbar .filter-toggle:before {
-  vertical-align: middle;
-  margin-left: 4px;
-}
-#main .filterbar .filter-toggle[aria-expanded="false"]:after {
-  content: "\25BC";
-  font-size: 80%;
-}
-#main .filterbar .filter-toggle[aria-expanded="true"]:after {
-  content: "\25B2";
-  font-size: 80%;
-}
 #main .filterbar .well {
   padding: 5px 5px 8px 5px;
+  margin-bottom: 0;
 }
 #main .panel-primary .panel-heading h3 a {
   color: #fff;
 }
 #main .panel-heading h3 {
   margin: 8px 0 8px 4px;
+}
+@media (max-width: 768px) {
+  #main .panel-heading .btn-group button,
+  #main .panel-heading .btn-group ul,
+  #main .panel-heading .btn-visit {
+    width: 90%;
+    margin: -5px 5% 0 5%;
+  }
+  #main .panel-heading .btn-group button,
+  #main .panel-heading .btn-visit {
+    display: block;
+    padding: 10px;
+    margin: 15px 5% 10px 5%;
+  }
+}
+@media (min-width: 768px) {
+  #main .panel-heading .btn-group,
+  #main .panel-heading .btn-visit {
+    margin: 20px 10px 0 0;
+    text-align: left;
+  }
+  #main .panel-heading .btn-visit:active {
+    margin: 20px 10px 10px 0 !important;
+  }
 }
 #main .intro,
 #main .lead {
@@ -6152,6 +6187,29 @@ body .btn {
     line-heigth: 19pt;
   }
 }
+#main .social {
+  margin-bottom: 10px;
+}
+#main .social .btn {
+  vertical-align: middle;
+}
+#main .social .btn:before {
+  vertical-align: middle;
+}
+#main .social .btn.tb-facebook:hover,
+#main .social .btn.tb-facebook:active,
+#main .social .btn.tb-facebook:focus {
+  color: #fff;
+  background: #4c66a4;
+  border-color: #314169;
+}
+#main .social .btn.tb-twitter:hover,
+#main .social .btn.tb-twitter:active,
+#main .social .btn.tb-twitter:focus {
+  color: #fff;
+  background: #4099FF;
+  border-color: #006ce8;
+}
 #main .alternatives img {
   max-width: 64px;
   margin: 7px 10px 5px 7px;
@@ -6178,32 +6236,11 @@ body .btn {
   cursor: help;
 }
 @media (min-width: 768px) {
-  #main .btn-group,
-  #main .btn-visit {
-    margin: 20px 10px 0 0;
-    float: right;
-    text-align: left;
-  }
-  #main .btn-visit:active {
-    margin: 20px 10px 10px 0 !important;
-  }
   #main .trust {
     text-align: right;
   }
 }
 @media (max-width: 768px) {
-  #main .btn-group button,
-  #main .btn-group ul,
-  #main .btn-visit {
-    width: 90%;
-    margin: -5px 5% 0 5%;
-  }
-  #main .btn-group button,
-  #main .btn-visit {
-    display: block;
-    padding: 10px;
-    margin: 15px 5% 10px 5%;
-  }
   #main .trust {
     text-align: left;
     margin-left: -15px;

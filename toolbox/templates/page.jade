@@ -166,7 +166,25 @@ block content
                                                     for con in item.cons.all
                                                         li.list-group-item.list-group-item-danger(class="{{con.icon}}")
                                                             {{ con.title }}
-
+                            br
+                            .panel-footer
+                                .row
+                                    .col-xs-12.social
+                                        include includes/social
+                                 
+                                .row
+                                    .col-xs-6
+                                        | Bijdrage: 
+                                        br.hidden-md.hidden-lg
+                                        if item.credit
+                                            {{ item.credit }}
+                                        else
+                                            {{ item.user.first_name }} {{ item.user.last_name }}
+                                    .col-xs-6.text-right                                  
+                                        |Gepubliceerd:
+                                        br.hidden-md.hidden-lg
+                                        {{ item.dateformatted }}               
+                                            
                             //- List of alternatives in gray/white
                             if item.alternative.count > 0
                                 .panel-body.alternatives
@@ -194,10 +212,9 @@ block content
                                                                 each platform in alt_tool.platforms.all
                                                                     i.platform-indicator(class="tb-{{platform.slug}}")
                             if page.playlist == False and item.i_am == "advice" and item.related.count > 0
-                                hr
                                 .panel-body.alternatives
                                     h4 Gerelateerde {{item.url_slug}}
-                                    div.list-group
+                                    .list-group
                                         //- Loop though the list of related advisory..
                                         for related in item.related.all
                                             if related.published
@@ -212,20 +229,6 @@ block content
                                                                 {{ related.intro_no_url }}
                                                                 //- each platform in related.platforms.all
                                                                     i.platform-indicator(class="tb-{{platform.slug}}")
-                        if page.index == False 
-                            .panel-footer
-                                .row
-                                    .col-xs-6
-                                        | Bijdrage: 
-                                        br.hidden-md.hidden-lg
-                                        if item.credit
-                                            {{ item.credit }}
-                                        else
-                                            {{ item.user.first_name }} {{ item.user.last_name }}
-                                    .col-xs-6.text-right                                  
-                                        |Gepubliceerd:
-                                        br.hidden-md.hidden-lg
-                                        {{ item.dateformatted }}
                 //- Pagination, functionality not yet required => Need to set page.data.previouslink and page.data.nextlink!
                     if page.data.paginator.num_pages > 1
                         .row

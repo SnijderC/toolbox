@@ -35,8 +35,8 @@ block content
                                                         span.badge.time.tb-clock=item.advice.time_formatted                                                
                                                     {{ item.number }}. {{ item.advice.title }}
                         .panel-footer
-                            .row
-                                .col-xs-6
-                                    
-                                .col-xs-6.text-right                                  
-
+                            .row.social
+                                .col-xs-12
+                                    .btn-group.pull-right
+                                        a.btn.btn-default.tb-twitter(target="_blank",href="http://twitter.com/intent/tweet?url={{page.meta.permalink|urlencode}}&text={{page.meta.tweet_article|urlencode}}") Tweet
+                                        a.btn.btn-default.tb-facebook(target="_blank",href="https://www.facebook.com/sharer/sharer.php?u={{page.meta.permalink|urlencode}}&t={{item.title|urlencode}}") Share

@@ -41,6 +41,10 @@ body
         font        : 11pt/13pt @font-family-sans-serif-bold;
         margin      : 4px 4px 4px 4px;
     }
+    .btn-group .btn
+    {
+        margin      : 4px 0 4px 0;
+    }
 }
 
 // This is the header that contains the green blocks accross the 
@@ -60,9 +64,39 @@ body
     padding-bottom          : 80px; 
 
     
+    .filter-toggle
+    {
+
+        color               : #555;
+        text-decoration     : none;
+        margin-bottom       : 10px;
+        &:after, &:before
+        {
+            
+            vertical-align  : middle;
+            margin-left     : 4px;
+        }
+        &[aria-expanded="false"]
+        {
+            &:after
+            {
+                content     : "\25BC";    
+                font-size   : 80%;
+            }
+        }
+        &[aria-expanded="true"]
+        {
+            &:after
+            {
+                content     : "\25B2";    
+                font-size   : 80%;
+                
+            }
+        }
+    }
     .filterbar
     {
-        padding-bottom          : 10px;
+        padding-bottom          : 15px;
         .btn-default
         {
             padding             : 8px 14px 8px 14px;
@@ -75,39 +109,10 @@ body
                 margin-bottom   : 0;    
             }
         }
-        .filter-toggle
-        {
-
-            color               : #555;
-            text-decoration     : none;
-            
-            &:after, &:before
-            {
-                
-                vertical-align  : middle;
-                margin-left     : 4px;
-            }
-            &[aria-expanded="false"]
-            {
-                &:after
-                {
-                    content     : "\25BC";    
-                    font-size   : 80%;
-                }
-            }
-            &[aria-expanded="true"]
-            {
-                &:after
-                {
-                    content     : "\25B2";    
-                    font-size   : 80%;
-                    
-                }
-            }
-        }
         .well
         {
             padding         : 5px 5px 8px 5px;
+            margin-bottom   : 0;
         }
     }
     .panel-primary
@@ -127,6 +132,32 @@ body
         h3
         {
             margin      : 8px 0 8px 4px;
+        }
+        @media (max-width: @screen-sm-min)
+        {
+            .btn-group button, .btn-group ul, .btn-visit
+            {
+                width             : 90%;
+                margin            : -5px 5% 0 5%;
+            }
+            .btn-group button, .btn-visit
+            {
+                display           : block;
+                padding           : 10px;
+                margin            : 15px 5% 10px 5%;
+            }
+        }
+        @media (min-width: @screen-sm-min)
+        {
+            .btn-group, .btn-visit
+            {
+                margin         : 20px 10px 0 0;
+                text-align     : left;        
+            }
+            .btn-visit:active
+            {
+                margin         : 20px 10px 10px 0 !important;
+            }
         }
     }
     
@@ -232,8 +263,7 @@ body
                 }
             }  
         }
-    }
-        
+    }   
     // Slightly different style for different screensizes..
     // The Bootstrap default is too dramatic..
     @media screen and (min-width: @screen-sm-min) 
@@ -249,6 +279,41 @@ body
         {
             font-size   : 14pt;
             line-heigth : 19pt;
+        }
+    }
+    .social
+    {
+        margin-bottom               : 10px;
+        .btn
+        {                           
+            //background              : #eee;
+            //color                   : #333;
+            //border-color            : #ccc;
+            vertical-align          : middle;
+            &:before
+            {
+                vertical-align          : middle;
+            }
+            &.tb-facebook
+            {
+                &:hover, &:active, &:focus
+                {
+                    color           : #fff;
+                    background      : #4c66a4;
+                    border-color    : darken(#4c66a4,17%);
+                }
+            }
+            &.tb-twitter
+            {                
+                &:hover, &:active, &:focus
+                {
+                    color           : #fff;
+                    background      : #4099FF;
+                    border-color    : darken(#4099FF,17%);
+
+                }
+            }
+            
         }
     }
     // This is additional styling to Bootstrap's list-groups.
@@ -290,17 +355,6 @@ body
     // more precisely place the download links..
     @media (min-width: @screen-sm-min)
     {
-        .btn-group, .btn-visit
-        {
-            margin         : 20px 10px 0 0;
-            float          : right;
-            text-align     : left;        
-        }
-        .btn-visit:active
-        {
-            margin         : 20px 10px 10px 0 !important;
-        }
-        
         .trust
         {
             text-align      : right;        
@@ -308,17 +362,6 @@ body
     }
     @media (max-width: @screen-sm-min)
     {
-        .btn-group button, .btn-group ul, .btn-visit
-        {
-            width             : 90%;
-            margin            : -5px 5% 0 5%;
-        }
-        .btn-group button, .btn-visit
-        {
-            display           : block;
-            padding           : 10px;
-            margin            : 15px 5% 10px 5%;
-        }
         .trust
         {
             text-align      : left;

@@ -133,10 +133,7 @@ class Tool(CommonFields):
         """ 
             Return the name of the model.
         """
-        if hasattr(self,'app'):
-            return 'app'
-        else:
-            return "tool"
+        return 'tool'
     
     class Meta:
         """
@@ -202,6 +199,12 @@ class App(Tool):
                 count += 1
         return count
     
+    def i_am(self):
+        """ 
+            Return the name of the model.
+        """
+        return 'app'
+    
     class Meta:
         """
             Change display of model in Django admin
@@ -212,6 +215,12 @@ class App(Tool):
 
 class Service(Tool):
     
+    def i_am(self):
+        """ 
+            Return the name of the model.
+        """
+        return "service"
+        
     class Meta:
         """
             Change display of model in Django admin
