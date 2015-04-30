@@ -1,2 +1,2 @@
 # This text file can be used to keep track of attempted builds
-attampted_builds = 1
+attampted_builds = 2
