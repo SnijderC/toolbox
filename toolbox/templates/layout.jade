@@ -15,7 +15,8 @@ html(lang="en","itemscope", itemtype="http://schema.org/Article")
         include includes/navbar
         
         //- This div contains the logo's and the drape with the green blocks.
-        #header
+        if page.data.filename != "landing"
+            #header
         
         //- This is the main content div
         #main.container-fluid

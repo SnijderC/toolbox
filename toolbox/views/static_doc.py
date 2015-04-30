@@ -69,6 +69,7 @@ def doc(request,filename,strformat):
         
             # return html formatted content of jade file
             page.data['errorpage'] = False;
+            page.data['filename']  = filename
             return render_to_response(filename+".jade", {"page":page})
             
         # If some other file format was requested that is not supported.. 404
