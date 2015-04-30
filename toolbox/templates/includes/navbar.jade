@@ -9,7 +9,7 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                 span.icon-bar
             a.navbar-brand.tb-home(href="/", title="Startpagina",tabindex="0").font-icon.bigger
             if page.data.nav_title
-                .navbar-text.hidden-lg.hidden-md
+                .navbar-text.visible-xs
                     {{ page.data.nav_title }}
 
         .collapse.navbar-collapse#bs-navbar-collapse
@@ -21,17 +21,21 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                     ul.dropdown-menu.search-results
             ul.nav.navbar-nav
                 li.divider-vertical
+                li.dropdown
+                    a.dropdown-toggle(href="#",data-toggle="dropdown",class="tb-lightning",role="button",aria-expanded="false",tabindex="0")
+                        | Snel naar.. 
+                        b.caret
+                    ul.dropdown-menu
+                        li
+                            {% dictitem page.data.nav.itemtypelinks 'overzicht' as href%}
+                            a.tb-platforms(href="{{href}}",tabindex="0") Overzicht
+                        li
+                            {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
+                            a(href="{{href}}",class="tb-info3",tabindex="0") Adviezen
+                        li
+                            {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
+                            a(href="{{href}}",class="tb-wrench",tabindex="0") Tools
 
-                li
-                    {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
-                    a.tb-info3(href="{{href}}",tabindex="0") Advies
-                li
-                    {% dictitem page.data.nav.itemtypelinks 'tools' as href%}
-                    a.tb-wrench(href="{{href}}",tabindex="0") Tools 
-                li.hidden-sm.hidden-xs
-                    {% dictitem page.data.nav.itemtypelinks 'overzicht' as href%}
-                    a.tb-wrench(href="{{href}}",tabindex="0") Overzicht
-                     
                 each mainnav in page.data.nav.navbar_items
                     li.dropdown
                         a.dropdown-toggle(href="#",data-toggle="dropdown",class="{{mainnav.icon}}",role="button",aria-expanded="false",tabindex="0") 

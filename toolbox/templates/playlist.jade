@@ -6,37 +6,38 @@ extends "layout.jade"
 //- Main content can be either an index page with multiple items
     or a single detaild item.
 block content
-    .row
-        .col-md-10.col-md-offset-1
-                br
-                .panel.panel-default
-                        .panel-heading.container-fluid
-                            .row
-                                .col-sm-10.col-xs-12
-                                    h3 
-                                        i(class="{{page.data.item.icon}}")
-                                        {{ page.data.item.title }}
-                                        
-                        //- Icon and Intro text.
-                        .panel-body
-                            .lead
-                                {{ page.data.item.intro|safe }}
-                                br
+    .container-fluid
+        .row
+            .col-md-10.col-md-offset-1
+                    br
+                    .panel.panel-default
+                            .panel-heading.container-fluid
                                 .row
-                                    .col-xs-12.col-sm-10.col-sm-offset-1
-                                        .list-group.playlist-list-group.list-group-inverse
-                                            for item in page.data.playlist
-                                                //- Link to /playlist/[playlist]/[nr] e.g. /playlist/essential/1/.
-                                                
-                                                a.list-group-item(href="/playlist/{{page.data.item.slug}}/{{item.number}}/")
-                                                    //- If a time is set for the item, let the user know how much time
-                                                        it's gonna take to read this.
-                                                    if item.advice.time
-                                                        span.badge.time.tb-clock=item.advice.time_formatted                                                
-                                                    {{ item.number }}. {{ item.advice.title }}
-                        .panel-footer
-                            .row.social
-                                .col-xs-12
-                                    .btn-group.pull-right
-                                        a.btn.btn-default.tb-twitter(target="_blank",href="http://twitter.com/intent/tweet?url={{page.meta.permalink|urlencode}}&text={{page.meta.tweet_article|urlencode}}") Tweet
-                                        a.btn.btn-default.tb-facebook(target="_blank",href="https://www.facebook.com/sharer/sharer.php?u={{page.meta.permalink|urlencode}}&t={{item.title|urlencode}}") Share
+                                    .col-sm-10.col-xs-12
+                                        h3 
+                                            i(class="{{page.data.item.icon}}")
+                                            {{ page.data.item.title }}
+                                            
+                            //- Icon and Intro text.
+                            .panel-body
+                                .lead
+                                    {{ page.data.item.intro|safe }}
+                                    br
+                                    .row
+                                        .col-xs-12.col-sm-10.col-sm-offset-1
+                                            .list-group.playlist-list-group.list-group-inverse
+                                                for item in page.data.playlist
+                                                    //- Link to /playlist/[playlist]/[nr] e.g. /playlist/essential/1/.
+                                                    
+                                                    a.list-group-item(href="/playlist/{{page.data.item.slug}}/{{item.number}}/")
+                                                        //- If a time is set for the item, let the user know how much time
+                                                            it's gonna take to read this.
+                                                        if item.advice.time
+                                                            span.badge.time.tb-clock=item.advice.time_formatted                                                
+                                                        {{ item.number }}. {{ item.advice.title }}
+                            .panel-footer
+                                .row.social
+                                    .col-xs-12
+                                        .btn-group.pull-right
+                                            a.btn.btn-default.tb-twitter(target="_blank",href="http://twitter.com/intent/tweet?url={{page.meta.permalink|urlencode}}&text={{page.meta.tweet_article|urlencode}}") Tweet
+                                            a.btn.btn-default.tb-facebook(target="_blank",href="https://www.facebook.com/sharer/sharer.php?u={{page.meta.permalink|urlencode}}&t={{item.title|urlencode}}") Share

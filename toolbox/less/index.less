@@ -10,7 +10,7 @@
 // Vars
 @media_dir: "/static/media/";
 @fonts_dir: "/static/fonts/"; 
-@bof-color: rgb(90,165,0);
+@bof-color: rgb(89,167,39);
 
 // Imports
 @import "./fonticons.less"; 
@@ -51,7 +51,7 @@ body
 // top of the screen and the logo's.
 #header
 { 
-    background  : url("@{media_dir}drape.png") repeat-x;
+    background  : url("@{media_dir}drape.png") 0 0 repeat-x;
     height      : 70px;         
 }
 
@@ -63,6 +63,36 @@ body
     position                : relative;
     padding-bottom          : 80px; 
 
+    // Landing page stuff..
+    #intro-video
+    {
+        display             : block;
+        margin              : 0 0 -1px 0;
+        padding             : 20px;
+        background          : @bof-color;
+        min-width           : 100%;
+        video
+        {
+            width           : 100%;
+            height          : 100%;
+            margin          : auto 0;
+        }
+    }
+    
+    #landingpage-menu 
+    {
+        padding-top         : 20px;
+        padding-bottom      : 60px;
+        .list-group
+        {
+            border-radius   : @border-radius-base;
+            box-shadow      : 3px 3px 8px 6px rgba(0,0,0,.1);
+            .list-group-item-heading
+            {
+                text-decoration: underline;
+            }
+        }
+    }
     
     .filter-toggle
     {

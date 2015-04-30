@@ -1,6 +1,7 @@
 extends "layout.jade"
 block content 
-    .content
-        .row
-            .col-md-8.col-md-offset-2
-                {{ page.data.markdown|safe }}
+    .container-fluid
+        .content
+            .row
+                .col-md-8.col-md-offset-2
+                    {{ page.data.markdown|safe }}

@@ -1,18 +1,19 @@
 //- Based on the default layout..
 extends "layout.jade"
 block content
-    .row
-        .col-md-8.col-md-offset-2
-            h3 FAQ
-            each qc in page.data.item
-                h4=qc.category
-                .panel-group(role="tablist",aria-multiselectable="true",id="acc_{{qc.slug}}")
-                    each q in qc.faq_set.all
-                        .panel.panel-default
-                            .panel-heading(role="tab",id="q-{{q.id}}")
-                                strong
-                                    a(data-toggle="collapse",data-parent="#acc_{{qc.slug}}",href="#a-{{q.id}}",aria-expanded="true",aria-controls="a-{{q.id}}")
-                                        {{q.question}}
-                            .panel-collapse.collapse(role="tabpanel",aria-labelledby="q-{{q.id}}",id="a-{{q.id}}")
-                                .panel-body
-                                    {{q.answer|safe}}
+    .container-fluid
+        .row
+            .col-md-8.col-md-offset-2
+                h3 FAQ
+                each qc in page.data.item
+                    h4=qc.category
+                    .panel-group(role="tablist",aria-multiselectable="true",id="acc_{{qc.slug}}")
+                        each q in qc.faq_set.all
+                            .panel.panel-default
+                                .panel-heading(role="tab",id="q-{{q.id}}")
+                                    strong
+                                        a(data-toggle="collapse",data-parent="#acc_{{qc.slug}}",href="#a-{{q.id}}",aria-expanded="true",aria-controls="a-{{q.id}}")
+                                            {{q.question}}
+                                .panel-collapse.collapse(role="tabpanel",aria-labelledby="q-{{q.id}}",id="a-{{q.id}}")
+                                    .panel-body
+                                        {{q.answer|safe}}
