@@ -1,67 +1,65 @@
 extends "layout.jade"
 block content
-    section#intro-video
+    #intro-video
         video(poster="/static/media/video/intro.png", controls)
             source(src="/static/media/video/intro.ogv", type='video/ogg; codecs="theora, vorbis')
             source(src="/static/media/video/intro.mp4", type='video/mp4 codecs="avc1.4D401E, mp4a.40.2"')
 
     #header
-    section
-        .container-fluid
-            .row
-                .col-md-10.col-md-offset-1.col-xs-12.lead
-                    |De Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren. Je vindt hier ook tools die dat juist niet doen, zodat je voor die tools of diensten alternatieven kunt vinden. Ons doel is om jou een geïnformeerde beslissing te laten nemen.
-                .col-md-10.col-md-offset-1.col-xs-12
-                    .bs-callout.bs-callout-info
-                        h4.tb-info3 Moeilijke termen?
-                        |We snappen dat dit moeilijke materie is. Let goed op de kleine groene vraagtekens bij de technische termen, je kunt daarop klikken voor uitleg. Dat ziet er zo uit: 
-                        abbr(title="VPN staat voor Virtual Private Network, het is een techniek die het mogelijk maakt al je verkeer via een andere computer te leiden. Het kan gebruikt worden om in te loggen in een bedrijfsnetwerk maar het kan er ook voor zorgen dat je je verkeer anonimiseert, wegsluist zonder dat iemand kan meekijken of om censuur te omzeilen.")
-                            |VPN
-            .row    
-                .col-md-10.col-md-offset-1.col-xs-12                                
-                    .bs-callout.bs-callout-success
-                        h4.tb-info3 Kom je er niet uit?
-                        |We proberen hier alles zo eenvoudig mogelijk uit te leggen maar helaas lukt dat niet altijd. Kom je er niet uit, dan ligt het niet aan jou! We zouden het jammer vinden als je de handdoek in de ring gooit en willen er daarom op wijzen dat we naast deze Toolbox nog een ander initiatief zijn gestart.
-                        |Het Privacy Café, het Privacy Café is een informele open bijeenkomst van vrijwilligers met technische kennis en een zeer divers publiek. Dus.. kom je er niet uit, kijk dan even op 
-                        a(href="http://www.privacycafe.nl") www.privacycafe.nl
-                        |, zoek een datum en locatie (overal in Nederland) uit die jou schikt en kom langs!
-    section
-        .container-fluid
-            #landingpage-menu.row
-                .col-md-10.col-md-offset-1.col-xs-12.lead
-                    h2 Aan de slag
-                    p Klik in de onderstaande menu's op iets wat je interessant vind..
-                    br
-                .row
-                    .col-xs-12.col-md-5.col-xs-offset-1
-                        .row
-                            .col-xs-10.col-md-10.col-md-offset-1  
-                                .list-group
-                                    span.list-group-item.active
-                                        h3 3 Stappen&shy;plannen!
-                                    a.list-group-item(href="/playlist/essentieel/")
-                                        h4.list-group-item-heading 8 Essentiële stappen
-                                        p.list-group-item-text Volg deze 8 essentiële stappen met jouw apparaat veilig het internet op te gaan.
-                                    a.list-group-item(href="/playlist/mobiel/")
-                                        h4.list-group-item-heading Claim je privacy op je mobiel terug!
-                                        p.list-group-item-text Wapen je mobiel met deze tools en adviezen en gebruik hem optimaal, zonder pottekijkers.
-                                    a.list-group-item(href="/playlist/cloud/")
-                                        h4.list-group-item-heading Tem de cloud
-                                        p.list-group-item-text Met deze adviezen minimaliseer je de inbreuk die clouddiensten maken op jouw privacy.
 
-                    .col-xs-12.col-md-5.col-xs-offset-1.col-md-offset-0
-                        .row
-                            .col-xs-10.col-md-10.col-md-offset-1         
-                                .list-group
-                                    span.list-group-item.active
-                                        h3 Laat het maar aan mij over!
-                                    a.list-group-item(href="/overzicht/")
-                                        h4.list-group-item-heading Overzicht
-                                        p.list-group-item-text Bekijk het hele overzicht van adviezen en tools op één pagina.
-                                    a.list-group-item(href="/adviezen/")
-                                        h4.list-group-item-heading Adviezen
-                                        p.list-group-item-text Bekijk al onze adviezen op één pagina.
-                                    a.list-group-item(href="/tools/")
-                                        h4.list-group-item-heading Tools
-                                        p.list-group-item-text Bekijk alle tools op één pagina.
-        
+    .container-fluid
+        .row
+            .col-md-10.col-md-offset-1.col-xs-12.lead
+                |De Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren. Je vindt hier ook tools die dat juist niet doen, zodat je voor die tools of diensten alternatieven kunt vinden. Ons doel is om jou een geïnformeerde beslissing te laten nemen.
+            .col-md-10.col-md-offset-1.col-xs-12
+                .bs-callout.bs-callout-info
+                    h4.tb-info3 Moeilijke termen?
+                    |We snappen dat dit moeilijke materie is. Let goed op de kleine groene vraagtekens bij de technische termen, je kunt daarop klikken voor uitleg. Dat ziet er zo uit: 
+                    abbr(title="VPN staat voor Virtual Private Network, het is een techniek die het mogelijk maakt al je verkeer via een andere computer te leiden. Het kan gebruikt worden om in te loggen in een bedrijfsnetwerk maar het kan er ook voor zorgen dat je je verkeer anonimiseert, wegsluist zonder dat iemand kan meekijken of om censuur te omzeilen.")
+                        |VPN
+        .row    
+            .col-md-10.col-md-offset-1.col-xs-12                                
+                .bs-callout.bs-callout-success
+                    h4.tb-info3 Kom je er niet uit?
+                    |We proberen hier alles zo eenvoudig mogelijk uit te leggen maar helaas lukt dat niet altijd. Kom je er niet uit, dan ligt het niet aan jou! We zouden het jammer vinden als je de handdoek in de ring gooit en willen er daarom op wijzen dat we naast deze Toolbox nog een ander initiatief zijn gestart.
+                    |Het Privacy Café, het Privacy Café is een informele open bijeenkomst van vrijwilligers met technische kennis en een zeer divers publiek. Dus.. kom je er niet uit, kijk dan even op 
+                    a(href="http://www.privacycafe.nl") www.privacycafe.nl
+                    |, zoek een datum en locatie (overal in Nederland) uit die jou schikt en kom langs!
+                    
+        #landingpage-menu.row
+            .col-md-10.col-md-offset-1.col-xs-12.lead
+                h2 Aan de slag
+                p Klik in de onderstaande menu's op iets wat je interessant vind..
+                br
+                
+            .col-xs-12.col-md-5.col-xs-offset-1
+            
+                .col-xs-10.col-md-10.col-md-offset-1  
+                    .list-group
+                        span.list-group-item.active
+                            h3 3 Stappen&shy;plannen!
+                        a.list-group-item(href="/playlist/essentieel/")
+                            h4.list-group-item-heading 8 Essentiële stappen
+                            p.list-group-item-text Volg deze 8 essentiële stappen met jouw apparaat veilig het internet op te gaan.
+                        a.list-group-item(href="/playlist/mobiel/")
+                            h4.list-group-item-heading Claim je privacy op je mobiel terug!
+                            p.list-group-item-text Wapen je mobiel met deze tools en adviezen en gebruik hem optimaal, zonder pottekijkers.
+                        a.list-group-item(href="/playlist/cloud/")
+                            h4.list-group-item-heading Tem de cloud
+                            p.list-group-item-text Met deze adviezen minimaliseer je de inbreuk die clouddiensten maken op jouw privacy.
+
+            .col-xs-12.col-md-5.col-xs-offset-1.col-md-offset-0
+
+                .col-xs-10.col-md-10.col-md-offset-1         
+                    .list-group
+                        span.list-group-item.active
+                            h3 Laat het maar aan mij over!
+                        a.list-group-item(href="/overzicht/")
+                            h4.list-group-item-heading Overzicht
+                            p.list-group-item-text Bekijk het hele overzicht van adviezen en tools op één pagina.
+                        a.list-group-item(href="/adviezen/")
+                            h4.list-group-item-heading Adviezen
+                            p.list-group-item-text Bekijk al onze adviezen op één pagina.
+                        a.list-group-item(href="/tools/")
+                            h4.list-group-item-heading Tools
+                            p.list-group-item-text Bekijk alle tools op één pagina.
