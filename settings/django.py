@@ -100,7 +100,7 @@ tweet_templates = {
 }
 
 meta_tags = {
-    'title'             : title,
+    'title'             : "Internetvrijheid Toolbox - Bits of Freedom",
     'twitter'           : {
          'publisher'    : '@bitsoffreedom',
          'author'       : '@bitsoffreedom',
