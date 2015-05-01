@@ -5887,7 +5887,7 @@ input[type="button"].btn-block {
   width: 100%;
 }
 body {
-  padding-top: 53px;
+  padding-top: 50px;
 }
 nav.navbar {
   box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
@@ -6022,12 +6022,13 @@ li.dropdown-header {
   height: 48px;
   line-height: 48px;
   vertical-align: middle;
-  background: #222222;
-  border-top: 1px solid #555555;
+  background: #59a727;
+  border-top: 1px solid #8cd95b;
   text-align: center;
 }
 .playlist_nav a {
-  color: #ccc;
+  color: #eee;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 .playlist_nav a:hover,
 .playlist_nav a:active,
@@ -6041,14 +6042,14 @@ li.dropdown-header {
   color: #fff;
 }
 .playlist_nav a span:before {
-  color: #ccc;
+  color: #eee;
   font-size: 26px;
 }
 .playlist_nav a.disabled {
   cursor: not-allowed;
 }
 .playlist_nav a.disabled span:before {
-  color: #444;
+  color: #5b9d31;
 }
 .playlist_nav a.pl-previous {
   float: left;
@@ -6061,11 +6062,6 @@ li.dropdown-header {
 #main .playlist-list-group a {
   color: #59a727;
   font-weight: bold;
-}
-#main .playlist-list-group .list-group-header {
-  background: #222;
-  color: #fff;
-  border-color: #000;
 }
 .navbar-text {
   text-align: center;
