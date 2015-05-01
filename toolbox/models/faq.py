@@ -39,7 +39,7 @@ class FAQ(models.Model):
     def save(self, *args, **kw):        
         
         self.answer_html = self.md.convert(self.answer_md)
-        kw.pop('skip_date_update')
+    
         super(FAQ, self).save(*args, **kw)
     
     def answer(self):
