@@ -212,24 +212,35 @@ block content
                                                                     {{ alt_tool.intro_no_url }}
                                                                     each platform in alt_tool.platforms.all
                                                                         i.platform-indicator(class="tb-{{platform.slug}}")
-                                if page.playlist == False and item.i_am == "advice" and item.related.count > 0
-                                    .panel-body.alternatives
-                                        h4 Gerelateerde {{item.url_slug}}
-                                        .list-group
-                                            //- Loop though the list of related advisory..
-                                            for related in item.related.all
-                                                if related.published
-                                                    a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/") 
-                                                        .media
-                                                            .media-body
-                                                                .row
-                                                                    h4.media-heading.col-xs-6
-                                                                        {{ related.title }}
-                                                                p.list-group-item-text
-                                                                    img.pull-left.media-object(src="{{related.image|thumbnail_url:'icon_thumb'}}")
-                                                                    {{ related.intro_no_url }}
-                                                                    //- each platform in related.platforms.all
-                                                                        i.platform-indicator(class="tb-{{platform.slug}}")
+                        if page..index == false and page.playlist == False and item.i_am == "advice" and item.related.count > 0
+                            .list-group.alternatives
+                                .list-group-item.active
+                                    h4 Gerelateerde {{item.url_slug}}
+                                //- Loop though the list of related advisory..
+                                for related in item.related.all
+                                    if related.published
+                                        a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/") 
+                                            .media
+                                                .media-body
+                                                    .row
+                                                        h4.media-heading.col-xs-6
+                                                            {{ related.title }}
+                                                    p.list-group-item-text
+                                                        img.pull-left.media-object(src="{{related.image|thumbnail_url:'icon_thumb'}}")
+                                                        {{ related.intro_no_url }}
+                                                        //- each platform in related.platforms.all
+                                                            i.platform-indicator(class="tb-{{platform.slug}}")
+                        if page.playlist
+                            if page.data.next
+                                .well.col-xs-12.col-md-10.col-md-offset-1
+                                    h4 Stap {{page.data.itemnr}} volbracht
+                                    p Klik in de groene balk, onderaan het scherm, op de pijltjes voor het volgende advies.
+                            else
+                                .well.col-xs-12.col-md-10.col-md-offset-1
+                                    h4 Laatste stap volbracht
+                                    p Je bent aan het einde gekomen van dit stappenplan. Als je er nog een wilt volgen klik je in de menubalk boven op "Ik wil..", je kunt ook naar het overzicht van alle adviezen en tools door op de knop hieronder te klikken.
+                                    a.btn.btn-success.btn-lg.tb-beer.hidden-xs(href="/overzicht") Naar het overzicht
+                                    a.btn.btn-success.btn-lg.tb-beer.visible-xs.btn-block(href="/overzicht") Naar het overzicht
                     //- Pagination, functionality not yet required => Need to set page.data.previouslink and page.data.nextlink!
                         if page.data.paginator.num_pages > 1
                             .row

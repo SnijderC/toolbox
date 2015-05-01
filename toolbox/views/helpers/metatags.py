@@ -4,6 +4,7 @@ from settings import DEBUG
 from easy_thumbnails.files import get_thumbnailer
 import re
 def set_metatags(metatags, article):
+
     try:
         if 'title' in article.__dict__:
             metatags['title'] = meta_templates['title'] % article.title
@@ -17,7 +18,7 @@ def set_metatags(metatags, article):
             metatags['description'] = desc
         if hasattr(article,'meta_date'):
             metatags['publishedtime'] = article.meta_date
-
+    
         if hasattr(article,'meta_datemodified'):
             metatags['modifiedtime'] = article.meta_datemodified
         
@@ -29,29 +30,28 @@ def set_metatags(metatags, article):
                 metatags['articletags'].append(category)
         
         metatags['permalink'] = meta_templates['permalink'] % "/%s/%s/" % (article.url_slug(),article.slug)
-        
-        
-        if article.has_image():
-            metatags['imagelink'] = meta_templates['permalink'] % get_thumbnailer(article.image)['social'].url
-        else:
-            metatags['imagelink'] = None
-            
-        metatags['type'] = "article"
+    
+        try:
+            if article.has_image():
+                metatags['imagelink'] = meta_templates['permalink'] % get_thumbnailer(article.image)['social'].url
+            else:
+                metatags['imagelink'] = None
+                
+            metatags['type'] = "article"
+        except:
+            pass # ugly fix for missing images
         
         if hasattr(article,'credit') and article.credit != "":
             metatags['author'] = article.credit
         elif hasattr(article,'user'):    
             metatags['author'] = "%s %s" % (article.user.first_name, article.user.last_name)
-
+    
         if hasattr(article, 'i_am'):
             metatags['tweet_article'] = tweet_templates[article.i_am()] % article.title
-
-    except Exception,e:
-        if DEBUG:
-            raise e
-        else:
-            pass # DO NOT FAIL ON METATAGS..
-    return metatags
-
-        
     
+    
+        return metatags
+    
+    except Exception, e: 
+        raise e
+        
