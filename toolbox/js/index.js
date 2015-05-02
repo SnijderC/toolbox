@@ -166,7 +166,7 @@ var SetPopovers = function(elements)
     }
     $(selector).each(function()
     {   
-        var direction = "left";
+        var direction = "bottom";
         if ($(this).prop('nodeName')==="ABBR")
         {
             direction = "bottom";

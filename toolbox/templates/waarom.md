@@ -9,4 +9,4 @@ De Internetvrijheid Toolbox zit vol adviezen en tools. Je kunt zoeken op onderwe
 
 #### Wie zijn wij?
 
-De Internetvrijheid Toolbox is een initiatief van [Bits of Freedom](https://www.bof.nl) en Niels Westerlaken. De huidige versie wordt ontwikkeld door Chris Snijder. Hij wordt bijgestaan door een groep gedreven [vrijwilligers](/credits) die zicht inzetten voor een toekomst waarin internetvrijheid is gewaarborgd.
+De Internetvrijheid Toolbox is een initiatief van [Bits of Freedom](https://www.bof.nl) en Niels Westerlaken. De huidige versie wordt ontwikkeld door Chris Snijder. Hij wordt bijgestaan door een groep gedreven [vrijwilligers](/doc/credits) die zicht inzetten voor een toekomst waarin internetvrijheid is gewaarborgd.

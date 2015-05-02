@@ -85,6 +85,7 @@ This page is for attributing the makers and organisations. Licenses included whe
     - Daniel Bruce for Entypo ([license](https://creativecommons.org/licenses/by-sa/3.0/))
     - Stephen Hutchings for Typicons ([license](https://creativecommons.org/licenses/by-sa/3.0/))
     - Dave Gandy for Font Awesome ([license](https://creativecommons.org/licenses/by/3.0/))
+    - Google for Material Design Icons ([license](https://creativecommons.org/licenses/by-sa/4.0/))
 
     
 If your work is listed but a license or link is missing..

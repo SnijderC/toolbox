@@ -24,7 +24,7 @@ class ToolboxMD(markdown.Markdown):
         super(ToolboxMD, self).__init__(extensions=extensions,output_format=output_format)
                 
     def generate_wordlist(self, topics):
-        
+        self.topics = topics
         terms_model = models.get_model('toolbox', 'Terms')
         
         wordlist = "\n"
@@ -33,7 +33,8 @@ class ToolboxMD(markdown.Markdown):
             for term in terms:
                 if term not in topics:
                     wordlist += "*[%s]: %s\n" % (term, term_obj.description_html)
-        return wordlist
+        self.wordlist = wordlist
+        return True
         
     def convert(self, str_markdown, topics=[]):
         '''
@@ -48,13 +49,11 @@ class ToolboxMD(markdown.Markdown):
         self.reset()
         if self.cached_wordlist:
             if self.wordlist == None or self.topics != topics:
-                self.topics = topics
-                self.wordlist = self.generate_wordlist(topics)
-            wordlist = self.wordlist
+                self.generate_wordlist(topics)
         else:
-            wordlist = self.generate_wordlist(topics)
+            self.generate_wordlist(topics)
         
-        return self.filter_abbr_anchored(super(ToolboxMD, self).convert(str_markdown+wordlist).encode("utf-8"))
+        return self.filter_abbr_anchored(super(ToolboxMD, self).convert(str_markdown+self.wordlist).encode("utf-8"))
     
     def process_inline_images(self,str_md):
         """
