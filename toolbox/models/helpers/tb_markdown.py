@@ -45,6 +45,7 @@ class ToolboxMD(markdown.Markdown):
             - Find all popovers that would have been placed inside of url's and filter them out of them (HTML):
 
         '''
+        self.reset()
         if self.cached_wordlist:
             if self.wordlist == None or self.topics != topics:
                 self.topics = topics
