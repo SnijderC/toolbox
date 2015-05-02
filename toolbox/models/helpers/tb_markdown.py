@@ -54,7 +54,7 @@ class ToolboxMD(markdown.Markdown):
         else:
             wordlist = self.generate_wordlist(topics)
         
-        return self.filter_abbr_anchored(super(ToolboxMD, self).convert(str_markdown+self.wordlist).encode("utf-8"))
+        return self.filter_abbr_anchored(super(ToolboxMD, self).convert(str_markdown+wordlist).encode("utf-8"))
     
     def process_inline_images(self,str_md):
         """
