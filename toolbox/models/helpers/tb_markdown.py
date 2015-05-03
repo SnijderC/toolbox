@@ -2,6 +2,7 @@ from filer.models.imagemodels import Image as FilerImage
 import markdown, re
 from markdown_extensions import BootstrapTabExtension
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class ToolboxMD(markdown.Markdown):
     
