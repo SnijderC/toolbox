@@ -78,22 +78,122 @@ body
             margin          : auto 0;
         }
     }
-    
-    #landingpage-menu 
+    #tb-bof-logo
     {
-        padding-top         : 20px;
-        padding-bottom      : 60px;
-        .list-group
+        background          : @bof-color url("@{media_dir}tb-bof-logo.svg") 50% 50% no-repeat;
+        background-size     : contain;        
+        @media (min-width: @screen-lg-min)
         {
-            border-radius   : @border-radius-base;
-            box-shadow      : 3px 3px 8px 6px rgba(0,0,0,.1);
-            .list-group-item-heading
+            background-size : cover;
+        }
+        @media (max-width: @screen-md-max)
+        {
+            margin-top      : 20px;
+        }
+        min-height          : 250px;
+    }
+    #fp-tiles
+    {
+        margin              : auto;
+
+        display             : block;
+        position            : relative;
+        .clearfix();
+        #fp-tiles-box
+        {
+            .fp-tile
             {
-                text-decoration: underline;
+                margin              : 20px;
+                float               : left;
+                color               : @gray-darker;
+                display             : inline;
+                position            : relative;
+                background          : #ddd;
+                background-image: linear-gradient(rgba(128,128,128,.2), rgba(64,64,64,.7)),
+                linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
+                linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
+                linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
+                linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
+                linear-gradient(60deg, #aaa 25%, transparent 25.5%, transparent 75%, #aaa 75%, #aaa), 
+                linear-gradient(60deg, #aaa 25%, transparent 25.5%, transparent 75%, #aaa 75%, #aaa);
+                background-size:100% 100%, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px;
+                background-position: 0 0, 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+
+                height              : 228px;
+                width               : 300px;
+                &.norpt
+                {
+                    background-repeat   : no-repeat;
+                }
+                .fp-tile-p
+                {
+                    position        : absolute;
+                    background      : rgba(255,255,255,.93);
+                    display         : block;
+                    width           : 291px;
+                    margin          : 4px;
+                    padding         : 5px;
+                    box-shadow      : 3px 3px 10px rgba(0,0,0,.4);
+                    text-align      : center;
+                    bottom:0;
+                    h4
+                    {
+                        margin      : 4px;
+                        text-transform  : uppercase;
+                    }
+                }        
             }
         }
     }
-    
+    #fp-callout
+    {
+        margin-top              : 50px;
+        .bs-callout 
+        {
+            .icon-pc, .icon-info
+            {
+                position        : relative;
+                font-family     : "Toolbox";
+                left            : 50%;
+                width           : 48px;
+                height          : 48px;
+                margin-left     : -24px;
+                top             : -10px;
+                .clearfix();
+            }
+            .icon-pc
+            {
+                &:before
+                {
+                    position    : relative;
+                    color       : @bof-color;
+                    content     : "\e668"; 
+                    font-size   : 48px !important;
+                }
+                &:after
+                {
+                    position    : relative;
+                    left        : 3px;
+                    top         : -33px;
+                    color       : @gray-darker;
+                    content     : "\e669";
+                    font-size   : 14px !important;
+                }
+            }
+            .icon-info
+            {
+                &:before
+                {
+                    position    : relative;
+                    color       : @bof-color;
+                    content     : "\e625"; 
+                    margin-top  : 5px;
+                    font-size   : 38px !important;
+                }
+            }
+            .clearfix();
+        }
+    }
     .filter-toggle
     {
 

@@ -110,9 +110,42 @@ a.tb-bof-logo-color span:after {
   font-size: 28px !important;
   left: 0px;
 }
+.tb-pc:before {
+  content: "\e604";
+}
 .tb-prica-logo:before {
   content: "\e604";
   font-size: 24px !important;
+}
+.tb-eye-q:before {
+  content: "\e65f";
+}
+.tb-file-enc:before {
+  content: "\e660";
+}
+.tb-Layer9:before {
+  content: "\e661";
+}
+.tb-os-n-layer-1:before {
+  content: "\e662";
+}
+.tb-os-n-layer-2:before {
+  content: "\e663";
+}
+.tb-os-y-layer-1:before {
+  content: "\e664";
+}
+.tb-os-y-layer-2:before {
+  content: "\e665";
+}
+.tb-passwords-lock:before {
+  content: "\e666";
+}
+.tb-passwords:before {
+  content: "\e667";
+}
+.tb-pc-cup:before {
+  content: "\e668";
 }
 .tb-bb:before {
   content: "\e65b";
@@ -464,6 +497,24 @@ a.tb-bof-logo-color span:after {
 }
 .tb-linkedin:before {
   content: "\e659";
+}
+.tb-file-o:before {
+  content: "\f016";
+}
+.tb-list-alt:before {
+  content: "\f022";
+}
+.tb-list:before {
+  content: "\f03a";
+}
+.tb-list-ol:before {
+  content: "\f0cb";
+}
+.tb-columns:before {
+  content: "\f0db";
+}
+.tb-tags:before {
+  content: "\f02c";
 }
 @font-face {
   font-family: 'DINWeb';
@@ -5278,14 +5329,14 @@ a.list-group-item-danger.active:focus {
 }
 .bs-callout[class^="tb-"],
 .bs-callout[class*=" tb-"] {
-  padding-left: 80px;
+  padding-left: 85px;
 }
 .bs-callout.bs-callout-danger {
   background-color: rgba(217, 83, 79, 0.15);
   border-left: 5px solid #d9534f;
 }
 .bs-callout.bs-callout-danger h4 {
-  color: #d9534f;
+  color: #272123;
 }
 .bs-callout.bs-callout-danger a:not(.btn) {
   font-weight: bold;
@@ -5313,12 +5364,16 @@ a.list-group-item-danger.active:focus {
   top: 4px;
   margin: 0 14px 0 -40px;
 }
+.bs-callout.bs-callout-danger[class^="tb-"],
+.bs-callout.bs-callout-danger[class*=" tb-"] {
+  color: #d9534f;
+}
 .bs-callout.bs-callout-success {
   background-color: rgba(89, 167, 39, 0.15);
   border-left: 5px solid #59a727;
 }
 .bs-callout.bs-callout-success h4 {
-  color: #59a727;
+  color: #272123;
 }
 .bs-callout.bs-callout-success a:not(.btn) {
   font-weight: bold;
@@ -5346,12 +5401,16 @@ a.list-group-item-danger.active:focus {
   top: 4px;
   margin: 0 14px 0 -40px;
 }
+.bs-callout.bs-callout-success[class^="tb-"],
+.bs-callout.bs-callout-success[class*=" tb-"] {
+  color: #59a727;
+}
 .bs-callout.bs-callout-warning {
   background-color: rgba(240, 173, 78, 0.15);
   border-left: 5px solid #f0ad4e;
 }
 .bs-callout.bs-callout-warning h4 {
-  color: #f0ad4e;
+  color: #272123;
 }
 .bs-callout.bs-callout-warning a:not(.btn) {
   font-weight: bold;
@@ -5379,12 +5438,16 @@ a.list-group-item-danger.active:focus {
   top: 4px;
   margin: 0 14px 0 -40px;
 }
+.bs-callout.bs-callout-warning[class^="tb-"],
+.bs-callout.bs-callout-warning[class*=" tb-"] {
+  color: #f0ad4e;
+}
 .bs-callout.bs-callout-info {
   background-color: rgba(91, 192, 222, 0.15);
   border-left: 5px solid #5bc0de;
 }
 .bs-callout.bs-callout-info h4 {
-  color: #5bc0de;
+  color: #272123;
 }
 .bs-callout.bs-callout-info a:not(.btn) {
   font-weight: bold;
@@ -5412,12 +5475,16 @@ a.list-group-item-danger.active:focus {
   top: 4px;
   margin: 0 14px 0 -40px;
 }
+.bs-callout.bs-callout-info[class^="tb-"],
+.bs-callout.bs-callout-info[class*=" tb-"] {
+  color: #5bc0de;
+}
 .bs-callout.bs-callout-primary {
   background-color: rgba(220, 26, 64, 0.15);
   border-left: 5px solid #dc1a40;
 }
 .bs-callout.bs-callout-primary h4 {
-  color: #dc1a40;
+  color: #272123;
 }
 .bs-callout.bs-callout-primary a:not(.btn) {
   font-weight: bold;
@@ -5444,6 +5511,10 @@ a.list-group-item-danger.active:focus {
   position: relative;
   top: 4px;
   margin: 0 14px 0 -40px;
+}
+.bs-callout.bs-callout-primary[class^="tb-"],
+.bs-callout.bs-callout-primary[class*=" tb-"] {
+  color: #dc1a40;
 }
 #search_box {
   margin-top: 8px;
@@ -6209,16 +6280,144 @@ body .btn-group .btn {
   height: 100%;
   margin: auto 0;
 }
-#main #landingpage-menu {
-  padding-top: 20px;
-  padding-bottom: 60px;
+#main #tb-bof-logo {
+  background: #59a727 url("/static/media/tb-bof-logo.svg") 50% 50% no-repeat;
+  background-size: contain;
+  min-height: 250px;
 }
-#main #landingpage-menu .list-group {
-  border-radius: 8px;
-  box-shadow: 3px 3px 8px 6px rgba(0, 0, 0, 0.1);
+@media (min-width: 1200px) {
+  #main #tb-bof-logo {
+    background-size: cover;
+  }
 }
-#main #landingpage-menu .list-group .list-group-item-heading {
-  text-decoration: underline;
+@media (max-width: 1199px) {
+  #main #tb-bof-logo {
+    margin-top: 20px;
+  }
+}
+#main #fp-tiles {
+  margin: auto;
+  display: block;
+  position: relative;
+}
+#main #fp-tiles:before,
+#main #fp-tiles:after {
+  content: " ";
+  display: table;
+}
+#main #fp-tiles:after {
+  clear: both;
+}
+#main #fp-tiles:before,
+#main #fp-tiles:after {
+  content: " ";
+  display: table;
+}
+#main #fp-tiles:after {
+  clear: both;
+}
+#main #fp-tiles #fp-tiles-box .fp-tile {
+  margin: 20px;
+  float: left;
+  color: #272123;
+  display: inline;
+  position: relative;
+  background: #ddd;
+  background-image: linear-gradient(rgba(128, 128, 128, 0.2), rgba(64, 64, 64, 0.7)), linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555), linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555), linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555), linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555), linear-gradient(60deg, #aaaaaa 25%, transparent 25.5%, transparent 75%, #aaaaaa 75%, #aaaaaa), linear-gradient(60deg, #aaaaaa 25%, transparent 25.5%, transparent 75%, #aaaaaa 75%, #aaaaaa);
+  background-size: 100% 100%, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px;
+  background-position: 0 0, 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+  height: 228px;
+  width: 300px;
+}
+#main #fp-tiles #fp-tiles-box .fp-tile.norpt {
+  background-repeat: no-repeat;
+}
+#main #fp-tiles #fp-tiles-box .fp-tile .fp-tile-p {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.93);
+  display: block;
+  width: 291px;
+  margin: 4px;
+  padding: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  bottom: 0;
+}
+#main #fp-tiles #fp-tiles-box .fp-tile .fp-tile-p h4 {
+  margin: 4px;
+  text-transform: uppercase;
+}
+#main #fp-callout {
+  margin-top: 50px;
+}
+#main #fp-callout .bs-callout .icon-pc,
+#main #fp-callout .bs-callout .icon-info {
+  position: relative;
+  font-family: "Toolbox";
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  top: -10px;
+}
+#main #fp-callout .bs-callout .icon-pc:before,
+#main #fp-callout .bs-callout .icon-info:before,
+#main #fp-callout .bs-callout .icon-pc:after,
+#main #fp-callout .bs-callout .icon-info:after {
+  content: " ";
+  display: table;
+}
+#main #fp-callout .bs-callout .icon-pc:after,
+#main #fp-callout .bs-callout .icon-info:after {
+  clear: both;
+}
+#main #fp-callout .bs-callout .icon-pc:before,
+#main #fp-callout .bs-callout .icon-info:before,
+#main #fp-callout .bs-callout .icon-pc:after,
+#main #fp-callout .bs-callout .icon-info:after {
+  content: " ";
+  display: table;
+}
+#main #fp-callout .bs-callout .icon-pc:after,
+#main #fp-callout .bs-callout .icon-info:after {
+  clear: both;
+}
+#main #fp-callout .bs-callout .icon-pc:before {
+  position: relative;
+  color: #59a727;
+  content: "\e668";
+  font-size: 48px !important;
+}
+#main #fp-callout .bs-callout .icon-pc:after {
+  position: relative;
+  left: 3px;
+  top: -33px;
+  color: #272123;
+  content: "\e669";
+  font-size: 14px !important;
+}
+#main #fp-callout .bs-callout .icon-info:before {
+  position: relative;
+  color: #59a727;
+  content: "\e625";
+  margin-top: 5px;
+  font-size: 38px !important;
+}
+#main #fp-callout .bs-callout:before,
+#main #fp-callout .bs-callout:after {
+  content: " ";
+  display: table;
+}
+#main #fp-callout .bs-callout:after {
+  clear: both;
+}
+#main #fp-callout .bs-callout:before,
+#main #fp-callout .bs-callout:after {
+  content: " ";
+  display: table;
+}
+#main #fp-callout .bs-callout:after {
+  clear: both;
 }
 #main .filter-toggle {
   color: #555;
