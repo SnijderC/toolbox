@@ -8,7 +8,8 @@ html(lang="en","itemscope", itemtype="http://schema.org/Article")
     head
         //- The head is the same for every page and included for simplicity and reusability
         include includes/head
-
+        if page.data.filename == "landing"
+            script(src="/static/js/html5media.min.js")
     body
 
         //- Navbar is another include for simplicity and reusability

@@ -17,8 +17,10 @@ block content
 
     #intro-video
         video(poster="/static/media/video/intro.png", controls)
-            source(src="/static/media/video/intro.ogv", type='video/ogg; codecs="theora, vorbis')
-            source(src="/static/media/video/intro.mp4", type='video/mp4 codecs="avc1.4D401E, mp4a.40.2"')
+            source(src="/static/media/video/video.mp4", media="only screen and (min-device-width: 568px)")
+            source(src="/static/media/video/video.iphone.mp4", media="only screen and (max-device-width: 568px)")
+            source(src="/static/media/video/video.webm")
+            source(src="/static/media/video/video.org")
 
     #header
 

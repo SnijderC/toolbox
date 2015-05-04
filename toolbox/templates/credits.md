@@ -86,7 +86,7 @@ This page is for attributing the makers and organisations. Licenses included whe
     - Stephen Hutchings for Typicons ([license](https://creativecommons.org/licenses/by-sa/3.0/))
     - Dave Gandy for Font Awesome ([license](https://creativecommons.org/licenses/by/3.0/))
     - Google for Material Design Icons ([license](https://creativecommons.org/licenses/by-sa/4.0/))
-
+ - Dave Hall for [html5Media](https://github.com/etianen/html5media) ([license](https://github.com/etianen/html5media/blob/master/LICENSE))
     
 If your work is listed but a license or link is missing..
 {.small}

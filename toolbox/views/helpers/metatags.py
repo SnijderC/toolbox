@@ -47,11 +47,12 @@ def set_metatags(metatags, article):
             metatags['author'] = "%s %s" % (article.user.first_name, article.user.last_name)
     
         if hasattr(article, 'i_am'):
-            metatags['tweet_article'] = tweet_templates[article.i_am()] % article.title
+            metatags['tweet_article'] = tweet_templates[article.i_am()] #% article.title
     
     
         return metatags
     
     except Exception, e: 
-        raise e
+        print e
+        pass
         
