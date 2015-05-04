@@ -30,7 +30,7 @@ DATABASES = {
 
 ALLOWED_HOSTS = ['*']
 
-title = "Bits Of Freedom - Toolbox v0.9"
+title = "Internetvrijheid Toolbox - Bits of Freedom"
 
 fbadminid = ''
 
@@ -67,7 +67,6 @@ meta_templates = {
     'description'       :'%s', 
     'permalink'         :'https://toolbox.bof.nl%s',
 }
-
 
 slugs = {
         'categorie'   : { 'slug' : 'categories' , 'single' : False , 'multiple' : True},

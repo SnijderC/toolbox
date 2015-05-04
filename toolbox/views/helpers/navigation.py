@@ -222,8 +222,8 @@ class Navigation(object):
         navbar = []
         # Add the playlists
         navbar.append({
-                        'name'      : "Ik wil..",   
-                        'icon'      : "tb-rocket",
+                        'name'      : "Snel regelen",   
+                        'icon'      : "tb-lightning",
                         'children'  : [] 
                      })        
         navbarobj = navbar[-1]['children']
