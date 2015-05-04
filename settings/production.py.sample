@@ -36,9 +36,9 @@ fbadminid = ''
 
 tweet_templates = {
     'advice'  :'Op de #InternetvrijheidToolbox vond ik uitleg over deze tool. Ook aan de slag met je #privacy en #veiligheid online? ',
-    'app'     :'Op de #InternetvrijheidToolbox kreeg ik dit handig advies. Ook aan de slag met je #privacy en #veiligheid online?',
+    'app'     :'Op de #InternetvrijheidToolbox kreeg ik dit handige advies. Ook aan de slag met je #privacy en #veiligheid online?',
     'tool'    :'De #InternetvrijheidToolbox gaf mij uitleg over deze dienst. Ook aan de slag met je #privacy en #veiligheid online?',
-    'playlist':'Op de #InternetvrijheidToolbox vond ik dit handig stappenplan. Ook aan de slag met je #privacy en #veiligheid online?',
+    'playlist':'Op de #InternetvrijheidToolbox staat dit handige stappenplan. Ook aan de slag met je #privacy en #veiligheid online?',
     'index'   :'Check dit overzicht van de #InternetvrijheidToolbox. Ook zelf aan de slag met je #privacy en #veiligheid online?',
 }
 

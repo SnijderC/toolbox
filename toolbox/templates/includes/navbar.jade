@@ -28,7 +28,7 @@ nav.navbar.navbar-default(role="navigation").navbar-fixed-top.navbar-inverse
                     ul.dropdown-menu
                         li
                             {% dictitem page.data.nav.itemtypelinks 'overzicht' as href%}
-                            a.tb-platforms(href="{{href}}",tabindex="0") Overzicht
+                            a.tb-columns(href="{{href}}",tabindex="0") Overzicht
                         li
                             {% dictitem page.data.nav.itemtypelinks 'adviezen' as href%}
                             a(href="{{href}}",class="tb-info3",tabindex="0") Adviezen

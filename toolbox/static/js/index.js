@@ -10698,8 +10698,10 @@ $(document).ready(function()
     
     $('body').on('touchend', resetElements);
     $('body').on('click', resetElements);
-    
-    $("#intro-video").height($(window).height()-120);
+    if ($(window).height())
+    {
+        $("#intro-video").height($(window).height()-120);
+    }
 })
 
 

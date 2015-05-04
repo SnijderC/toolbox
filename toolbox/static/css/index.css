@@ -8,8 +8,8 @@
 */
 @font-face {
   font-family: 'Toolbox';
-  src: url('/static/fonts/Toolbox.eot?v09');
-  src: url('/static/fonts/Toolbox.eot?#iefixv09') format('embedded-opentype'), url('/static/fonts/Toolbox.woff?v09') format('woff'), url('/static/fonts/Toolbox.ttf?v09') format('truetype'), url('/static/fonts/Toolbox.svg?v09#Toolbox') format('svg');
+  src: url('/static/fonts/Toolbox.eot?v1');
+  src: url('/static/fonts/Toolbox.eot?#iefixv1') format('embedded-opentype'), url('/static/fonts/Toolbox.woff?v1') format('woff'), url('/static/fonts/Toolbox.ttf?v1') format('truetype'), url('/static/fonts/Toolbox.svg?v1#Toolbox') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -5963,9 +5963,6 @@ body {
 nav.navbar {
   box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
 }
-nav.navbar .navbar-brand {
-  padding-right: 12px;
-}
 nav.navbar .no-collapse li,
 nav.navbar .no-collapse li a {
   text-align: center;
@@ -6294,6 +6291,19 @@ body .btn-group .btn {
   #main #tb-bof-logo {
     margin-top: 20px;
   }
+}
+#main .font-black,
+#main .font-bold {
+  text-align: center;
+  font-family: 'DINWebPro-Black', Arial, sans-serif;
+}
+#main .font-bold {
+  font-family: 'DINWeb-Bold', Arial, sans-serif;
+}
+#main .fp-line {
+  margin: 25px auto 30px auto;
+  width: 120px;
+  border-top: 2px solid #272123;
 }
 #main #fp-tiles {
   margin: auto;
