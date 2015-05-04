@@ -4,12 +4,7 @@ body
 }
 nav.navbar
 {
-    .navbar-brand
-    {
-        //padding-right   : 12px;
-    }
-    
-    box-shadow           : 5px 3px 5px rgba(0,0,0,.5);
+    box-shadow      : 5px 3px 5px rgba(0,0,0,.5);
    
     // It's possible to add some buttons that are non collapsible 
     // for mobile layouts. This was removed in Bootstrap 3.
@@ -35,13 +30,11 @@ nav.navbar
             display: none;
         }
     }
-    
-    // Remove a tiny bit of padding in the navbar
-    @media (max-width: @screen-md-min)
+    @media (min-width: @screen-md-min) 
     {
-        li a
+        #search_box
         {
-            padding-right: 2px;
+            padding-right : 8px;
         }
     }
 }

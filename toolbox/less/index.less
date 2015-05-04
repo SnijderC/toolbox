@@ -110,7 +110,6 @@ body
     #fp-tiles
     {
         margin              : auto;
-
         display             : block;
         position            : relative;
         .clearfix();
@@ -119,6 +118,11 @@ body
             .fp-tile
             {
                 margin              : 20px;
+                
+                @media (max-width: @screen-xs-max)
+                {
+                    margin : 20px 0 20px -4px;
+                }
                 float               : left;
                 color               : @gray-darker;
                 display             : inline;
@@ -520,23 +524,41 @@ body
     }
     
     // Styling for open and closed source icons..
-    .tb-open-source:before, .tb-closed-source
+    .tb-open-source, .tb-closed-source
     {
-        font-size       : 36px;
-        text-shadow     : 1px 1px 0px #fff;
-        display         : inline-block;
-    }
-    .tb-open-source:before
-    {
-        content         : "\e647";
-        font-size       : 34px;
-        color           : @btn-success-bg;
+        &:before, &:after
+        {
+            font-size       : 36px;
+            text-shadow     : 1px 1px 0px #fff;
+            display         : inline-block;
+        }
     }
     .tb-closed-source:before
     {
-        content         : "\e619";
-        color           : @btn-danger-bg;
+        content         : "\e662";
+        color           : #ccc;
+        left            : 0;
     }
+    .tb-closed-source:after
+    {
+        content         : "\e663";
+        color           : #aaa;
+        margin-left     : -43px;
+    }
+    .tb-open-source:before
+    {
+        content         : "\e664";
+        font-size       : 34px;
+        color           : lighten(@btn-success-bg,15%);
+    }
+    .tb-open-source:after
+    {
+        content         : "\e665";
+        color           : #ccc;
+        margin-left     : -43px;
+        color           : @btn-success-bg;
+    }
+    
     // Styling for the risk icons. 
     .risk
     {

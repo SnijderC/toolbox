@@ -5979,9 +5979,9 @@ nav.navbar .divider-vertical {
     display: none;
   }
 }
-@media (max-width: 992px) {
-  nav.navbar li a {
-    padding-right: 2px;
+@media (min-width: 992px) {
+  nav.navbar #search_box {
+    padding-right: 8px;
   }
 }
 ul.dropdown-menu {
@@ -6339,6 +6339,11 @@ body .btn-group .btn {
   height: 228px;
   width: 300px;
 }
+@media (max-width: 767px) {
+  #main #fp-tiles #fp-tiles-box .fp-tile {
+    margin: 20px 0 20px -4px;
+  }
+}
 #main #fp-tiles #fp-tiles-box .fp-tile.norpt {
   background-repeat: no-repeat;
 }
@@ -6642,19 +6647,33 @@ body .btn-group .btn {
   margin: 10px 0 10px 0;
 }
 #main .tb-open-source:before,
-#main .tb-closed-source {
+#main .tb-closed-source:before,
+#main .tb-open-source:after,
+#main .tb-closed-source:after {
   font-size: 36px;
   text-shadow: 1px 1px 0px #fff;
   display: inline-block;
 }
-#main .tb-open-source:before {
-  content: "\e647";
-  font-size: 34px;
-  color: #59a727;
-}
 #main .tb-closed-source:before {
-  content: "\e619";
-  color: #d9534f;
+  content: "\e662";
+  color: #ccc;
+  left: 0;
+}
+#main .tb-closed-source:after {
+  content: "\e663";
+  color: #aaa;
+  margin-left: -43px;
+}
+#main .tb-open-source:before {
+  content: "\e664";
+  font-size: 34px;
+  color: #7ed447;
+}
+#main .tb-open-source:after {
+  content: "\e665";
+  color: #ccc;
+  margin-left: -43px;
+  color: #59a727;
 }
 #main .risk {
   display: inline-block;

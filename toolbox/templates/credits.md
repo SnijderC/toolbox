@@ -1,13 +1,4 @@
-Ontwikkeld door:
-=============
-
- - Chris Snijder 
-    - Twitter: [@SnijderC](https://twitter.com/SnijderC) 
-    - &#x45;&#x2D;&#x6D;&#x61;&#x69;&#x6C;&#x3A;&#x20;&#099;&#104;&#114;&#105;&#115;&#115;&#110;&#105;&#106;&#100;&#101;&#114;&#064;&#105;&#099;&#108;&#111;&#117;&#100;&#046;&#099;&#111;&#109;
-    - [GPG key](https://keybase.io/snijderc/key.asc)
-
-Met bijdragen van:
-==============
+### Met bijdragen van:
 
  - Chris Snijder 
     - Twitter: [@SnijderC](https://twitter.com/SnijderC) 
@@ -24,7 +15,7 @@ Met bijdragen van:
     - Twitter: [@Sp1l](https://twitter.com/Sp1l)
     - Website: [https://wiki.freebsd.org/BernardSpil](https://wiki.freebsd.org/BernardSpil)
  - Maurits Reijnoudt
-    - &#115;&#112;&#105;&#108;&#46;&#111;&#115;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
+    - &#106;&#119;&#109;&#114;&#064;&#111;&#110;&#101;&#110;&#101;&#116;&#098;&#101;&#121;&#111;&#110;&#100;&#046;&#111;&#114;&#103;
     - [GPG key](http://www.mauritsreijnoudt.nl/Pub_Key.txt)
     - Twitter: [@maurits_r](https://twitter.com/maurits_r)
     - Website: [www.mauritsreijnoudt.nl](www.mauritsreijnoudt.nl)
@@ -48,10 +39,6 @@ Met bijdragen van:
  - Harld Röling
     - &#104;&#97;&#114;&#108;&#100;&#46;&#114;&#111;&#108;&#105;&#110;&#103;&#64;&#104;&#114;&#111;&#108;&#105;&#110;&#103;&#46;&#110;&#108;
     - [GPG key](https://www.hroling.nl/pki/certificaten/Harld_Roling_0xF1E7EC17.asc)
-    - Twitter: [@OpenKortenhoef](https://twitter.com/OpenKortenhoef) 
-    - Diaspora*: [harld@pod.readme.is](https://pod.readme.is/u/harld)
-    - Website: https://www.hroling.nl 
-    - Blog: https://cryptoblog.hroling.nl
  - Manon de Vries
  - Tako Marks
     - &#109;&#97;&#105;&#108;&#64;&#116;&#116;&#110;&#109;&#46;&#110;&#108;
@@ -59,13 +46,35 @@ Met bijdragen van:
  - Rob van der Wouw
  - Evelyn Austin
  - Tessel Renzenbrink
- 
-Special thanks to...
-====================
+ - Eric van de Lisdonk
+ - Sebastiaan ter Burg
+    - [www.ter-burg.nl](http://www.ter-burg.nl)
+ - Gregoire Verweijen
+    - [www.greeg.nl](http://www.greeg.nl)
+ - Milena Spaan
+    - [www.milenaspaan.nl](http://www.milenaspaan.nl)
+ - Rinus Bot
+ - Lisa Goudsmit
+    - [www.lisagoudsmit.com](http://www.lisagoudsmit.com)
+ - Nynke Vissia
+    - [www.viavissia.nl](http://www.viavissia.nl)
+ - Roberto Bruinhard
+ - Roy Hars
+ - Achilles Speksnijder
+
+### Ontwikkeld door:
+
+ - Chris Snijder 
+    - Twitter: [@SnijderC](https://twitter.com/SnijderC) 
+    - &#x45;&#x2D;&#x6D;&#x61;&#x69;&#x6C;&#x3A;&#x20;&#099;&#104;&#114;&#105;&#115;&#115;&#110;&#105;&#106;&#100;&#101;&#114;&#064;&#105;&#099;&#108;&#111;&#117;&#100;&#046;&#099;&#111;&#109;
+    - [GPG key](https://keybase.io/snijderc/key.asc)
+    
+### Special thanks to...
 
  - **Niels Westerlaken**, Niels heeft de originele Toolbox ontwikkeld.
+ - **Ed**, for waking us all up <3!
  
-This website was built with the help many open source projects.
+This website was built with the help of many open source projects.
 This page is for attributing the makers and organisations. Licenses included where necessary (redistribution).
 
  - Django Software Foundation for the [Django Framework](https://www.djangoproject.com/) ([license](/doc/licenses/django-license))
@@ -94,9 +103,9 @@ If your work is listed but a license or link is missing..
   - *Maybe we used your project for the development or testing but did not include it in our "redistribution" therefore we either need only "attribute" according to your license or we just want to!*{.small}
   - *We've looked but we cannot find it, please let us know and we will update the list!*{.small}
 
-Other Licenses/Trademarks
-==========
+### Other Licenses/Trademarks
+
 - Apple for icons:
 *"Apple, the Apple logo, iPad, and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc."*
 - Google for icons [license](http://creativecommons.org/licenses/by/2.5/)
-- The fonts used for the text on this website are DIN and DINPro which are commercial, Bits of Freedom is licensed to use it. The fonts license does not require a license to be include with published works.
+- The fonts used for the text on this website are DIN and DINPro which are commercial, Bits of Freedom is licensed to use it. The font's license does not require a license to be included with published works.
