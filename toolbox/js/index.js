@@ -255,8 +255,9 @@ $(document).ready(function()
     
     $('body').on('touchend', resetElements);
     $('body').on('click', resetElements);
-    
-    $("#intro-video").height($(window).height()-120);
+    var player_height = $(window).height()/1.5
+    if (player_height > 720) {player_height=720}
+    $("#intro-video").height(player_height);
 })
 
 
