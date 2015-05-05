@@ -69,13 +69,13 @@ block content
                                                     span.tb-clock=item.time_formatted
                                         
                                         //- Show how trustworthy an item is, open source? good policy?
-                                        .trust
+                                        .trust.pull-right
                                             if item.license.open_source
-                                                span.tb-open-source.pull-right(data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")  
+                                                img(src="/static/media/open-source.svg",width="36",height="36",data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")  
                                             elif item.license.open_source == False
-                                                span.tb-closed-source.pull-right(data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover")
-                                            if item.risk_class
-                                                span.pull-right(class="{{item.risk_class}}",data-content="{{item.risk_text}}",data-toggle="popover")
+                                                img(src="/static/media/closed-source.svg",width="36",height="36",data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover")
+                                            if item.risk_src
+                                                img(src="/static/media/{{item.risk_src}}",width="36",height="36",data-content="{{item.risk_text}}",data-toggle="popover")
                                             .clearfix.hidden-xs
                                             if item.cost
                                                 if item.i_am == "tool" or item.i_am == "app"

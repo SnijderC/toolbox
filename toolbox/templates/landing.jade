@@ -1,17 +1,13 @@
 extends "layout.jade"
-
 mixin make_tile(img_src, title, onliner, icon, href)
-    a(href="{{href}}")
+    a.fp-tile(href="{{href}}")
         if img_src == ""
-            .fp-tile
-                .fp-tile-p
-                    h4(class="{{icon}}")=title
-                    {{onliner}}
+            img
         else
-            .fp-tile.norpt(style="background-image:url('{{img_src}}');")
-                .fp-tile-p
-                    h4(class="{{icon}}")=title
-                    {{onliner}}
+            img(src="{{img_src}}")
+        .fp-tile-p
+            h4(class="{{icon}}")=title
+            {{onliner}}
     
 block content
 
@@ -24,20 +20,22 @@ block content
 
     #header
 
-    .container-fluid                    
+    .container-fluid                  
         .row
             .col-md-10.col-md-offset-1.col-xs-12
                 h1.font-black Internet&shy;vrijheid Toolbox
                 h2.font-bold Vrijheid, veiligheid en privacy online
                 .fp-line
-            .col-md-10.col-md-offset-1.col-xs-12
-                #fp-tiles
-                    #fp-tiles-box
-                        +make_tile("/static/media/veilig-mobiel.jpg", "Mobiel", "In 5 stappen een veilige mobiel.", "tb-mobile", "/playlist/mobiel/")
-                        +make_tile("/static/media/veilig-online.jpg", "Veilig internetten", "6x Vrij en privé online.", "tb-laptop", "/playlist/essentieel/")
-                        +make_tile("/static/media/veilig-browsen.jpg", "Browser", "In 3 stappen veilig browsen.", "tb-globe", "/playlist/mobiel/")
-                        +make_tile("", "Naar het overzicht", "Toon mij alle adviezen en tools.", "tb-columns", "/overzicht/")
-                        +make_tile("/static/media/waarom.jpg", "Waarom", "Internetvrijheid Toolbox ", "tb-info3", "/doc/waarom/")
+    #fp-tiles-container 
+        #fp-tiles
+            +make_tile("/static/media/veilig-mobiel.jpg", "Mobiel", "In 5 stappen een veilige mobiel.", "tb-mobile", "/playlist/mobiel/")
+            +make_tile("/static/media/veilig-online.jpg", "Veilig internetten", "6x Vrij en privé online.", "tb-laptop", "/playlist/essentieel/")
+            +make_tile("/static/media/veilig-browsen.jpg", "Browser", "In 3 stappen veilig browsen.", "tb-globe", "/playlist/veiligbrowsen/")
+            +make_tile("/static/media/waarom.jpg", "Waarom", "Internetvrijheid Toolbox ", "tb-info3", "/doc/waarom/")
+            +make_tile("", "Naar het overzicht", "Toon mij alle adviezen en tools.", "tb-columns", "/overzicht/")
+
+    
+    .container-fluid                    
         .row#fp-callout
             //- Left side callouts
             .col-md-5.col-sm-6.col-md-offset-1
@@ -50,7 +48,7 @@ block content
                             .bs-content
                                 |Dit is niet altijd even makkelijke materie. Let op de kleine groene vraagtekens bij moeilijke woorden. Je kunt daarop klikken voor uitleg. Dat ziet er zo uit: 
                                 abbr(title="VPN staat voor Virtual Private Network, het is een techniek die het mogelijk maakt al je verkeer via een andere computer te leiden. Het kan gebruikt worden om in te loggen in een bedrijfsnetwerk maar het kan er ook voor zorgen dat je je verkeer anonimiseert, wegsluist zonder dat iemand kan meekijken of om censuur te omzeilen.")
-                                |VPN
+                                    |VPN
 
                 .bs-callout.bs-callout-success
                     .row
@@ -64,4 +62,5 @@ block content
 
             //- Right side logo
             .col-md-5.col-sm-6
-                #tb-bof-logo
+                a(href="https://www.bof.nl",target="_blank")
+                    #tb-bof-logo

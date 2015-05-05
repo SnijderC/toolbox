@@ -61,6 +61,11 @@
  - Roberto Bruinhard
  - Roy Hars
  - Achilles Speksnijder
+ - Evelyn Austin
+ - Daphne van der Kroft
+ - Imre Jonk
+ - Hans de Zwart
+ - Rejo Zenger
 
 ### Ontwikkeld door:
 
@@ -73,9 +78,10 @@
 
  - **Niels Westerlaken**, Niels heeft de originele Toolbox ontwikkeld.
  - **Ed**, for waking us all up <3!
+ - Mijn vrouw, **Sakshi**, voor het enorme geduld.. :)
  
-This website was built with the help of many open source projects.
-This page is for attributing the makers and organisations. Licenses included where necessary (redistribution).
+Deze website is gemaakt met de hulp van vele open source projecten.
+Deze pagina is voor de attributie van de makers en organisaties. De licenties worden waar nodig genoemd (herdistributie).
 
  - Django Software Foundation for the [Django Framework](https://www.djangoproject.com/) ([license](/doc/licenses/django-license))
  - Twitter for [Bootstrap](http://getbootstrap.com/) ([license](/doc/licenses/mit-license/))
@@ -97,15 +103,14 @@ This page is for attributing the makers and organisations. Licenses included whe
     - Google for Material Design Icons ([license](https://creativecommons.org/licenses/by-sa/4.0/))
  - Dave Hall for [html5Media](https://github.com/etianen/html5media) ([license](https://github.com/etianen/html5media/blob/master/LICENSE))
     
-If your work is listed but a license or link is missing..
+Als jouw werk genoemd wordt maar een licentie of link mist...
 {.small}
 
-  - *Maybe we used your project for the development or testing but did not include it in our "redistribution" therefore we either need only "attribute" according to your license or we just want to!*{.small}
-  - *We've looked but we cannot find it, please let us know and we will update the list!*{.small}
+  - *Misschien hebben we je project gebruikt voor ontwikkeling of testen maar hebben het niet in onze 'herdistributie' opgenomen. Daarom hoeven we alleen te 'attribueren' volgens jouw licentie of gewoon omdat we dat willen!*{.small}
+  - *We hebben gezocht maar hebben het niet kunnen vinden. Laat het ons alsjeblieft weten dan updaten we de lijst!*{.small}
 
-### Other Licenses/Trademarks
+### Andere licenties en handelsmerken
 
-- Apple for icons:
-*"Apple, the Apple logo, iPad, and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc."*
-- Google for icons [license](http://creativecommons.org/licenses/by/2.5/)
-- The fonts used for the text on this website are DIN and DINPro which are commercial, Bits of Freedom is licensed to use it. The font's license does not require a license to be included with published works.
+- Apple voor iconen: *'Apple, het Apple logo, iPad, en iPhone zijn handelsmerken van Apple Inc., geregistreerd in de VS en andere landen. App Store is een service teken van Apple Inc.'*
+- Google voor iconen [licentie](http://creativecommons.org/licenses/by/2.5/)
+- De lettertypen gebruikt voor de tekst op deze website zijn DIN en DINPro, deze zijn commercieel, Bits of Freedom heeft de licentie om deze te gebruiken. De lettertypen licentie vereist niet dat er een licentie wordt meegeleverd met gepubliceerde werken.

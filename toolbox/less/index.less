@@ -107,63 +107,83 @@ body
         width : 120px;
         border-top : 2px solid @gray-darker;
     }
+
     #fp-tiles
     {
-        margin              : auto;
-        display             : block;
-        position            : relative;
-        .clearfix();
-        #fp-tiles-box
+        display                 : block;
+        position                : relative;
+        margin                  : 0 auto;
+        @media (max-width: 679px)
         {
-            .fp-tile
-            {
-                margin              : 20px;
-                
-                @media (max-width: @screen-xs-max)
-                {
-                    margin : 20px 0 20px -4px;
-                }
-                float               : left;
-                color               : @gray-darker;
-                display             : inline;
-                position            : relative;
-                background          : #ddd;
-                background-image: linear-gradient(rgba(128,128,128,.2), rgba(64,64,64,.7)),
-                linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
-                linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
-                linear-gradient(30deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
-                linear-gradient(150deg, #555555 12%, transparent 12.5%, transparent 87%, #555555 87.5%, #555555),
-                linear-gradient(60deg, #aaa 25%, transparent 25.5%, transparent 75%, #aaa 75%, #aaa), 
-                linear-gradient(60deg, #aaa 25%, transparent 25.5%, transparent 75%, #aaa 75%, #aaa);
-                background-size:100% 100%, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px;
-                background-position: 0 0, 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
-
-                height              : 228px;
-                width               : 300px;
-                &.norpt
-                {
-                    background-repeat   : no-repeat;
-                }
-                .fp-tile-p
-                {
-                    position        : absolute;
-                    background      : rgba(255,255,255,.93);
-                    display         : block;
-                    width           : 291px;
-                    margin          : 4px;
-                    padding         : 5px;
-                    box-shadow      : 3px 3px 10px rgba(0,0,0,.4);
-                    text-align      : center;
-                    bottom:0;
-                    h4
-                    {
-                        margin      : 4px;
-                        text-transform  : uppercase;
-                    }
-                }        
-            }
+            width               : 300px;
         }
-    }
+        @media (min-width: 680px)
+        {
+            width               : 680px;
+        }        
+        @media (min-width: 1020px)
+        {
+            width               : 1020px;
+        } 
+        @media (min-width: 1360px)
+        {
+            width               : 1360px;
+        }
+        a.fp-tile
+        {
+            margin              : 20px;
+            position            : relative;
+            display             : inline-block;
+            color               : @gray-darker;
+            box-shadow          : 3px 3px 10px rgba(0,0,0,.4);
+            @media (max-width: 679px)
+            {
+                margin          : 20px 0;
+            }
+            img
+            {
+                display             : block;
+                position            : relative;
+                height              : 228px;
+                max-height          : 228px;
+                width               : 300px;
+                max-width           : 300px;
+                
+                @bof-lighter        : lighten(@bof-color,10%);
+                @bof-light          : lighten(@bof-color,5%);
+                
+                background          : darken(@bof-color,5%);
+                background-image    : linear-gradient(rgba(64,64,64,.2), rgba(64,64,64,.7)),
+                linear-gradient(30deg, @bof-light 12%, transparent 12.5%, transparent 87%, @bof-light 87.5%, @bof-light),
+                linear-gradient(150deg, @bof-light 12%, transparent 12.5%, transparent 87%, @bof-light 87.5%, @bof-light),
+                linear-gradient(30deg, @bof-light 12%, transparent 12.5%, transparent 87%, @bof-light 87.5%, @bof-light),
+                linear-gradient(150deg, @bof-light 12%, transparent 12.5%, transparent 87%, @bof-light 87.5%, @bof-light),
+                linear-gradient(60deg, @bof-lighter 25%, transparent 25.5%, transparent 75%, @bof-lighter 75%, @bof-lighter), 
+                linear-gradient(60deg, @bof-lighter 25%, transparent 25.5%, transparent 75%, @bof-lighter 75%, @bof-lighter);
+                background-size     : 228px 300px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px, 20px 35px;
+                background-position : 0 0, 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+            }
+
+            .fp-tile-p
+            {
+                position        : absolute;
+                background      : rgba(255,255,255,.93);
+                display         : block;
+                width           : 291px;
+                margin          : 4px;
+                padding         : 5px;
+                box-shadow      : 3px 3px 10px rgba(0,0,0,.4);
+                text-align      : center;
+                bottom          : 0;
+                h4
+                {
+                    margin      : 4px;
+                    text-transform  : uppercase;
+                }
+            }        
+        }
+    }    
+    
     #fp-callout
     {
         margin-top              : 50px;
@@ -523,41 +543,6 @@ body
         margin         : 10px 0 10px 0;
     }
     
-    // Styling for open and closed source icons..
-    .tb-open-source, .tb-closed-source
-    {
-        &:before, &:after
-        {
-            font-size       : 36px;
-            text-shadow     : 1px 1px 0px #fff;
-            display         : inline-block;
-        }
-    }
-    .tb-closed-source:before
-    {
-        content         : "\e662";
-        color           : #ccc;
-        left            : 0;
-    }
-    .tb-closed-source:after
-    {
-        content         : "\e663";
-        color           : #aaa;
-        margin-left     : -43px;
-    }
-    .tb-open-source:before
-    {
-        content         : "\e664";
-        font-size       : 34px;
-        color           : lighten(@btn-success-bg,15%);
-    }
-    .tb-open-source:after
-    {
-        content         : "\e665";
-        color           : #ccc;
-        margin-left     : -43px;
-        color           : @btn-success-bg;
-    }
     
     // Styling for the risk icons. 
     .risk

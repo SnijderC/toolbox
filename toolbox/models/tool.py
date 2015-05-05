@@ -92,18 +92,18 @@ class Tool(CommonFields):
             cost = self.cost
         return cost    
     
-    def risk_class(self):
+    def risk_src(self):
         """
             Return the CSS classes that are associated with the risk level.
             
             This is done for simplicity in the templates..
         """
         if self.risk == "H":
-            return "tb-eye risk high"
+            return "eye-danger.svg"
         elif self.risk == "V":
-            return "tb-eye risk medium"
+            return "eye-warning.svg"
         else:
-            return "tb-eye-blocked risk low"
+            return "eye-clear.svg"
     
     def risk_text(self):
         """

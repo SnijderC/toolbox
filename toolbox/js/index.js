@@ -162,7 +162,7 @@ var SetPopovers = function(elements)
     var selector = elements+' abbr:not([id^=abbr-])';
     if (elements==="body")
     {
-        selector +=', span[data-toggle="popover"]';
+        selector +=', img[data-toggle="popover"]';
     }
     $(selector).each(function()
     {   
@@ -235,7 +235,7 @@ $(document).ready(function()
             resetSearch(true)
         }
         // Hide popovers..
-        if (e.target.nodeName!="ABBR" && !(e.target.nodeName==="SPAN" && $(e.target).attr('data-toggle')==="popover"))
+        if (e.target.nodeName!="ABBR" && !(e.target.nodeName==="IMG" && $(e.target).attr('data-toggle')==="popover"))
         {
             var none_of_these=true;
             $('.popover').each(function () 
