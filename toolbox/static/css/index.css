@@ -6528,6 +6528,9 @@ body .btn-group .btn {
     min-width: inherit;
   }
 }
+#main .trust img {
+  float: right;
+}
 #main .price {
   font: 11pt/11pt 'DINWeb-Bold', Arial, sans-serif;
   padding: 6px 8px 6px 8px;
