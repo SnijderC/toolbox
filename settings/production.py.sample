@@ -49,7 +49,7 @@ meta_tags = {
    
     'description'       : 'Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren.',
     'permalink'         : 'https://toolbox.bof.nl',
-    'imagelink'         : 'https://toolbox.bof.nl/static/media/social_logo.png',
+    'imagelink'         : 'https://toolbox.bof.nl/static/media/social_logo.png?1',
     'sitename'          : 'Internetvrijheid Toolbox',
     'articletags'       : ['privacy','vrijheid','internet'],
     'section'           : 'Overzicht',
