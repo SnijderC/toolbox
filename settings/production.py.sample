@@ -32,8 +32,6 @@ ALLOWED_HOSTS = ['*']
 
 title = "Internetvrijheid Toolbox - Bits of Freedom"
 
-fbadminid = ''
-
 tweet_templates = {
     'advice'  :'Op de #InternetvrijheidToolbox vond ik uitleg over deze tool. Ook aan de slag met je #privacy en #veiligheid online? ',
     'app'     :'Op de #InternetvrijheidToolbox kreeg ik dit handige advies. Ook aan de slag met je #privacy en #veiligheid online?',
@@ -54,7 +52,6 @@ meta_tags = {
     'imagelink'         : 'https://toolbox.bof.nl/static/media/social_logo.png',
     'sitename'          : 'Internetvrijheid Toolbox',
     'articletags'       : ['privacy','vrijheid','internet'],
-    'facebook.adminid'  : fbadminid,
     'section'           : 'Overzicht',
     'publishedtime'     : '2015-05-05',
     'modifiedtime'      : '2015-05-05',

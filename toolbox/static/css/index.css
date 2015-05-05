@@ -6515,6 +6515,19 @@ body .btn-group .btn {
 #main .lead {
   padding-top: 24px;
 }
+#main .trust .btn-group {
+  float: right;
+}
+@media (max-width: 991px) {
+  #main .trust .btn-group {
+    float: none;
+    display: block;
+  }
+  #main .trust .btn-group .dropdown-menu {
+    position: relative;
+    min-width: inherit;
+  }
+}
 #main .price {
   font: 11pt/11pt 'DINWeb-Bold', Arial, sans-serif;
   padding: 6px 8px 6px 8px;
@@ -6618,7 +6631,7 @@ body .btn-group .btn {
   max-width: 64px;
   margin: 7px 10px 5px 7px;
 }
-#main .alternatives .trust {
+#main .alternatives .trust img {
   float: right;
 }
 #main .alternatives .media-heading {
@@ -6627,43 +6640,12 @@ body .btn-group .btn {
 #main .alternatives .media-heading .trust {
   margin: -10px 0 0 0;
 }
-#main .trust {
-  display: block;
-  position: relative;
-}
 #main img[data-toggle="popover"] {
   cursor: help;
   margin-right: 4px;
 }
-@media (min-width: 768px) {
-  #main .trust {
-    text-align: right;
-  }
-}
-@media (max-width: 768px) {
-  #main .trust {
-    text-align: left;
-    margin-left: -15px;
-  }
-}
 #main .btn-block {
   margin: 10px 0 10px 0;
-}
-#main .risk {
-  display: inline-block;
-}
-#main .risk:before {
-  font-size: 36px;
-  text-shadow: 1px 1px 0px #fff;
-}
-#main .risk.high:before {
-  color: #d9534f;
-}
-#main .risk.medium:before {
-  color: #f0ad4e;
-}
-#main .risk.low:before {
-  color: #59a727;
 }
 #main table {
   width: 100%;

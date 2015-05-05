@@ -334,7 +334,28 @@ body
     {
         padding-top     : 24px;
     }
-
+    
+    .trust
+    {
+        .btn-group 
+        {
+            float               :right;
+        }
+        @media (max-width: @screen-sm-max)
+        {
+            .btn-group 
+            {
+                float           :none;
+                display         : block;
+                .dropdown-menu
+                {
+                    position    : relative;
+                    min-width   : inherit;
+                }
+            }
+        }
+    }
+    
     // This is the price tag currently at the bottom of tools and services items
     .price
     {
@@ -497,7 +518,7 @@ body
         }
 
         // Put the trust level icons right
-        .trust
+        .trust img
         {
             float           : right;
         }
@@ -512,61 +533,15 @@ body
             }
         }
     }
-    // All trust icons should be displayed as blocks.
-    // In the more specific styles it is set to float..
-    .trust
-    {    
-        display            : block;
-        position           : relative;
-    }
+
     @import "./icon_popovers.less";
     
-    // more precisely place the download links..
-    @media (min-width: @screen-sm-min)
-    {
-        .trust
-        {
-            text-align      : right;        
-        }
-    }
-    @media (max-width: @screen-sm-min)
-    {
-        .trust
-        {
-            text-align      : left;
-            margin-left     : -15px;
-        }
-    }
     // Add some vertical spacing between full width buttons (mobile layout)
     .btn-block
     {
         margin         : 10px 0 10px 0;
     }
     
-    
-    // Styling for the risk icons. 
-    .risk
-    {
-        display         : inline-block;
-        
-        &:before
-        {
-            font-size       : 36px;
-            text-shadow     : 1px 1px 0px #fff;
-        }
-        &.high:before
-        {
-            color           : @btn-danger-bg;
-        }   
-        &.medium:before
-        {
-            color           : @btn-warning-bg
-        }   
-        &.low:before
-        {
-            color           : @btn-success-bg;
-        }
-    }
     // Default styling for tables, according to boostrap style mixins.
     // This makes it possible to make fancy tables even from plain Markdown.
     table
