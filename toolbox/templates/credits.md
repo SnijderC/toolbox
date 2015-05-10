@@ -61,7 +61,6 @@
  - Roberto Bruinhard
  - Roy Hars
  - Achilles Speksnijder
- - Evelyn Austin
  - Daphne van der Kroft
  - Imre Jonk
  - Hans de Zwart
