@@ -11,9 +11,16 @@ This is my first project using Python and Django. Feedback is always welcome..
 ## Dependencies
 
  - Python 2.7+
+ - Python pip
  - MySQL 5.6+ *or* any other database supported by Django.\*
- 
-\* *One thing that can be said about another backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
+ - MySQL database development files
+
+To install these dependencies in Debian/Ubuntu:
+    ```
+    sudo apt-get install python python-pip mysql-server-5.6 libmysqlclient-dev
+    ```
+
+\* *One thing that can be said about another database backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
 
 ## Installation instructions
 
