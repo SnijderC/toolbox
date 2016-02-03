@@ -16,9 +16,8 @@ This is my first project using Python and Django. Feedback is always welcome..
  - MySQL database development files
 
 To install these dependencies in Debian/Ubuntu:
-    ```
+
     sudo apt-get install python python-pip mysql-server-5.6 libmysqlclient-dev
-    ```
 
 \* *One thing that can be said about another database backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
 
@@ -26,7 +25,7 @@ To install these dependencies in Debian/Ubuntu:
 
  1. Make a copy of the Git repo:
     ```
-    git clone https://github.com/SnijderC/toolbox.git ./toolbox
+    git clone https://code.bof.nl/bitsoffreedom/toolbox.git
     ```
     This should create a new directory called toolbox in the current directory.
     
@@ -68,7 +67,6 @@ To install these dependencies in Debian/Ubuntu:
    
  4. Run the following to install the frameworks which consist mainly of Django, Django plugins and some utilities like 
     mysql-python. Then it will initialise the database with empty tables and ask you to make an administrator account for Django.
-   
     ```
     pip install -r requirements.txt
     mkdir toolbox/logs
@@ -78,13 +76,11 @@ To install these dependencies in Debian/Ubuntu:
     ```
 
 And, if applicable, import fixtures (database dumps) into the database:
-   
-    ```
+
     python manage.py loaddata setup_db_content.json
-    ```
-   
-    *If something fails, read the* ***Someone the toolbox*** *section..*
-        
+
+*If something fails, read the* ***Someone the toolbox*** *section..*
+
  5. Magic should happen and you may startup the test server by running:
    
     ```
