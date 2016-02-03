@@ -7,8 +7,7 @@ It lists both safe options and well known unsafe options so users can quickly id
 
 This is my first project using Python and Django. Feedback is always welcome..
 
-This repository is maintained by Bits of Freedom (https://bof.nl). The Toolbox website can be found here: https://toolbox.bof.nl.
-Original author: Chris Snijder (https://github.com/SnijderC). See toolbox/templates/credits.md for a list of all contributors to the Toolbox and it's contents.
+Original author: Chris Snijder (https://github.com/SnijderC). See toolbox/templates/credits.md for a list of all contributors to the Toolbox and it's contents. This repository is maintained by Bits of Freedom (https://bof.nl). The Toolbox website can be found here: https://toolbox.bof.nl.
 
 ## Dependencies
 
@@ -114,15 +113,15 @@ Feel free to ask Bits of Freedom's system administrator for help: imre.jonk@bof.
 **`Always make a backup before you attempt to upgrade!`**
 
 Commands to execute inside the virtualenv:
-    ```
+
     git pull
     pip install --upgrade -r requirements.txt
     python manage.py syncdb --noinput
     python migrate toolbox --noinput
     python collectstatic --noinput
-    ```
 
 If applicable, import fixtures (database dumps) into the database:
+
     python manage.py loaddata setup_db_content.json
 
 ## Structure
