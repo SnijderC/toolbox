@@ -1,4 +1,3 @@
-===========
 BOF Toolbox
 ===========
 
@@ -32,7 +31,7 @@ To install these dependencies in Debian/Ubuntu:
  2. If you want create a virtual environment to isolate this app's dependencies (and you should) to not depend on system wide changes.
 
     If you have virtualenv, you can skip this:
-    ```   
+    ```
 	pip install virtualenv
     ```
     Next:
@@ -41,7 +40,7 @@ To install these dependencies in Debian/Ubuntu:
     cd toolbox/
     source ./bin/activate
 	```
-        
+
  3. Make appropriate changes to the `settings/production.py.sample` file, at a minimum supply a database backend, username and password.
     Then rename it to `settings/production.py`
     Note: *For a development setup you should use `development.py` instead. Settings in `development.py` overrule settings in `production.py`.*
@@ -62,11 +61,9 @@ To install these dependencies in Debian/Ubuntu:
         }
     } 
     ~~~
-    
-    Fill in the database settings (host, username, password, etc.), then **uncomment the lines**. 
-   
+
  4. Run the following to install the frameworks which consist mainly of Django, Django plugins and some utilities like 
-    mysql-python. Then it will initialise the database with empty tables and ask you to make an administrator account for Django.
+    mysql-python. Then it will initialise the database with empty tables.
     ```
     pip install -r requirements.txt
     mkdir toolbox/logs
@@ -75,18 +72,24 @@ To install these dependencies in Debian/Ubuntu:
     python collectstatic --noinput
     ```
 
-And, if applicable, import fixtures (database dumps) into the database:
-
+    If applicable, import fixtures (database dumps) into the database:
+    ```
     python manage.py loaddata setup_db_content.json
+    ```
 
-*If something fails, read the* ***Someone the toolbox*** *section..*
+    *If something fails, read the* ***Someone the toolbox*** *section..*
+
+    Run this to create a superuser (admin) and set a password for said superuser:
+    ```
+    python manage.py createsuperuser
+    ```
 
  5. Magic should happen and you may startup the test server by running:
-   
+
     ```
     python manage.py runserver 0.0.0.0:8080 --insecure
     ```
-   
+
     **NOTE the part where this says `--insecure`.** This is for testing only!
      
  6. Now browse to: 
