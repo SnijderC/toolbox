@@ -36,16 +36,14 @@ To install these dependencies in Debian/Ubuntu:
     ```
     Next:
  	```
-    virtualenv toolbox
-    cd toolbox/
-    source ./bin/activate
+    virtualenv toolboxenv
+    source ./toolboxenv/bin/activate
 	```
 
- 3. Make appropriate changes to the `settings/production.py.sample` file, at a minimum supply a database backend, username and password.
-    Then rename it to `settings/production.py`
+ 3. Copy the `settings/production.py.sample` file to `settings/production.py`, at a minimum supply a database host, name, username and password.
     Note: *For a development setup you should use `development.py` instead. Settings in `development.py` overrule settings in `production.py`.*
 
-    At a minimum find these lines and fill in your database settings:
+    Find these lines and fill in your database settings:
 
     ~~~
     # Database
@@ -91,7 +89,7 @@ To install these dependencies in Debian/Ubuntu:
     ```
 
     **NOTE the part where this says `--insecure`.** This is for testing only!
-     
+
  6. Now browse to: 
       - http://server-ip-address:8080
       - http://server-ip-address:8080/admin
@@ -101,16 +99,26 @@ To install these dependencies in Debian/Ubuntu:
       - toolbox/static/ (static files: css, js, django & plugins)
 
 ### Someone the toolbox (troubleshooting)
-Ok, so plans fail.. for documentation purposes this is a listing of what should have happened when you ran `setup.py install`.
+Ok, so plans fail.. Most problems arise from missing dependencies. Try to install them with this command:
 
     pip install -r requirements.txt --allow-external mysql-connector-python
-    ./manage.py syncdb
-    ./manage.py migrate toolbox
-    ./manage.py collectstatic
-    ./manage.py loaddata setup_db_content.json
 
-Try running the commands one by one and see where – if any – errors occur.
-    
+Feel free to ask Bits of Freedom's system administrator for help: imre.jonk@bof.nl
+
+## Upgrade instructions
+
+**`Always make a backup before you attempt to upgrade!`**
+
+Commands to execute inside the virtualenv:
+    git pull
+    pip install --upgrade -r requirements.txt
+    python manage.py syncdb --noinput
+    python migrate toolbox --noinput
+    python collectstatic --noinput
+
+If applicable, import fixtures (database dumps) into the database:
+    python manage.py loaddata setup_db_content.json
+
 ## Structure
 
 The entry point for this project is app.py.
@@ -129,18 +137,16 @@ The 5 entry points defined in app.py are:
 
 2. The Django admin pages.
 
-3. Static markdown files, these include e.g. credits and markdown documenatation
-    pages: /templates/credit.md and /templates/markdown_doc.md respectively.
+3. Static markdown files, these include e.g. credits and markdown documentation pages: /templates/credit.md and /templates/markdown_doc.md respectively.
 
 4. More static pages but more specifically licenses, obviously in the license dir.
 
-5. Dynamic pages, the actual content of the website.
-    There are 2 index templates and a content template for displaying that content.
-    
+5. Dynamic pages, the actual content of the website. There are 2 index templates and a content template for displaying that content.
+
     1. A multi-column index page that shows all the content types.
     2. A single-column layout that shows one type of content e.g. "tools".
     3. A content page that contains only a single content item; e.g. one tool: "TOR".
-    
+
 ## Navigation
 
 The "*slugs*" – which is a loosely defined term, can be found in the settings files. There is an array that defines whether a "*slug*" can come only with or also without an argument, e.g. `/tools/` is defined as *single* but *can* actually also have an argument: `/tools/tor/`. It also defines wether it may occur more than once in the case of: `/categorie/e-mail/categorie/encryptie`; `multiple` is set to `true`. Finally the array specifies a name that corresponds to the database table in English. This way non-Dutch speakers can re-use/contribute to the code, plus in the future it can be made multi-lingual without renaming all the database tables. 
