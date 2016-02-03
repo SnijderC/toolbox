@@ -38,9 +38,9 @@ This is my first project using Python and Django. Feedback is always welcome..
         
  3. Make appropriate changes to the `settings/production.py.sample` file, at a minimum supply a database backend, username and password.
     Then rename it to `settings/production.py`
-    Note: *For a development setup you need to change the `develop.py` file instead. Settings in `develop.py` overrule settings in `production.py`.*
+    Note: *For a development setup you should use `development.py` instead. Settings in `development.py` overrule settings in `production.py`.*
 
-    At a minimum Find these lines and fill in your database settings:
+    At a minimum find these lines and fill in your database settings:
 
     ~~~
     # Database
@@ -63,10 +63,20 @@ This is my first project using Python and Django. Feedback is always welcome..
     mysql-python. Then it will initialise the database with empty tables and ask you to make an administrator account for Django.
    
     ```
-    python setup.py install
+    pip install -r requirements.txt
+    mkdir toolbox/logs
+    python manage.py syncdb --noinput
+    python migrate toolbox --noinput
+    python collectstatic --noinput
     ```
-    
-    *If this should fail, read the* ***Someone the toolbox*** *section..*
+
+And, if applicable, import fixtures (database dumps) into the database:
+   
+    ```
+    python manage.py loaddata setup_db_content.json
+    ```
+   
+    *If something fails, read the* ***Someone the toolbox*** *section..*
         
  5. Magic should happen and you may startup the test server by running:
    
