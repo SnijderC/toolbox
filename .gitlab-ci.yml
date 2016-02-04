@@ -1,0 +1,16 @@
+job1:
+    only:
+        - develop
+    tags:
+        - toolbox-dev.bof.nl
+    script:
+        - pwd
+        - cp ~/development.py settings/development.py
+        - cp -r ~/fonts toolbox/static/
+        - cp -r ~/uploaded toolbox/static/media/
+        - cp -r ~/thumbs toolbox/static/media/
+        - ~/toolboxenv/bin/pip install --upgrade -r requirements.txt
+        - mkdir toolbox/logs
+        - ~/toolboxenv/bin/python manage.py syncdb --noinput
+        - ~/toolboxenv/bin/python manage.py migrate toolbox --noinput
+        - ~/toolboxenv/bin/python manage.py collectstatic --noinput
