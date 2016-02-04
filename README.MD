@@ -12,13 +12,14 @@ Original author: Chris Snijder (https://github.com/SnijderC). See toolbox/templa
 ## Dependencies
 
  - Python 2.7+
+ - Python header files and static library
  - Python pip
  - MySQL 5.6+ *or* any other database supported by Django.\*
  - MySQL database development files
 
 To install these dependencies in Debian/Ubuntu:
 
-    sudo apt-get install python python-pip mysql-server-5.6 libmysqlclient-dev
+    sudo apt-get install python python-dev python-pip mysql-server-5.6 libmysqlclient-dev
 
 \* *One thing that can be said about another database backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
 
@@ -68,13 +69,8 @@ To install these dependencies in Debian/Ubuntu:
     pip install -r requirements.txt
     mkdir toolbox/logs
     python manage.py syncdb --noinput
-    python migrate toolbox --noinput
-    python collectstatic --noinput
-    ```
-
-    If applicable, import fixtures (database dumps) into the database:
-    ```
-    python manage.py loaddata setup_db_content.json
+    python manage.py migrate toolbox --noinput
+    python manage.py collectstatic --noinput
     ```
 
     *If something fails, read the* ***Someone the toolbox*** *section..*
@@ -96,9 +92,13 @@ To install these dependencies in Debian/Ubuntu:
       - http://server-ip-address:8080
       - http://server-ip-address:8080/admin
   
- 7. You *should* setup **wsgi** in NGINX, Apache or lighthttpd for a production environment. Directories to map: 
-      - toolbox/ (the application)
-      - toolbox/static/ (static files: css, js, django & plugins)
+ 7. You *should* setup **wsgi** in NGINX, Apache or lighthttpd for a production environment. Do not forget this alias:
+      - /static should point to the toolbox/static/ directory (for all static files)
+    Bits of Freedom uses nginx and uWSGI. uWSGI requires a plugin to work with Python. This plugin can be installed with one command on Debian/Ubuntu:
+    ```
+    sudo apt-get install uwsgi-plugin-python
+    ```
+    The configuration used by Bits of Freedom is available in the "examples" directory. The nginx example configuration does not have SSL configured, because all SSL connections are terminated at a forward proxy in Bits of Freedom's setup. If you don't use a forward proxy you *should* configure SSL.
 
 ### Someone the toolbox (troubleshooting)
 Ok, so plans fail.. Most problems arise from missing dependencies. Try to install them with this command:
@@ -117,12 +117,8 @@ Commands to execute inside the virtualenv:
     git pull
     pip install --upgrade -r requirements.txt
     python manage.py syncdb --noinput
-    python migrate toolbox --noinput
-    python collectstatic --noinput
-
-If applicable, import fixtures (database dumps) into the database:
-
-    python manage.py loaddata setup_db_content.json
+    python manage.py migrate toolbox --noinput
+    python manage.py collectstatic --noinput
 
 ## Structure
 
