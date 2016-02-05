@@ -14,3 +14,19 @@ job1:
         - ~/toolboxenv/bin/python manage.py syncdb --noinput
         - ~/toolboxenv/bin/python manage.py migrate toolbox --noinput
         - ~/toolboxenv/bin/python manage.py collectstatic --noinput
+
+job2:
+    only:
+        - master
+    tags:
+        - toolbox.bof.nl
+    script:
+        - cp ~/production.py settings/production.py
+        - cp -r ~/fonts toolbox/static/
+        - cp -r ~/uploaded toolbox/static/media/
+        - cp -r ~/thumbs toolbox/static/media/
+        - ~/toolboxenv/bin/pip install --upgrade -r requirements.txt
+        - mkdir toolbox/logs
+        - ~/toolboxenv/bin/python manage.py syncdb --noinput
+        - ~/toolboxenv/bin/python manage.py migrate toolbox --noinput
+        - ~/toolboxenv/bin/python manage.py collectstatic --noinput
