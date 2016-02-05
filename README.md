@@ -1,7 +1,8 @@
 BOF Toolbox
 ===========
 
-## Introduction
+Introduction
+------------
 BOF Toolbox is a kind of index website of tools, services and advice for users that value their privacy and security.
 It lists both safe options and well known unsafe options so users can quickly identify better alternatives that suits their existing workflow.
 
@@ -9,8 +10,8 @@ This is my first project using Python and Django. Feedback is always welcome..
 
 Original author: Chris Snijder (https://github.com/SnijderC). See toolbox/templates/credits.md for a list of all contributors to the Toolbox and it's contents. This repository is maintained by Bits of Freedom (https://bof.nl). The Toolbox website can be found here: https://toolbox.bof.nl.
 
-## Dependencies
-
+Dependencies
+------------
  - Python 2.7+
  - Python header files and static library
  - Python pip
@@ -23,8 +24,8 @@ To install these dependencies in Debian/Ubuntu:
 
 \* *One thing that can be said about another database backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
 
-## Installation instructions
-
+Installation instructions
+-------------------------
  1. Make a copy of the Git repo:
     ```
     git clone https://code.bof.nl/bitsoffreedom/toolbox.git
@@ -108,8 +109,8 @@ Ok, so plans fail.. Most problems arise from missing dependencies. Try to instal
 Also, make sure you are working inside your virtual environment.
 Feel free to ask Bits of Freedom's system administrator for help: imre.jonk@bof.nl
 
-## Upgrade instructions
-
+Upgrade instructions
+--------------------
 **`Always make a backup before you attempt to upgrade!`**
 
 Commands to execute inside the virtualenv:
@@ -120,8 +121,8 @@ Commands to execute inside the virtualenv:
     python manage.py migrate toolbox --noinput
     python manage.py collectstatic --noinput
 
-## Structure
-
+Structure
+---------
 The entry point for this project is app.py.
 
 There are currently 3 main content providing functions mapped below.
@@ -148,8 +149,8 @@ The 5 entry points defined in app.py are:
     2. A single-column layout that shows one type of content e.g. "tools".
     3. A content page that contains only a single content item; e.g. one tool: "TOR".
 
-## Navigation
-
+Navigation
+----------
 The "*slugs*" – which is a loosely defined term, can be found in the settings files. There is an array that defines whether a "*slug*" can come only with or also without an argument, e.g. `/tools/` is defined as *single* but *can* actually also have an argument: `/tools/tor/`. It also defines wether it may occur more than once in the case of: `/categorie/e-mail/categorie/encryptie`; `multiple` is set to `true`. Finally the array specifies a name that corresponds to the database table in English. This way non-Dutch speakers can re-use/contribute to the code, plus in the future it can be made multi-lingual without renaming all the database tables. 
 
 Currently these are the "*slugs*" that may be "*single*":
@@ -179,68 +180,6 @@ Lastly there are 2 mute slugs that are for future use:
  - licenties (licenses)
  - prijs (price)
  
-## Contributing
-
-*Yes please..*
-
-### "Style guide"
-
-1. Use 4 spaces for indentation, not 3 or 5: 4, no tabs.
-2. Please align your equal signs if you have a list of variables to assign..
-   
-   **BAD**:
-   
-        x = 1
-        index = true
-       
-   ***GOOD***:
-   
-        x     = 1
-        index = true
-
-3. Please follow MVC with separate Templates.
-4. Even though Python's documentation tells us to do so, there are some places where more than 80 chars wide code is used..
-   It may not be convenient for the *vi(m)* user but who want to use *vi(m)* anyway..
-
-**TL;DR:** Use the .editorconfig
-
-### Technologies used
-
-#### Backend
- - Python
- - Django
- - A Django compatible database (preferably MySQL for it's more advanced search options (to be implemented)).
- - Jade (to generate HTML, please use it..)
- - Jinja (actually not primarily used but the Jade interpretor is based on it and there are a few advanced features here and there that do use it).
- - Various plugins for Django, see requirements.txt and the installation instructions.
- 
-#### Frontend
-
- - HTML obviously.. (generated from Jade)
- - CSS3 (written in Less)
- - Javascript but really I mean: jQuery
- - Bootstrap 3
- 
-#### Building from source
-
-All CSS and HTML are generated from LESS and Jade. This allows for more semantic writing as well as making smaller more compressed payloads and fewer HTTP(S) requests. This also gives a better mobile experience which is a major advantage.
-
-There are various ways to *preprocess* or *compile* these "languages" but the following strategy was chosen:
-
-- Jade is preprocessed by a Django/Python plugin, don't worry about it. The compiled files are **not** cached, either use NGINX/Apache caching or implement caching in Django (everything is highly cacheable, nothing is very dynamic).
-- Bower is used to download dependencies for modifying the source. You may want to run `bower install` to automatically download them, they will show up in the `vendors` directory.
-- Grunt is used to compile LESS files and combine the necessary Javascripts and compress everything into a single CSS and a single JS file. The Gruntfile.js is already set to go, workflows as follows:
- - `npm install` to install all Grunt's dependencies in `package.json`.
- - `grunt server`
- 	Runs a server that monitors changes in LESS and/or JS files in the source directories and compiles them on the fly in mere seconds. It does **not** compress files.
- - `grunt build` compiles the files and compresses them i.e.: concat/compile (JS/LESS resp.), uglify, YUI compress and then tells you the compression ratio.
- - Coffeescript is possible but **not** configured.
- 
- - Only Bootstrap components that are required are included. Variables are overwritten but the Bootstrap source is not to be modified, you *can* overwrite functionality in the `index.less` file or if you want to create something a bit bigger and specific make a new `*.less` file and include it from the `index.less` file, it will be included in the `grunt server` after you restart Grunt.
- - Provides a live reload server, use a script or plugin for your browser to live-reload when you save a source file.
-
-For the python modules you can use the setup script that is detailed in the installation section. It's based on the `requirements.txt` file and runs the database migrations afterwards, which means that you should **first** setup a MySQL database and enter the details into the settings file.
-
-You may want to use the test server built-in into Django:
-
-    python manage.py runserver 0.0.0.0:8080
+Contributing
+------------
+*Yes please...* See CONTRIBUTING.md
