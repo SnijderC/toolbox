@@ -17,10 +17,11 @@ Dependencies
  - Python pip
  - MySQL 5.6+ *or* any other database supported by Django.\*
  - MySQL database development files
+ - JPEG runtime library
 
 To install these dependencies in Debian/Ubuntu:
 
-    sudo apt-get install python python-dev python-pip mysql-server-5.6 libmysqlclient-dev
+    sudo apt-get install python python-dev python-pip mysql-server-5.6 libmysqlclient-dev libjpeg-dev
 
 \* *One thing that can be said about another database backend is that the search functionality will not work. You will need to implement a custom solution as this feature uses MySQL's.*
 
