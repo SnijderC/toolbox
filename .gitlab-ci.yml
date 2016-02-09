@@ -12,7 +12,10 @@ job1:
         - ~/toolboxenv/bin/pip install --upgrade -r requirements.txt
         - mkdir toolbox/logs
         - ~/toolboxenv/bin/python manage.py syncdb --noinput
+        - ~/toolboxenv/bin/python manage.py migrate --noinput
         - ~/toolboxenv/bin/python manage.py migrate toolbox --noinput
+        - ~/toolboxenv/bin/python manage.py migrate easy_thumbnails --noinput
+        - ~/toolboxenv/bin/python manage.py migrate filer --noinput
         - ~/toolboxenv/bin/python manage.py collectstatic --noinput
 
 job2:
@@ -28,5 +31,8 @@ job2:
         - ~/toolboxenv/bin/pip install --upgrade -r requirements.txt
         - mkdir toolbox/logs
         - ~/toolboxenv/bin/python manage.py syncdb --noinput
+        - ~/toolboxenv/bin/python manage.py migrate --noinput
         - ~/toolboxenv/bin/python manage.py migrate toolbox --noinput
+        - ~/toolboxenv/bin/python manage.py migrate easy_thumbnails --noinput
+        - ~/toolboxenv/bin/python manage.py migrate filer --noinput
         - ~/toolboxenv/bin/python manage.py collectstatic --noinput
