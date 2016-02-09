@@ -106,7 +106,10 @@ class CommonFields(GenericFields):
                                      )
 
                               
-    published = models.BooleanField ( verbose_name   = "Publiseer" )
+    published = models.BooleanField (
+                                        verbose_name    = "Publiseer",
+                                        default         = False,
+                                    )
 
     str_intro_md = ""
     str_content_md = ""

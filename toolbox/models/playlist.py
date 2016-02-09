@@ -57,7 +57,10 @@ class Playlist(GenericFields):
                                         verbose_name    = 'Laatste update'
                                      ) 
                                                                                                                                                   
-    published   = models.BooleanField ( verbose_name   = "Publiseer" )
+    published   = models.BooleanField   (
+                                            verbose_name    = "Publiseer",
+                                            default         = False,
+                                        )
 
     playlist    = models.ManyToManyField ( 
                                        'Advice',

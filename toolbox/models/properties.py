@@ -23,14 +23,16 @@ class Property(GenericFields):
                                          
     is_good   = models.BooleanField(    
         
-        verbose_name = 'Goede eigenschap?',
-        help_text    = 'Bepaalt of het item in de "Voordelen" lijst te selecteren is.'
+        verbose_name    = 'Goede eigenschap?',
+        help_text       = 'Bepaalt of het item in de "Voordelen" lijst te selecteren is.',
+        default         = False,
     )
     
     is_bad    = models.BooleanField(    
         
-        verbose_name = 'Slechte eigenschap?',
-        help_text    = 'Bepaalt of het item in de "Nadelen" lijst te selecteren is.'
+        verbose_name    = 'Slechte eigenschap?',
+        help_text       = 'Bepaalt of het item in de "Nadelen" lijst te selecteren is.',
+        default         = False,
     )
             
     class Meta:

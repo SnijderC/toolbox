@@ -34,7 +34,6 @@ INSTALLED_APPS = (
     'pagedown',
     'easy_thumbnails',
     'filer',
-    'south',
     'toolbox'
 )
 
