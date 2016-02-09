@@ -17,6 +17,7 @@ job1:
         - ~/toolboxenv/bin/python manage.py migrate easy_thumbnails --noinput
         - ~/toolboxenv/bin/python manage.py migrate filer --noinput
         - ~/toolboxenv/bin/python manage.py collectstatic --noinput
+        - sudo service uwsgi restart
 
 job2:
     only:
@@ -36,3 +37,4 @@ job2:
         - ~/toolboxenv/bin/python manage.py migrate easy_thumbnails --noinput
         - ~/toolboxenv/bin/python manage.py migrate filer --noinput
         - ~/toolboxenv/bin/python manage.py collectstatic --noinput
+        - sudo service uwsgi restart
