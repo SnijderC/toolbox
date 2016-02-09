@@ -1,6 +1,6 @@
 --index-url https://pypi.python.org/simple/
 
-Django==1.6.11
+Django==1.7.1
 django-filer==1.1.1
 django-mptt==0.5.5
 django-pagedown==0.1.1
