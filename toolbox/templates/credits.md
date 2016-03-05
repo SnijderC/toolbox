@@ -13,7 +13,7 @@
     - &#115;&#112;&#105;&#108;&#46;&#111;&#115;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
     - [GPG key](https://keybase.io/spil/key.asc)
     - Twitter: [@Sp1l](https://twitter.com/Sp1l)
-    - Website: [www.brnrd.eu/](https://www.brnrd.eu/)
+    - Website: [www.brnrd.eu](https://www.brnrd.eu)
  - Maurits Reijnoudt
     - &#106;&#119;&#109;&#114;&#064;&#111;&#110;&#101;&#110;&#101;&#116;&#098;&#101;&#121;&#111;&#110;&#100;&#046;&#111;&#114;&#103;
     - [GPG key](http://www.mauritsreijnoudt.nl/Pub_Key.txt)
