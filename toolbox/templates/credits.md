@@ -2,7 +2,7 @@
 
  - Chris Snijder 
     - Twitter: [@SnijderC](https://twitter.com/SnijderC) 
-    - &#x45;&#x2D;&#x6D;&#x61;&#x69;&#x6C;&#x3A;&#x20;&#099;&#104;&#114;&#105;&#115;&#115;&#110;&#105;&#106;&#100;&#101;&#114;&#064;&#105;&#099;&#108;&#111;&#117;&#100;&#046;&#099;&#111;&#109;
+    - toolbox@chrissnijder.nl
     - [GPG key](https://keybase.io/snijderc/key.asc)
  - Wouter Moraal 
     - Twitter: [@WouterMoraal](https://twitter.com/WouterMoraal)
@@ -13,7 +13,7 @@
     - &#115;&#112;&#105;&#108;&#46;&#111;&#115;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
     - [GPG key](https://keybase.io/spil/key.asc)
     - Twitter: [@Sp1l](https://twitter.com/Sp1l)
-    - Website: [https://wiki.freebsd.org/BernardSpil](https://wiki.freebsd.org/BernardSpil)
+    - Website: [www.brnrd.eu/](https://www.brnrd.eu/)
  - Maurits Reijnoudt
     - &#106;&#119;&#109;&#114;&#064;&#111;&#110;&#101;&#110;&#101;&#116;&#098;&#101;&#121;&#111;&#110;&#100;&#046;&#111;&#114;&#103;
     - [GPG key](http://www.mauritsreijnoudt.nl/Pub_Key.txt)
