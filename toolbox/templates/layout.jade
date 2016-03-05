@@ -8,35 +8,33 @@ html(lang="en","itemscope", itemtype="http://schema.org/Article")
     head
         //- The head is the same for every page and included for simplicity and reusability
         include includes/head
-        if page.data.filename == "landing"
-            script(src="/static/js/html5media.min.js")
     body
 
         //- Navbar is another include for simplicity and reusability
         include includes/navbar
-        
+
         //- This div contains the logo's and the drape with the green blocks.
         if page.data.filename != "landing"
             #header
-        
+
         //- This is the main content div
         #main
-        
+
             //- If set this displays a debug text at the top of the page..
             if page.debug
                 {{ page.data.debug }}
-            
+
             //- Filter dropdowns
             if page.show_filters
                 include includes/filters
-                    
+
             //- This is the actual content, this is the actual entry point, this layout is loaded around it.
             block content
 
         include includes/footer
         if page.playlist
             include includes/playlist_nav
-        if page.debug == false        
+        if page.debug == false
             // Piwik
             script(type="text/javascript")
                 var _paq=_paq||[];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u="//stats.bof.nl/";_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['setSiteId',11]);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.async=true;g.defer=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();
