@@ -1,5 +1,6 @@
 # Toolbox specific
 settings/development.py
+settings/production.py
 toolbox/static/media/uploaded/*
 toolbox/static/media/thumbs/*
 toolbox/static/filer/*

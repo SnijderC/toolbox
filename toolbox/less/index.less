@@ -337,16 +337,20 @@ body
     
     .trust
     {
-        .btn-group 
-        {
-            float               :right;
-        }
-        @media (max-width: @screen-sm-max)
+        @media (min-width: @screen-md-min)
         {
             .btn-group 
             {
-                float           :none;
+                float               : right;
+            }
+        }
+        @media (max-width: @screen-md-max)
+        {
+            .btn-group 
+            {
+                float           : none;
                 display         : block;
+
                 .dropdown-menu
                 {
                     position    : relative;
