@@ -79,3 +79,7 @@ docs/_build/
 
 # PyBuilder
 target/
+.vagrant
+toolbox/static/icons/
+toolbox/static/pagedown-extra/
+toolbox/static/preview_images/

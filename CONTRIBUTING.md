@@ -3,6 +3,31 @@ Contributing to the Toolbox
 
 So you know something about Git and Python (and maybe even Django) and you want to help? AWESOME! Please read on...
 
+Quickly get started with Vagrant
+--------------------------------
+
+Vagrant allow you to control a virtual machine from a script. This project includes a Vagrant file, which describes how the virtual machine should be configures in order to run a basic test environment.
+
+If you already have [Vagrant](https://www.vagrantup.com/) installed, you can skip the first 2 steps.
+
+1. Install [Vagrant](https://www.vagrantup.com/)
+2. Install [Virtualbox](https://www.virtualbox.org/)
+3. Clone the project into a local directory.
+   
+    ```console
+    $ git clone git@code.bof.nl/bitsoffreedom/toolbox.git
+    ```
+
+4. Install the `hostmanager` plugin for Vagrant, this allow us map `toolbox.local` to the IP address of the virtual host.
+    ```console
+    $ vagrant plugin install hostmanager
+    $ vagrant plugin install vagrant-vbguest
+    ```
+
+5. Run `vagrant up` to start the virtual machine, it will automatically be configured, after configuration it will host a test environment at `toolbox.local` (`192.168.33.101`). The project directory will be mounted at the `/vagrant` in the virtual machine automatically as well. So any changes you make in the project directory should be reflected by the virtual machine. 
+
+__Note:__ Running `vagrant up` will cause the hostmanager to try to change your *hosts* file, which requires your admin password.
+
 Continous Integration
 ---------------------
 
