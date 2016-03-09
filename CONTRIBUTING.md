@@ -18,13 +18,13 @@ If you already have [Vagrant](https://www.vagrantup.com/) installed, you can ski
     $ git clone git@code.bof.nl/bitsoffreedom/toolbox.git
     ```
 
-4. Install the `hostmanager` plugin for Vagrant, this allow us map `toolbox.local` to the IP address of the virtual host.
+4. Install the `hostmanager` for vagrant, this allow us map `toolbox.local` to the IP address of the virtual host. Also install the `vagrant-vbguest` plugin for, which installs the *VirtualBox Guest Additions* to the virtual machine (required for mounting the local source code directory on the virtual host).
     ```console
     $ vagrant plugin install hostmanager
     $ vagrant plugin install vagrant-vbguest
     ```
 
-5. Run `vagrant up` to start the virtual machine, it will automatically be configured, after configuration it will host a test environment at `toolbox.local` (`192.168.33.101`). The project directory will be mounted at the `/vagrant` in the virtual machine automatically as well. So any changes you make in the project directory should be reflected by the virtual machine. 
+5. Run `vagrant up` to start the virtual machine, it will automatically be configured, after configuration it will host a test environment at `toolbox.local` (`192.168.33.101`). The project directory will be mounted at the `/toolbox` in the virtual machine automatically as well. So any changes you make in the project directory should be reflected by the virtual machine. 
 
 __Note:__ Running `vagrant up` will cause the hostmanager to try to change your *hosts* file, which requires your admin password.
 
