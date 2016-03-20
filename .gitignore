@@ -82,3 +82,5 @@ target/
 toolbox/static/icons/
 toolbox/static/pagedown-extra/
 toolbox/static/preview_images/
+
+.sizecache.json
