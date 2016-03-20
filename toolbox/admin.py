@@ -4,25 +4,24 @@
         Sorry not much documented, have not really put much effort into this since
         Django kind of just works even if it's not perfect and the front-end had
         more priority.
-        
+
         If you feel this should change, feel free to contribute..
 """
 
 from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories, Manual
-from forms import CommonFieldsForm, LicenseForm, PlaylistForm, PlaylistOrderForm, FAQForm
 from django.contrib import admin
 
 def make_published(modeladmin, request, queryset):
     """
         Mass mark an item as published from the admin interface.
-    """ 
+    """
     queryset.update(published=True)
 make_published.short_description = "Mark selected items as published"
 
 def make_unpublished(modeladmin, request, queryset):
     """
         Mass mark an item as unpublished from the admin interface.
-    """ 
+    """
     queryset.update(published=False)
 make_unpublished.short_description = "Mark selected items as unpublished"
 
@@ -31,12 +30,11 @@ def contributor_name(obj):
 contributor_name.short_description = 'contributor'
 
 class CommonFieldsAdmin(admin.ModelAdmin):
-    form            = CommonFieldsForm
     actions         = [make_published,make_unpublished]
     list_display    = ('title', contributor_name, 'slug','credit','date')
-    
+
 class LicenseAdmin(admin.ModelAdmin):
-    form    = LicenseForm
+    pass
 
 class ParentCategoriesAdmin(admin.ModelAdmin):
     filter_horizontal   = ('categories',)
@@ -69,8 +67,8 @@ class ServiceAdmin(CommonFieldsAdmin):
         ('Properties', {
             'fields': ('url', 'author', 'author_url', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
         })
-    )  
-     
+    )
+
 class AdviceAdmin(CommonFieldsAdmin):
     fieldsets = (
         (None, {
@@ -89,17 +87,14 @@ class TermsAdmin(admin.ModelAdmin):
     pass
 
 class PlaylistAdmin(admin.ModelAdmin):
-    form              = PlaylistForm
     actions           = [make_published,make_unpublished]
     list_display      = ('title', 'slug', 'date')
     filter_horizontal = ('playlist',)
 
 class PlaylistOrderAdmin(admin.ModelAdmin):
-    form              = PlaylistOrderForm
     list_display      = ('playlist', 'number', 'advice')
 
 class FAQAdmin(admin.ModelAdmin):
-    form              = FAQForm
     list_display      = ('question', 'id')
     fieldsets = (
         (None, {
@@ -123,7 +118,7 @@ class ManualAdmin(CommonFieldsAdmin):
         ('Properties', {
             'fields': (('user', 'credit'), ('published', 'feature_score')),
         })
-    )  
+    )
 
 
 adminlist = (
@@ -133,7 +128,7 @@ adminlist = (
                 (Service, ServiceAdmin),
                 (License, LicenseAdmin),
                 (Playlist, PlaylistAdmin),
-                (PlaylistOrder, PlaylistOrderAdmin),    
+                (PlaylistOrder, PlaylistOrderAdmin),
                 Platform,
                 Category,
                 (ParentCategories, ParentCategoriesAdmin),
@@ -147,7 +142,7 @@ adminlist = (
 
 """
     This is a fix for a feature that i think is missing in Django
-    admin.site.register does work with tuples but doesn't work when 
+    admin.site.register does work with tuples but doesn't work when
     you add FormAdmins and ModelAdmins, quick fix:
 """
 
@@ -159,4 +154,4 @@ for item in adminlist:
 
 
 
-                      
+

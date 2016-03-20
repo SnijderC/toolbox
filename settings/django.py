@@ -3,7 +3,7 @@ Django settings for toolbox project.
 
 NOTE: Most settings have moved to production.py (and development.py)
 
-      " These are not the settings you are looking for " 
+      " These are not the settings you are looking for "
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -31,7 +31,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'markdown',
-    'pagedown',
     'easy_thumbnails',
     'filer',
     'toolbox'
