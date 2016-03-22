@@ -191,8 +191,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('number', models.IntegerField(verbose_name=b'Volgorde')),
-                ('advice', models.ForeignKey(to='toolbox.Advice')),
-                ('playlist', models.ForeignKey(to='toolbox.Playlist')),
+                ('advice', models.ForeignKey(to='toolbox.Advice', on_delete=django.db.models.deletion.SET_NULL, blank=True, null=True)),
+                ('playlist', models.ForeignKey(to='toolbox.Playlist', on_delete=django.db.models.deletion.SET_NULL, blank=True, null=True)),
             ],
             options={
                 'verbose_name': 'Playlist inhoud',
@@ -262,7 +262,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Service',
             fields=[
-                ('tool_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='toolbox.Tool')),
+                ('tool_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='toolbox.Tool', on_delete=django.db.models.deletion.CASCADE)),
             ],
             options={
                 'verbose_name': 'Diensten',
@@ -273,7 +273,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='App',
             fields=[
-                ('tool_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='toolbox.Tool')),
+                ('tool_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='toolbox.Tool', on_delete=django.db.models.deletion.CASCADE)),
                 ('playstore', models.CharField(help_text=b'Vul het id in, niet een link dus: com.google.android.apps.maps', max_length=150, verbose_name=b'Playstore id', blank=True)),
                 ('appstore', models.CharField(help_text=b'Vul het id in, niet een link dus: googlemaps', max_length=150, verbose_name=b'Appstore', blank=True)),
                 ('marketplace', models.CharField(help_text=b'Vul het id in, niet een link dus: c14e93aa-27d7-df11-a844-00237de2db9e', max_length=150, verbose_name=b'Marketplace', blank=True)),
@@ -335,7 +335,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='tool',
             name='user',
-            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL, on_delete=django.db.models.deletion.SET_NULL, blank=True, null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -353,7 +353,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='manual',
             name='user',
-            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL, on_delete=django.db.models.deletion.SET_NULL, blank=True, null=True),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -401,7 +401,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='advice',
             name='user',
-            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(verbose_name=b'Vrijwilliger', to=settings.AUTH_USER_MODEL, on_delete=django.db.models.deletion.SET_NULL, blank=True, null=True),
             preserve_default=True,
         ),
     ]

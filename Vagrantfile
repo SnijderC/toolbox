@@ -7,7 +7,9 @@ CPU_COUNT = 4
 IOAPIC = "on"
 PROJECT_NAME = "toolbox"
 IP_ADDRESS = "192.168.33.100"
-EMAIL="toolbox@localhost"
+ADMIN_USERNAME="toolbox"
+ADMIN_EMAIL="toolbox@localhost"
+ADMIN_PASSWORD="FooBarBaz1"
 
 $provision = <<SCRIPT
 echo "Europe/Amsterdam" > /etc/timezone
@@ -52,10 +54,10 @@ logdir=/toolbox/toolbox/logs
 if [ ! -d "$logdir" ]; then
     mkdir $logdir
 fi
-python manage.py syncdb --noinput
-python manage.py migrate toolbox --noinput
+python manage.py migrate --noinput
 python manage.py collectstatic --noinput
-python manage.py createsuperuser --username toolbox --email $1
+echo "from django.contrib.auth.models import User; \
+User.objects.create_superuser('$1', '$2', '$3')" | python manage.py shell
 
 cat > /lib/systemd/system/toolbox.service <<EOF
 [Unit]
@@ -92,8 +94,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.box_check_update = true
 
-    config.hostmanager.enabled = true
-    config.hostmanager.manage_host = true
+    #config.hostmanager.enabled = true
+    #config.hostmanager.manage_host = true
     config.vm.define PROJECT_NAME do |node|
         node.vm.hostname = PROJECT_NAME + ".local"
         node.vm.network :private_network, ip:  IP_ADDRESS
@@ -104,6 +106,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder ".", "/toolbox/", type: "virtualbox"
     config.vm.provision "shell" do |s|
         s.inline = $provision
-        s.args   = [EMAIL]
+        s.args   = [ADMIN_USERNAME, ADMIN_EMAIL, ADMIN_PASSWORD]
     end
 end

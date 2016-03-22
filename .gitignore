@@ -4,8 +4,6 @@ toolbox/static/media/uploaded/*
 toolbox/static/media/thumbs/*
 toolbox/static/filer/*
 toolbox/static/admin/*
-toolbox/static/pagedown/*
-toolbox/static/pagedown_init.js
 
 # General
 .DS_Store
@@ -80,7 +78,6 @@ docs/_build/
 target/
 .vagrant
 toolbox/static/icons/
-toolbox/static/pagedown-extra/
 toolbox/static/preview_images/
 
 .sizecache.json

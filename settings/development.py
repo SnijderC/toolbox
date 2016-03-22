@@ -14,11 +14,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))+"/toolbox/"
 
 DATABASES = {
     'default': {
-        'ENGINE'    : 'django.db.backends.mysql',
-        'NAME'      : 'toolbox-dev',
-        'HOST'      : 'localhost',
-        'USER'      : 'root',
-        'PASSWORD'  : 'root'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'toolbox-dev',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'root'
     }
 }
 
@@ -33,51 +33,54 @@ ALLOWED_HOSTS = ['*']
 title = "Internetvrijheid Toolbox - Bits of Freedom"
 
 tweet_templates = {
-    'advice'  :'Op de #InternetvrijheidToolbox vond ik uitleg over deze tool. Ook aan de slag met je #privacy en #veiligheid online? ',
-    'app'     :'Op de #InternetvrijheidToolbox kreeg ik dit handige advies. Ook aan de slag met je #privacy en #veiligheid online?',
-    'tool'    :'De #InternetvrijheidToolbox gaf mij uitleg over deze dienst. Ook aan de slag met je #privacy en #veiligheid online?',
-    'playlist':'Op de #InternetvrijheidToolbox staat dit handige stappenplan. Ook aan de slag met je #privacy en #veiligheid online?',
-    'index'   :'Check dit overzicht van de #InternetvrijheidToolbox. Ook zelf aan de slag met je #privacy en #veiligheid online?',
+    'advice': 'Op de #InternetvrijheidToolbox vond ik uitleg over deze tool. Ook aan de slag met je #privacy en #veiligheid online? ',
+    'app': 'Op de #InternetvrijheidToolbox kreeg ik dit handige advies. Ook aan de slag met je #privacy en #veiligheid online?',
+    'tool': 'De #InternetvrijheidToolbox gaf mij uitleg over deze dienst. Ook aan de slag met je #privacy en #veiligheid online?',
+    'playlist': 'Op de #InternetvrijheidToolbox staat dit handige stappenplan. Ook aan de slag met je #privacy en #veiligheid online?',
+    'index': 'Check dit overzicht van de #InternetvrijheidToolbox. Ook zelf aan de slag met je #privacy en #veiligheid online?',
 }
 
 meta_tags = {
-    'title'             : title,
-    'twitter'           : {
-         'publisher'    : '@bitsoffreedom',
-         'author'       : '@bitsoffreedom',
+    'title': title,
+    'twitter': {
+        'publisher': '@bitsoffreedom',
+        'author': '@bitsoffreedom',
     },
 
-    'description'       : 'Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren.',
-    'permalink'         : 'https://toolbox.bof.nl',
-    'imagelink'         : 'https://toolbox.bof.nl/static/media/social_logo.png?1',
-    'sitename'          : 'Internetvrijheid Toolbox',
-    'articletags'       : ['privacy','vrijheid','internet'],
-    'section'           : 'Overzicht',
-    'publishedtime'     : '2015-05-05',
-    'modifiedtime'      : '2015-05-05',
-    'locale'            : 'nl_NL',
-    'type'              : 'website',
+    'description': 'Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren.',
+    'permalink': 'https://toolbox.bof.nl',
+    'imagelink': 'https://toolbox.bof.nl/static/media/social_logo.png?1',
+    'sitename': 'Internetvrijheid Toolbox',
+    'articletags': ['privacy', 'vrijheid', 'internet'],
+    'section': 'Overzicht',
+    'publishedtime': '2015-05-05',
+    'modifiedtime': '2015-05-05',
+    'locale': 'nl_NL',
+    'type': 'website',
 }
 
 meta_templates = {
-    'title'             :'%s',
-    'description'       :'%s',
-    'permalink'         :'https://toolbox.bof.nl%s',
+    'title': '%s',
+    'description': '%s',
+    'permalink': 'https://toolbox.bof.nl%s',
 }
 
 slugs = {
-        'categorie'   : { 'slug' : 'categories' , 'single' : False , 'multiple' : True},
-        'platform'    : { 'slug' : 'platforms'  , 'single' : False , 'multiple' : False},
-        'licenties'   : { 'slug' : 'licenses'   , 'single' : False , 'multiple' : False},
-        'prijs'       : { 'slug' : 'prices'     , 'single' : False , 'multiple' : False},
-        'formfactor'  : { 'slug' : 'formfactors', 'single' : False , 'multiple' : False},
-        'page'        : { 'slug' : 'pagenr'     , 'single' : False , 'multiple' : False},
-        'adviezen'    : { 'slug' : 'advices'    , 'single' : True  , 'multiple' : False}, # this
-        'tools'       : { 'slug' : 'tools'      , 'single' : True  , 'multiple' : False}, # XOR this
-        'overzicht'   : { 'slug' : 'overview'   , 'single' : True  , 'multiple' : False}, # XOR this
-        'handleiding' : { 'slug' : 'manuals'    , 'single' : True  , 'multiple' : False}, # XOR this
-    }
-
+    'categorie': {'slug': 'categories', 'single': False, 'multiple': True},
+    'platform': {'slug': 'platforms', 'single': False, 'multiple': False},
+    'licenties': {'slug': 'licenses', 'single': False, 'multiple': False},
+    'prijs': {'slug': 'prices', 'single': False, 'multiple': False},
+    'formfactor': {'slug': 'formfactors', 'single': False, 'multiple': False},
+    'page': {'slug': 'pagenr', 'single': False, 'multiple': False},
+    # this
+    'adviezen': {'slug': 'advices', 'single': True, 'multiple': False},
+    # XOR this
+    'tools': {'slug': 'tools', 'single': True, 'multiple': False},
+    # XOR this
+    'overzicht': {'slug': 'overview', 'single': True, 'multiple': False},
+    # XOR this
+    'handleiding': {'slug': 'manuals', 'single': True, 'multiple': False},
+}
 
 
 """
@@ -105,8 +108,8 @@ LOGGING = {
     },
 }
 
-DEBUG           = False
-TEMPLATE_DEBUG  = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 
 # Internationalization
@@ -132,15 +135,15 @@ MEDIA_URL = STATIC_URL + "media/"
 THUMBNAIL_ALIASES = {
     '': {
         'icon_thumb': {'size': (128, 0), 'crop': False},
-        'icon'      : {'size': (256, 0), 'crop': False},
-        'inline'    : {'size': (600, 0), 'crop': False},
+        'icon': {'size': (256, 0), 'crop': False},
+        'inline': {'size': (600, 0), 'crop': False},
     },
 }
 THUMBNAIL_BASEDIR = "inline/thumbs/"
 THUMBNAIL_PRESERVE_EXTENSIONS = True
 
 FILER_ENABLE_PERMISSIONS = False
-FILER_IS_PUBLIC_DEFAULT  = True
+FILER_IS_PUBLIC_DEFAULT = True
 FILER_DEBUG = False
 FILER_STORAGES = {
     'public': {
@@ -172,3 +175,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
 )
+
+SECURE_SSL_REDIRECT = False

@@ -9,14 +9,14 @@ block content
     .container-fluid
         .row
             .col-md-10.col-md-offset-1
-    
+
                 //- If there are results.
                 if page.data.item
-                    
+
                     //- Go through them one by one.
                     for item in page.data.item
                         br
-                        
+
                         //- Bootstrap panel.
                         .panel.panel-default
                             .panel-heading.container-fluid
@@ -24,54 +24,54 @@ block content
                                     .col-sm-10.col-xs-12
                                         //- Link to /url_slug/item_slug/ e.g. /tools/tor/.
                                         h3
-                                            a(href="/{{item.url_slug}}/{{item.slug}}/") 
+                                            a(href="/{{item.url_slug}}/{{item.slug}}/")
                                                 if page.data.itemnr
                                                     {{page.data.itemnr}}: {{item.title}}
                                                 else
                                                     {{item.title}}
                                         if page.index
                                             each platform in item.platforms.all
-                                                i.platform-indicator(class="tb-{{platform.slug}}")    
+                                                i.platform-indicator(class="tb-{{platform.slug}}")
                                         if page.index == False
                                             //- If the the item has categories, show them all separated by comma
                                                 with links to the categorie index.
                                             if item.categories.count > 0
-                                                | Categorieën: 
+                                                | Categorieën:
                                                 for category in item.categories.all
-                                                    
+
                                                     //- Take the preloaded category link from the dict.
                                                     {% dictitem page.data.nav.categorieslinks category.slug as href%}
                                                     a(href="{{href}}") {{ category.name }}
-                                                    if not category == item.categories.last 
+                                                    if not category == item.categories.last
                                                         ,
                                                 br
-                                            
+
                                             //- If the the item has platforms, show them all separated by comma.
                                             if item.platforms.count > 0
-                                                | Platformen: 
+                                                | Platformen:
                                                 for platform in item.platforms.all
-                                                    
+
                                                     //- Take the preloaded platform link from the dict.
                                                     {% dictitem page.data.nav.platformslinks platform.slug as href%}
                                                     a(href="{{href}}") {{ platform.name }}
-                                                    if not platform == item.platforms.last 
+                                                    if not platform == item.platforms.last
                                                         ,
-                                        
+
                                             if item.i_am == "tool" or item.i_am == "app"
                                                 div
-                                                    |Ontwikkelaar: 
-                                                    a(href="{{item.author_url}}", target="_blank") {{item.author}}             
+                                                    |Ontwikkelaar:
+                                                    a(href="{{item.author_url}}", target="_blank") {{item.author}}
                                     .col-xs-12.col-sm-2
                                         //- If a time is set for the item, let the user know how much time
                                             it's gonna take to read this.
                                         if item.time
                                             span.badge.time.pull-right
                                                     span.tb-clock=item.time_formatted
-                                        
+
                                         //- Show how trustworthy an item is, open source? good policy?
                                         .trust.pull-right
                                             if item.license.open_source
-                                                img(src="/static/media/open-source.svg",width="36",height="36",data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")  
+                                                img(src="/static/media/open-source.svg",width="36",height="36",data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")
                                             elif item.license.open_source == False
                                                 img(src="/static/media/closed-source.svg",width="36",height="36",data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover")
                                             if item.risk_src
@@ -90,14 +90,14 @@ block content
                                         .col-sm-2.col-xs-12
                                             //- If this is an app you can download it (from multiple sources maybe)
                                                 If not, you can only visit the website (one link)
-                                                
+
                                             if item.i_am == "tool"
                                                 //- More than one url should be put into a dropdown..
                                                 if item.app.url_count > 1
                                                     .trust.row
                                                         .btn-group
                                                             button.btn.btn-default.dropdown-toggle.btn-success(type="button",data-toggle="dropdown")
-                                                                |Download 
+                                                                |Download
                                                                 span.caret
                                                             ul.dropdown-menu(role="menu")
                                                                 if item.url
@@ -142,14 +142,14 @@ block content
                                     //- If this is not an index page, show the actual content.
                                 else
                                     .content {{ item.content|safe }}
-    
+
                             //- If this is not an index page, show the pro's, cons and alternatives
                             if page.index == False
                                 if item.pros.count > 0 or item.cons.count > 0
                                     .panel-body
                                         .container-fluid
                                             .row
-                                               
+
                                                 //- List of pro's in green
                                                 if item.pros.count > 0
                                                     ul.list-group.col-sm-6
@@ -158,7 +158,7 @@ block content
                                                         for pro in item.pros.all
                                                             li.list-group-item.list-group-item-success(class="{{pro.icon}}")
                                                                 {{ pro.title }}
-                                                
+
                                                 //- List of cons in red
                                                 if item.cons.count > 0
                                                     ul.list-group.col-sm-6
@@ -172,20 +172,20 @@ block content
                                     .row
                                         .col-xs-12.social
                                             include includes/social
-                                     
+
                                     .row
                                         .col-xs-6
-                                            | Bijdrage: 
+                                            | Bijdrage:
                                             br.hidden-md.hidden-lg
                                             if item.credit
                                                 {{ item.credit }}
                                             else
                                                 {{ item.user.first_name }} {{ item.user.last_name }}
-                                        .col-xs-6.text-right                                  
+                                        .col-xs-6.text-right
                                             |Gepubliceerd:
                                             br.hidden-md.hidden-lg
-                                            {{ item.dateformatted }}               
-                                                
+                                            {{ item.dateformatted }}
+
                                 //- List of alternatives in gray/white
                                 if item.alternative.count > 0
                                     .panel-body.alternatives
@@ -194,7 +194,7 @@ block content
                                             //- Loop though the list of alternatives..
                                             for alt_tool in item.alternative.all
                                                 if alt_tool.published
-                                                    a.list-group-item(href="/{{item.url_slug}}/{{ alt_tool.slug }}/") 
+                                                    a.list-group-item(href="/{{item.url_slug}}/{{ alt_tool.slug }}/")
                                                         .media
                                                             .media-body
                                                                 .row
@@ -203,7 +203,7 @@ block content
                                                                     if alt_tool.risk_src
                                                                         span.trust.col-xs-6
                                                                             if alt_tool.license.open_source
-                                                                                img(src="/static/media/open-source.svg",width="36",height="36",data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")  
+                                                                                img(src="/static/media/open-source.svg",width="36",height="36",data-content="Deze tool is open-source, de broncode is te controleren.",data-toggle="popover")
                                                                             elif alt_tool.license.open_source == False
                                                                                 img(src="/static/media/closed-source.svg",width="36",height="36",data-content="Deze tool is closed-source, de broncode is niet te controleren.",data-toggle="popover")
                                                                             if alt_tool.risk_src
@@ -220,7 +220,7 @@ block content
                                 //- Loop though the list of related advisory..
                                 for related in item.related.all
                                     if related.published
-                                        a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/") 
+                                        a.list-group-item(href="/{{item.url_slug}}/{{ related.slug }}/")
                                             .media
                                                 .media-body
                                                     .row
@@ -255,7 +255,7 @@ block content
                                             li.previous.disabled
                                                 a(href="")
                                                     &larr; Vorige
-                
+
                                         if page.data.item.has_next
                                             li.next
                                                 a(href="{{page.data.nextlink}}")

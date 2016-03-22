@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
-from django.template.loader import get_template
 import re
 from helpers.page_class import Page
 from helpers.navigation import Navigation
 from helpers.metatags import set_metatags
 from toolbox.models import Tool, Advice, Manual
-from django.db.models import Q
-from django.db import OperationalError
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
+# from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.http import Http404
 import settings
 
-def indexpage(request,slugs):
+
+def indexpage(request, slugs):
     # placeholder for page data
     page = Page()
     # nav provides Navbar, Sitemap, selected Filters, processing of slugs etc.
     nav = Navigation(slugs)
-    # A dict of models for the index pages, all for index.jade or one for page.jade
-    table_objects = { "advices" : Advice, "tools" : Tool, "manuals" : Manual}
+    # A dict of models for the index pages, all for index.jade or one for
+    # page.jade
+    table_objects = {"advices": Advice, "tools": Tool, "manuals": Manual}
     # Get selected filters to pass to models..
     filters = nav.filters
     # Get reverse slugs from nav.
@@ -36,38 +35,44 @@ def indexpage(request,slugs):
     elif item_slug:
         template = "page.jade"
         # Reduce the dict of models to 1 model
-        table_objects = { item_slug : table_objects[item_slug] }
+        table_objects = {item_slug: table_objects[item_slug]}
     # Only other options are static docs and root (/),
     # those are handled in app.py so we shouldn't end up here..
     else:
         raise Http404
-        
-    
+
     for key, table in table_objects.iteritems():
-        
+
         if item_slug and item_arg:
-            table_objects[key] = table_objects[key].objects.filter(slug=item_arg)
+            table_objects[key] = table_objects[
+                key].objects.filter(slug=item_arg)
             page.index = False
-            
+
             # Set metatags
             page.meta = set_metatags(page.meta, table_objects[key][0])
-                
+
         else:
-            table_objects[key] = table_objects[key].objects.order_by('-date').order_by('-feature_score').defer("intro_md","content_md")
+            # TODO: Nice pep8 alignment
+            table_objects[key] = table_objects[key].objects.order_by(
+                '-date'
+            ).order_by('-feature_score').defer("intro_md", "content_md")
             for strslug in filters:
-                if strslug not in ("item_slug","item_arg"):
+                if strslug not in ("item_slug", "item_arg"):
                     for strarg in filters[strslug]:
-                        if re.match("^[a-zA-Z0-9\-\_]*$",strslug):
-                            kwargs = { "%s__id" % strslug : nav[strslug][strarg]['id'] } 
-                            table_objects[key] = table_objects[key].filter(**kwargs)
-            
+                        if re.match("^[a-zA-Z0-9\-\_]*$", strslug):
+                            kwargs = {"%s__id" %
+                                      strslug: nav[strslug][strarg]['id']}
+                            table_objects[key] = table_objects[
+                                key].filter(**kwargs)
+
             page.meta['tweet_article'] = settings.tweet_templates['index']
 
-            page.meta['permalink'] = settings.meta_templates['permalink'] % "/%s" % sluglistrev[item_slug]['slug']
+            page.meta['permalink'] = settings.meta_templates[
+                'permalink'] % "/%s" % sluglistrev[item_slug]['slug']
 
         table_objects[key] = table_objects[key].exclude(published=False)
 
-    strtitle    = ""
+    strtitle = ""
     # if item_slug and item_arg:
     if item_slug and item_slug != "overview":
         page.data['item'] = table_objects[key].prefetch_related()
@@ -79,23 +84,22 @@ def indexpage(request,slugs):
             page.data[key] = table_objects[key].prefetch_related()
         if item_slug == "overview":
             strtitle += "%s | " % sluglistrev[item_slug]['slug'].capitalize()
-    
-    page.title                  = strtitle + settings.title 
-    page.data['nav']            = nav
-    page.data['navlinks']       = nav.categorieslinks
-    page.data['request']        = request
-    page.data['filters']        = nav.filter_dropdowns
-    page.data['errorpage']      = False
-    page.data['itemslug']       = sluglistrev[item_slug]['slug']
-    page.show_filters           = page.index
 
-    #page.data['debug']          = page.meta
+    page.title = strtitle + settings.title
+    page.data['nav'] = nav
+    page.data['navlinks'] = nav.categorieslinks
+    page.data['request'] = request
+    page.data['filters'] = nav.filter_dropdowns
+    page.data['errorpage'] = False
+    page.data['itemslug'] = sluglistrev[item_slug]['slug']
+    page.show_filters = page.index
+
+    # page.data['debug']          = page.meta
 
     if nav.show_filters:
-        page.data['filterclass']= 'in'
+        page.data['filterclass'] = 'in'
         page.data['ariaexpanded'] = "true"
     else:
         page.data['ariaexpanded'] = "false"
-       
-    return render_to_response(template, {"page":page})
-    
+
+    return render_to_response(template, {"page": page})

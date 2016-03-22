@@ -14,7 +14,7 @@
             ul.nav.nav-pills.nav-justified.collapse(class="{{page.data.filterclass}}")#collapseFilters.well
                 for filter in page.data.filters
                     li(role="presentation").dropdown
-                        a.btn.dropdown-toggle.btn-default(id="filter-{{loop.index}}", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") 
+                        a.btn.dropdown-toggle.btn-default(id="filter-{{loop.index}}", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
                             i(class="{{filter.icon}}")
                             {{filter.name}}
                             span.caret
@@ -24,11 +24,11 @@
                                     li.dropdown-header(role="presentation")
                                         {{item.name}}
                                 else
-                                    li 
+                                    li
                                         a(href="{{item.href}}", class="{{item.icon}}")
                                             {{item.name}}
                 li(role="presentation")
                     a.btn.btn-default(href="/{{page.data.itemslug}}/")
                         i.tb-cancel-circle
                         | Reset alle filters
-    
+

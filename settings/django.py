@@ -42,7 +42,7 @@ SOUTH_MIGRATION_MODULES = {
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
-    #'easy_thumbnails.processors.autocrop',
+    # 'easy_thumbnails.processors.autocrop',
     'easy_thumbnails.processors.scale_and_crop',
     'easy_thumbnails.processors.filters',
 )
@@ -54,19 +54,34 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware'
 )
 
-TEMPLATE_DIRS = (
-    BASE_DIR + 'toolbox/templates',
-)
-
-
-TEMPLATE_LOADERS = (
-    ('pyjade.ext.django.Loader',(
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            BASE_DIR + 'toolbox/templates'
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request'
+            ],
+            'loaders': [
+                ('pyjade.ext.django.Loader', (
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ))
+            ],
+            'builtins': ['pyjade.ext.django.templatetags'],
+        },
+    },
+]
 
 ROOT_URLCONF = 'toolbox.app'
 
@@ -82,4 +97,7 @@ USE_TZ = True
 
 DEFAULT_CHARSET = "utf-8"
 
-SECRET_KEY          = "9xP7AEHJvXRIESfjOT9NmuXBkhzerW6H"
+SECRET_KEY = "9xP7AEHJvXRIESfjOT9NmuXBkhzerW6H"
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True

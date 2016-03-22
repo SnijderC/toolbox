@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))+"/toolbox/"
 """
 
         DB specific settings
-        
+
 """
 
 # Database
@@ -25,7 +25,7 @@ DATABASES = {
 """
 
         Application specific settings
-        
+
 """
 
 ALLOWED_HOSTS = ['*']
@@ -46,7 +46,7 @@ meta_tags = {
          'publisher'    : '@bitsoffreedom',
          'author'       : '@bitsoffreedom',
     },
-   
+
     'description'       : 'Internet Vrijheid Toolbox helpt je met adviezen en laat je tools vinden die jouw privacy respecteren.',
     'permalink'         : 'https://toolbox.bof.nl',
     'imagelink'         : 'https://toolbox.bof.nl/static/media/social_logo.png?1',
@@ -61,7 +61,7 @@ meta_tags = {
 
 meta_templates = {
     'title'             :'%s',
-    'description'       :'%s', 
+    'description'       :'%s',
     'permalink'         :'https://toolbox.bof.nl%s',
 }
 
@@ -71,7 +71,7 @@ slugs = {
         'licenties'   : { 'slug' : 'licenses'   , 'single' : False , 'multiple' : False},
         'prijs'       : { 'slug' : 'prices'     , 'single' : False , 'multiple' : False},
         'formfactor'  : { 'slug' : 'formfactors', 'single' : False , 'multiple' : False},
-        'page'        : { 'slug' : 'pagenr'     , 'single' : False , 'multiple' : False}, 
+        'page'        : { 'slug' : 'pagenr'     , 'single' : False , 'multiple' : False},
         'adviezen'    : { 'slug' : 'advices'    , 'single' : True  , 'multiple' : False}, # this
         'tools'       : { 'slug' : 'tools'      , 'single' : True  , 'multiple' : False}, # XOR this
         'overzicht'   : { 'slug' : 'overview'   , 'single' : True  , 'multiple' : False}, # XOR this
@@ -83,7 +83,7 @@ slugs = {
 """
 
         Django specific settings
-        
+
 """
 
 LOGGING = {
@@ -127,7 +127,7 @@ MEDIA_URL = STATIC_URL + "media/"
 """
 
         Image uploading/thumnailing/storing
-        
+
 """
 THUMBNAIL_ALIASES = {
     '': {
@@ -172,3 +172,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
 )
+
+SECURE_SSL_REDIRECT = True
+

@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-        The admin pages need some work to make it more comfortable to contributors..
-        Sorry not much documented, have not really put much effort into this since
-        Django kind of just works even if it's not perfect and the front-end had
-        more priority.
+    The admin pages need some work to make it more comfortable to contributors.
+    Sorry not much documented, have not really put much effort into this since
+    Django kind of just works even if it's not perfect and the front-end had
+    more priority.
 
-        If you feel this should change, feel free to contribute..
+    If you feel this should change, feel free to contribute..
 """
 
-from toolbox.models import Tool, App, Service, Platform, Category, License, Advice, Property, ParentCategories, Formfactor, Terms, Playlist, PlaylistOrder, FAQ, FAQCategories, Manual
+from toolbox.models import App, Service, Platform, Category, License, Manual
+from toolbox.models import Advice, Property, ParentCategories, Formfactor
+from toolbox.models import Terms, Playlist, PlaylistOrder, FAQ, FAQCategories
 from django.contrib import admin
+
 
 def make_published(modeladmin, request, queryset):
     """
@@ -18,6 +21,7 @@ def make_published(modeladmin, request, queryset):
     queryset.update(published=True)
 make_published.short_description = "Mark selected items as published"
 
+
 def make_unpublished(modeladmin, request, queryset):
     """
         Mass mark an item as unpublished from the admin interface.
@@ -25,119 +29,221 @@ def make_unpublished(modeladmin, request, queryset):
     queryset.update(published=False)
 make_unpublished.short_description = "Mark selected items as unpublished"
 
+
 def contributor_name(obj):
     return ("%s %s" % (obj.user.first_name, obj.user.last_name))
 contributor_name.short_description = 'contributor'
 
+
 class CommonFieldsAdmin(admin.ModelAdmin):
-    actions         = [make_published,make_unpublished]
-    list_display    = ('title', contributor_name, 'slug','credit','date')
+    actions = [make_published, make_unpublished]
+    list_display = ('title', contributor_name, 'slug', 'credit', 'date')
+
 
 class LicenseAdmin(admin.ModelAdmin):
     pass
 
+
 class ParentCategoriesAdmin(admin.ModelAdmin):
-    filter_horizontal   = ('categories',)
+    filter_horizontal = ('categories',)
+
 
 class FormfactorAdmin(admin.ModelAdmin):
-    filter_horizontal   = ('platforms',)
+    filter_horizontal = ('platforms',)
+
 
 class AppAdmin(CommonFieldsAdmin):
-    filter_horizontal   = ('categories', 'platforms', 'pros', 'cons', 'alternative','formfactors')
+    filter_horizontal = (
+        'categories',
+        'platforms',
+        'pros',
+        'cons',
+        'alternative',
+        'formfactors'
+    )
     fieldsets = (
         (None, {
-            'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
+            'fields': (
+                ('title', 'slug'),
+                'image',
+                'intro_md',
+                'content_md'
+            ),
         }),
         ('Tagging', {
-            'fields': ('license',('categories', 'alternative'),('formfactors','platforms'),('topic')),
+            'fields': (
+                'license',
+                ('categories', 'alternative'),
+                ('formfactors', 'platforms'),
+                ('topic')
+            ),
         }),
         ('Properties', {
-            'fields': ('url', 'author', 'author_url', 'appstore', 'playstore', 'marketplace', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
+            'fields': (
+                'url',
+                'author',
+                'author_url',
+                'appstore',
+                'playstore',
+                'marketplace',
+                ('pros', 'cons'),
+                'cost',
+                'risk',
+                ('user', 'credit'),
+                ('published', 'feature_score')
+            ),
         })
     )
+
+
 class ServiceAdmin(CommonFieldsAdmin):
-    filter_horizontal   = ('categories', 'platforms', 'pros', 'cons', 'alternative','formfactors')
+    filter_horizontal = (
+        'categories',
+        'platforms',
+        'pros',
+        'cons',
+        'alternative',
+        'formfactors'
+    )
     fieldsets = (
         (None, {
-            'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
+            'fields': (
+                ('title', 'slug'),
+                'image',
+                'intro_md',
+                'content_md'
+            ),
         }),
         ('Tagging', {
-            'fields': ('license',('categories', 'alternative'),('formfactors','platforms'),('topic')),
+            'fields': (
+                'license',
+                ('categories', 'alternative'),
+                ('formfactors', 'platforms'),
+                ('topic')
+            ),
         }),
         ('Properties', {
-            'fields': ('url', 'author', 'author_url', ('pros','cons'), 'cost', 'risk', ('user', 'credit'), ('published', 'feature_score')),
+            'fields': (
+                'url',
+                'author',
+                'author_url',
+                ('pros', 'cons'),
+                'cost',
+                'risk',
+                ('user', 'credit'),
+                ('published', 'feature_score')
+            ),
         })
     )
+
 
 class AdviceAdmin(CommonFieldsAdmin):
     fieldsets = (
         (None, {
-            'fields': (('title', 'time', 'slug'), 'image', 'intro_md','content_md'),
+            'fields': (
+                ('title', 'time', 'slug'),
+                'image',
+                'intro_md',
+                'content_md'
+            ),
         }),
         ('Tagging', {
-            'fields': ('categories', ('formfactors','platforms'),('topic'), 'related')
+            'fields': (
+                'categories',
+                ('formfactors', 'platforms'),
+                ('topic'),
+                'related'
+            )
         }),
         ('Properties', {
-            'fields': (('user', 'credit'), ('published', 'feature_score'))
+            'fields': (
+                ('user', 'credit'),
+                ('published', 'feature_score')
+            )
         })
     )
-    filter_horizontal = ('categories', 'platforms','formfactors','related')
+    filter_horizontal = (
+        'categories',
+        'platforms',
+        'formfactors',
+        'related'
+    )
+
 
 class TermsAdmin(admin.ModelAdmin):
     pass
 
+
 class PlaylistAdmin(admin.ModelAdmin):
-    actions           = [make_published,make_unpublished]
-    list_display      = ('title', 'slug', 'date')
+    actions = [make_published, make_unpublished]
+    list_display = ('title', 'slug', 'date')
     filter_horizontal = ('playlist',)
 
+
 class PlaylistOrderAdmin(admin.ModelAdmin):
-    list_display      = ('playlist', 'number', 'advice')
+    list_display = ('playlist', 'number', 'advice')
+
 
 class FAQAdmin(admin.ModelAdmin):
-    list_display      = ('question', 'id')
+    list_display = ('question', 'id')
     fieldsets = (
         (None, {
-            'fields': ('question', 'answer_md'),
+            'fields': (
+                'question',
+                'answer_md'
+            ),
         }),
-        ('Catgegorie',{
+        ('Catgegorie', {
             'fields': ('categories',)
         })
     )
     filter_horizontal = ['categories']
 
+
 class ManualAdmin(CommonFieldsAdmin):
-    filter_horizontal   = ('categories', 'platforms', 'formfactors')
+    filter_horizontal = ('categories', 'platforms', 'formfactors')
     fieldsets = (
         (None, {
-            'fields': (('title', 'slug'), 'image', 'intro_md','content_md'),
+            'fields': (
+                ('title', 'slug'),
+                'image',
+                'intro_md',
+                'content_md'
+            ),
         }),
         ('Tagging', {
-            'fields': (('categories'),('formfactors','platforms'),('topic')),
+            'fields': (
+                ('categories'),
+                ('formfactors', 'platforms'),
+                ('topic')
+            ),
         }),
         ('Properties', {
-            'fields': (('user', 'credit'), ('published', 'feature_score')),
+            'fields': (
+                ('user', 'credit'),
+                ('published', 'feature_score')
+            ),
         })
     )
 
 
 adminlist = (
-                (Advice, AdviceAdmin),
-                (App, AppAdmin),
-                (Terms, TermsAdmin),
-                (Service, ServiceAdmin),
-                (License, LicenseAdmin),
-                (Playlist, PlaylistAdmin),
-                (PlaylistOrder, PlaylistOrderAdmin),
-                Platform,
-                Category,
-                (ParentCategories, ParentCategoriesAdmin),
-                Property,
-                (Formfactor, FormfactorAdmin),
-                (FAQ, FAQAdmin),
-                FAQCategories,
-                (Manual, ManualAdmin),
-            )
+    (Advice, AdviceAdmin),
+    (App, AppAdmin),
+    (Terms, TermsAdmin),
+    (Service, ServiceAdmin),
+    (License, LicenseAdmin),
+    (Playlist, PlaylistAdmin),
+    (PlaylistOrder, PlaylistOrderAdmin),
+    Platform,
+    Category,
+    (ParentCategories, ParentCategoriesAdmin),
+    Property,
+    (Formfactor, FormfactorAdmin),
+    (FAQ, FAQAdmin),
+    FAQCategories,
+    (Manual, ManualAdmin),
+)
 
 
 """
@@ -148,10 +254,6 @@ adminlist = (
 
 for item in adminlist:
     if isinstance(item, (list, tuple)):
-            admin.site.register(item[0], item[1])
+        admin.site.register(item[0], item[1])
     else:
         admin.site.register(item)
-
-
-
-
